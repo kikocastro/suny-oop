@@ -43,7 +43,6 @@ public class Transaction {
 //	}
 	
 	public void displayLegalInputs() {
-		System.out.println("Legal inputs:" + legalInputs);
 	}
 	
 	public void entry() {
@@ -53,10 +52,10 @@ public class Transaction {
 	
 	public void run() {}
 	
-	public static void main(String[] args) {
-		Transaction t = new Transaction();
-		t.name = "oi";
-		t.entry();
-	}
+//	public static void main(String[] args) {
+//		Transaction t = new Transaction();
+//		t.name = "oi";
+//		t.entry();
+//	}
 	
 }
