@@ -4,7 +4,8 @@ package edu.suny.np.oop.soda;
 public class SelectTransaction extends Transaction {
 
 	public SelectTransaction(SodaMachine sm ) {
-		name = "Select Transaction";
+		super(sm);
+		this.name = "Select Transaction";
 
 		legalInputs.add("q");
 		legalInputs.add("R");

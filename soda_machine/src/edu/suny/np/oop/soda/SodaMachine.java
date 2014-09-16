@@ -36,10 +36,10 @@ public class SodaMachine {
 		transactions.add(initialTransaction);
 		InputTransaction inputTransaction = new InputTransaction(this);
 		transactions.add(inputTransaction);
-		AdminTransaction adminTransaction = new AdminTransaction(this);
-		transactions.add(adminTransaction);
 		SelectTransaction selectTransaction = new SelectTransaction(this);
 		transactions.add(selectTransaction);
+		AdminTransaction adminTransaction = new AdminTransaction(this);
+		transactions.add(adminTransaction);
 	}
 	/**
 	 * @param args - the legal inputs in this state
@@ -66,17 +66,19 @@ public class SodaMachine {
 	public void addToInventory(String s) {
 	}
 	
-//	public static void main(String[] args) {
-//		// TODO Auto-generated method stub
-//		SodaMachine sm = new SodaMachine();
-//		sm.addTransactions();
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		SodaMachine sm = new SodaMachine();
+		sm.addTransactions();
+		
+		System.out.println(transactions);
+		
+//		transaction = transactions.get(Transaction.INIT_TID);
+//		while(true) {
+//			SodaMachine.transaction.run();
+//		}
 //		
-////		transaction = transactions.get(Transaction.INIT_TID);
-////		while(true) {
-////			SodaMachine.transaction.run();
-////		}
-//		
-//
-//	}
+
+	}
 
 }

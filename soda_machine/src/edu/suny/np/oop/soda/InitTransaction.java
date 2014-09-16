@@ -5,7 +5,8 @@ import java.util.*;
 public class InitTransaction extends Transaction{
 
 	public InitTransaction(SodaMachine sm) {
-		name = "InitTransaction";
+		super(sm);
+		this.name = "InitTransaction";
 	}
 	
 	public void entry() {

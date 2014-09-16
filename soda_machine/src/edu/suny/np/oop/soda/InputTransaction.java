@@ -4,7 +4,8 @@ package edu.suny.np.oop.soda;
 public class InputTransaction extends Transaction {
 	
 	public InputTransaction(SodaMachine sm) {
-		name = "Input Transaction";
+		super(sm);
+		this.name = "Input Transaction";
 		
 		legalInputs.add("a");
 		legalInputs.add("5");

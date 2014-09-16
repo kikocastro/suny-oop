@@ -16,9 +16,9 @@ public class Transaction {
 	
 	protected SodaMachine mSodaMachine;
 	
-//	public Transaction(SodaMachine sm) {
-//	}
-//	
+	public Transaction(SodaMachine sm) {
+	}
+	
 	/**
 	 * dummy constructor for searching transaction list
 	 * @param tid legal transaction identifier
