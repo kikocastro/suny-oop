@@ -16,23 +16,34 @@ public class Transaction {
 	
 	protected SodaMachine mSodaMachine;
 	
-	public Transaction(SodaMachine sm) {
-	}
-	
+//	public Transaction(SodaMachine sm) {
+//	}
+//	
 	/**
 	 * dummy constructor for searching transaction list
 	 * @param tid legal transaction identifier
 	 */
-	public Transaction(int tid) {
-	}
+//	public Transaction(int tid) {
+//		if (isLegalInput(tid)) {
+//			
+//			
+//		}
+//	}
 	
 	public boolean isLegalInput(String s) {
+		if (legalInputs.contains(s)) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
-	public Boolean equals(Transaction t){
-	}
+//	public Boolean equals(Transaction t){
+//		
+//	}
 	
 	public void displayLegalInputs() {
+		System.out.println("Legal inputs:" + legalInputs);
 	}
 	
 	public void entry() {
@@ -42,6 +53,10 @@ public class Transaction {
 	
 	public void run() {}
 	
-	
+	public static void main(String[] args) {
+		Transaction t = new Transaction();
+		t.name = "oi";
+		t.entry();
+	}
 	
 }
