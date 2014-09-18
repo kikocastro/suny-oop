@@ -7,11 +7,14 @@ public class InitTransaction extends Transaction{
 	public InitTransaction(SodaMachine sm) {
 		super(sm);
 		this.name = "InitTransaction";
+		
 	}
 	
 	public void entry() {
 	}
 	
 	public void run() {
+		entry();
+		
 	}
 }
