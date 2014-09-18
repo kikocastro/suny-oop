@@ -35,9 +35,13 @@ public class Transaction {
 		}
 	}
 	
-//	public Boolean equals(Transaction t){
-//		
-//	}
+	public Boolean equals(Transaction t){
+		if (this == t) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
 	public void displayLegalInputs() {
 		System.out.println("Legal Inputs:");
