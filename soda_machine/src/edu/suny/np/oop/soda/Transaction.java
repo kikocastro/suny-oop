@@ -24,10 +24,7 @@ public class Transaction {
 	 * @param tid legal transaction identifier
 	 */
 //	public Transaction(int tid) {
-//		if (isLegalInput(tid)) {
-//			
-//			
-//		}
+
 //	}
 	
 	public boolean isLegalInput(String s) {
@@ -51,11 +48,5 @@ public class Transaction {
 	}
 	
 	public void run() {}
-	
-//	public static void main(String[] args) {
-//		Transaction t = new Transaction();
-//		t.name = "oi";
-//		t.entry();
-//	}
-	
+		
 }

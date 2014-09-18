@@ -31,14 +31,14 @@ public class SodaMachine {
 	public void saveSelection(String s) {
 	}
 	
-	public void addTransactions() {
-		InitTransaction initialTransaction = new InitTransaction(this);
+	public void addTransactions(SodaMachine sm) {
+		InitTransaction initialTransaction = new InitTransaction(sm);
 		transactions.add(initialTransaction);
-		InputTransaction inputTransaction = new InputTransaction(this);
+		InputTransaction inputTransaction = new InputTransaction(sm);
 		transactions.add(inputTransaction);
-		SelectTransaction selectTransaction = new SelectTransaction(this);
+		SelectTransaction selectTransaction = new SelectTransaction(sm);
 		transactions.add(selectTransaction);
-		AdminTransaction adminTransaction = new AdminTransaction(this);
+		AdminTransaction adminTransaction = new AdminTransaction(sm);
 		transactions.add(adminTransaction);
 	}
 	/**
@@ -69,7 +69,7 @@ public class SodaMachine {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		SodaMachine sm = new SodaMachine();
-		sm.addTransactions();
+		sm.addTransactions(sm);
 		
 		System.out.println(transactions);
 		
