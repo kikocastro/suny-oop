@@ -23,9 +23,9 @@ public class Transaction {
 	 * dummy constructor for searching transaction list
 	 * @param tid legal transaction identifier
 	 */
-//	public Transaction(int tid) {
-
-//	}
+	public Transaction(int tid) {
+		
+	}
 	
 	public boolean isLegalInput(String s) {
 		if (legalInputs.contains(s)) {
@@ -40,6 +40,12 @@ public class Transaction {
 //	}
 	
 	public void displayLegalInputs() {
+		System.out.println("Legal Inputs:");
+		if(legalInputs.isEmpty()){
+			System.out.println("none");
+		}else{
+			System.out.println(legalInputs);
+		}
 	}
 	
 	public void entry() {
