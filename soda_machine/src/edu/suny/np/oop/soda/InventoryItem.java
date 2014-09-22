@@ -53,8 +53,7 @@ public class InventoryItem {
 	public String toString() {
 		// sample output:
 		//         (1): orange - 3
-		String output = new String();
-		output = "(" + ID + ")" + ": " + name + " - " + QIS;
+		String output = "(" + ID + ")" + ": " + name + " - " + QIS;
 		return output;
 	}
 	

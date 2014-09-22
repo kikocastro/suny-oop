@@ -42,15 +42,11 @@ public class InventoryTest {
 			e.printStackTrace();
 		}
 	}
-//	
-//	@Test(expected = InventoryItemNotFoundException.class)
-//	public void InventoryItemNotFoundException() {
-//		inventory.addToInventory("cola", -1);
-//	}
 
 	@Test
 	public void testToString() {
-		
+		String output = "(0): cola - 0, (1): orange - 0, (2): sprite - 0, (3): ginger ale - 0";
+		assertEquals(output, inventory.toString());
 	}
 
 	@Test
