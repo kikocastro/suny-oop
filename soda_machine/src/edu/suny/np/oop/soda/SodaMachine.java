@@ -28,8 +28,8 @@ public class SodaMachine {
 	public void advanceTransaction(int tid) {
 	}
 	
-	public void saveSelection(String s) {
-	}
+//	public void saveSelection(String s) {
+//	}
 	
 	public void addTransactions(SodaMachine sm) {
 		InitTransaction initialTransaction = new InitTransaction(sm);
@@ -51,20 +51,20 @@ public class SodaMachine {
 //	public String consumeInput(ArrayList<String> args) {
 //	}
 	
-	public void accumulateChange(String s) {
-	}
-	
-	public void displayMachineInfo() {
-	}
+//	public void accumulateChange(String s) {
+//	}
+//	
+//	public void displayMachineInfo() {
+//	}
 	
 	public void initMachine() {
 	}
 	
-	public void removeMachineReceipts() {
-	}
-	
-	public void addToInventory(String s) {
-	}
+//	public void removeMachineReceipts() {
+//	}
+//	
+//	public void addToInventory(String s) {
+//	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
