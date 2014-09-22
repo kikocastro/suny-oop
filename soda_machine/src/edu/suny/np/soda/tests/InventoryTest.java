@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import edu.suny.np.exceptions.InvalidQuantityException;
+import edu.suny.np.exceptions.InventoryItemNotFoundException;
 import edu.suny.np.oop.soda.Inventory;
 
 public class InventoryTest {
@@ -24,17 +25,29 @@ public class InventoryTest {
 		} catch (InvalidQuantityException e) {
 			e.printStackTrace();
 		}
-		
+		try {
+			assertEquals(2, inventory.getInventoryItem("cola").getQIS());
+		} catch (InventoryItemNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Test
 	public void testAddToInventoryStringInt() {
+		inventory.addToInventory("cola", 2);
 		try {
-			inventory.addToInventory("cola", -1);
-		} catch (InvalidQuantityException e) {
+			assertEquals(2, inventory.getInventoryItem("cola").getQIS());
+		} catch (InventoryItemNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+//	
+//	@Test(expected = InventoryItemNotFoundException.class)
+//	public void InventoryItemNotFoundException() {
+//		inventory.addToInventory("cola", -1);
+//	}
 
 	@Test
 	public void testToString() {
@@ -48,7 +61,11 @@ public class InventoryTest {
 	
 	@Test
 	public void getInventoryItem() {
-		Inventory inventory = new Inventory();
+		try {
+			assertEquals("cola", inventory.getInventoryItem("cola").getName());
+		} catch (InventoryItemNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
