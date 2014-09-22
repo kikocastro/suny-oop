@@ -62,5 +62,11 @@ public class InventoryTest {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void testInsufficientFunds() {
+		assertEquals(false, inventory.insufficientFunds(0, 75));
+		assertEquals(true, inventory.insufficientFunds(0, 74));
+	}
 
 }
