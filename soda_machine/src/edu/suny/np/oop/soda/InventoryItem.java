@@ -1,5 +1,5 @@
 package edu.suny.np.oop.soda;
-import edu.suny.np.exceptions.FullStockException;
+import edu.suny.np.exceptions.*;
 
 public class InventoryItem {
 
@@ -16,18 +16,28 @@ public class InventoryItem {
 	}
 	
 	public void addToInventory(int q) throws FullStockException {
-		if(QIS < MAX_QUANTITY){
-			QIS++;
+		if(QIS <= MAX_QUANTITY){
+			QIS += q;
 		}else{
 			throw new FullStockException("Item could not be added. Stock is full.");
 		}
 		
 	}
 	
-	public void addToInventory() {
+	public void addToInventory() throws FullStockException {
+		if(QIS <= MAX_QUANTITY){
+			QIS ++;
+		}else{
+			throw new FullStockException("Item could not be added. Stock is full.");
+		}
 	}
 	
-	public void decrementInventory() {
+	public void decrementInventory() throws EmptyStockException {
+		if(QIS > 0){
+			QIS --;
+		}else{
+			throw new EmptyStockException("Item could not be decremented. Stock is already empty.");
+		}
 	}
 	
 	public int getPrice() {
