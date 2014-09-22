@@ -19,13 +19,13 @@ public class ChangeMechanism {
 	
 
 	
-	
-	public String emptyCashBox() {
-		
-	}
-	
-	public String toString() {
-	}
+//	
+//	public String emptyCashBox() {
+//		
+//	}
+//	
+//	public String toString() {
+//	}
 	/**
 	 * 
 	 * @param c must be 5, 10 or 25
@@ -37,9 +37,9 @@ public class ChangeMechanism {
 	
 	public void addChange(String s) {
 	}
-	
-	private String buildChangeString(int amountReturned) { 
-	}
+//	
+//	private String buildChangeString(int amountReturned) { 
+//	}
 	
 	/**
 	 * method called to calculate the  amount of change coming back to the 
@@ -47,10 +47,10 @@ public class ChangeMechanism {
 	 * @param cost cost of current selection (Use 0 for lack of inventory)
 	 * @return
 	 */
-	public String getChange(int cost) {
-	}
-	public int getAmountEntered () {
-	}
+//	public String getChange(int cost) {
+//	}
+//	public int getAmountEntered () {
+//	}
 	
 	
 	
