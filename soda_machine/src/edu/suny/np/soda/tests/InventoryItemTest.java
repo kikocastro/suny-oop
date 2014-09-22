@@ -10,8 +10,6 @@ import edu.suny.np.exceptions.InvalidQuantityException;
 import edu.suny.np.oop.soda.InventoryItem;
 
 public class InventoryItemTest {
-	
-	
 
 	@Test
 	public void testAddToInventoryInt() throws InvalidQuantityException {
@@ -47,7 +45,6 @@ public class InventoryItemTest {
 		try {
 			item1.decrementInventory();
 		} catch (EmptyStockException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		assertEquals(0, item1.getQIS());
