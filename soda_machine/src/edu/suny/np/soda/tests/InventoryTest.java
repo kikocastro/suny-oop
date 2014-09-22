@@ -63,5 +63,15 @@ public class InventoryTest {
 		assertNotEquals("cola", inventory.getItemName(1));
 	}
 
+	@Test
+	public void testOutOfStock(){
+		try {
+			inventory.addToInventory(2, 1);
+		} catch (InvalidQuantityException e) {
+			e.printStackTrace();
+		}
+		assertTrue(inventory.outOfStock(0));
+		assertFalse(inventory.outOfStock(2));
+	}
 
 }

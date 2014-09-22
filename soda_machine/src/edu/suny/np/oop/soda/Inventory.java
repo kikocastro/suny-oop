@@ -97,9 +97,14 @@ public class Inventory {
 		throw new InventoryItemNotFoundException("Item not available in the contents list.");
 	}
 	
-//	public boolean outOfStock(int itemID) {
-//	}
-//	
+	public boolean outOfStock(int itemID) {
+		if(this.getItem(itemID).getQIS() < 1){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
 //	public int getSelectionCost(int selection) {
 //	}
 //	
