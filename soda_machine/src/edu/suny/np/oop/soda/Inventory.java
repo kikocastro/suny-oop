@@ -25,34 +25,36 @@ public class Inventory {
 	}
 	
 	public String toString() {
-	}
-	
-	public InventoryItem getInventoryItem(String s) {
 		
+		return "";
 	}
 	
-	public boolean insufficientFunds(int item, int amountEntered) {
-		
-	}
+//	public InventoryItem getInventoryItem(String s) {
+//		
+//	}
+//	
+//	public boolean insufficientFunds(int item, int amountEntered) {
+//		
+//	}
 	
-	public String getItemName(int i) {
-	}
-	
-	private InventoryItem getItem(int i) {
-	}
-	
-	private InventoryItem getItem(String i) {
-				
-	}
-	
-	public boolean outOfStock(int itemID) {
-	}
-	
-	public int getSelectionCost(int selection) {
-	}
-	
-	public String getSelection(int selection) {
-	}
+//	public String getItemName(int i) {
+//	}
+//	
+//	private InventoryItem getItem(int i) {
+//	}
+//	
+//	private InventoryItem getItem(String i) {
+//				
+//	}
+//	
+//	public boolean outOfStock(int itemID) {
+//	}
+//	
+//	public int getSelectionCost(int selection) {
+//	}
+//	
+//	public String getSelection(int selection) {
+//	}
 	
 	public void updateInventory(String s) {
 		
