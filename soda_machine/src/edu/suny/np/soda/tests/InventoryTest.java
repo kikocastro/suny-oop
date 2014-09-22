@@ -21,14 +21,14 @@ public class InventoryTest {
 	@Test
 	public void testAddToInventoryIntInt() {
 		try {
-			inventory.addToInventory(0, 2);
+			inventory.addToInventory(1, 2);
 		} catch (InvalidQuantityException e) {
 			e.printStackTrace();
 		}
 		try {
-			assertEquals(2, inventory.getInventoryItem("cola").getQIS());
+			assertEquals(0, inventory.getInventoryItem("cola").getQIS());
+			assertEquals(2, inventory.getInventoryItem("orange").getQIS());
 		} catch (InventoryItemNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -39,7 +39,6 @@ public class InventoryTest {
 		try {
 			assertEquals(2, inventory.getInventoryItem("cola").getQIS());
 		} catch (InventoryItemNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

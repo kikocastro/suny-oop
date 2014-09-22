@@ -100,9 +100,14 @@ public class Inventory {
 	
 	public static void main(String[] args) {
 		Inventory inventory = new Inventory();
-		inventory.addToInventory("sprite", 1);
 		try {
-			System.out.println(inventory.getInventoryItem("sprite").getQIS());
+			inventory.addToInventory(1, 2);
+		} catch (InvalidQuantityException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			System.out.println(inventory.getInventoryItem("orange").getQIS());
 		} catch (InventoryItemNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
