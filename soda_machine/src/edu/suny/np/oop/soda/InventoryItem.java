@@ -15,13 +15,15 @@ public class InventoryItem {
 		QIS = initialQIS;
 	}
 	
-	public void addToInventory(int q) throws FullStockException {
+	public void addToInventory(int q) throws FullStockException, InvalidQuantityException {
+		if (q < 1) {
+			throw new InvalidQuantityException("Please insert an integer value greater than 0");
+		}
 		if(QIS <= MAX_QUANTITY){
 			QIS += q;
 		}else{
 			throw new FullStockException("Item could not be added. Stock is full.");
 		}
-		
 	}
 	
 	public void addToInventory() throws FullStockException {
