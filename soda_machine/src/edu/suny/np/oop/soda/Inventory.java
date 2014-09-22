@@ -3,6 +3,7 @@ package edu.suny.np.oop.soda;
 import java.util.*;
 
 import edu.suny.np.exceptions.FullStockException;
+import edu.suny.np.exceptions.InvalidQuantityException;
 
 public class Inventory {
 
@@ -30,11 +31,15 @@ public class Inventory {
 		contents.add(dietCola);
 	}
 	
-	public void addToInventory(int id, int q ) {
+	public void addToInventory(int id, int q ) throws InvalidQuantityException {
 		try {
 			contents.get(id).addToInventory(q);
 		} catch (FullStockException e) {
 			e.printStackTrace();
+		} catch (InvalidQuantityException e) {
+			e.printStackTrace();
+		} catch (Exception e){
+			System.out.println("Add to inventory error.");
 		}
 	}
 	
