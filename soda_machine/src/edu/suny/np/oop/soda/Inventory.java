@@ -52,10 +52,15 @@ public class Inventory {
 		}
 	}
 	
-//	public String toString() {
-//		
-//		return "";
-//	}
+	public String toString() {
+		String output = new String();
+
+		for (int i = 0; i < contents.size() - 1; i++) {
+			output += "(" + i + ")" + ": " + contents.get(i).getName() + " - " + contents.get(i).getQIS() + ", "; 
+		}
+		output = output.substring(0,output.length()-2);
+		return output;
+	}
 	
 	public InventoryItem getInventoryItem(String s) throws InventoryItemNotFoundException {
 		InventoryItem searchResults = null;
@@ -100,18 +105,8 @@ public class Inventory {
 	
 	public static void main(String[] args) {
 		Inventory inventory = new Inventory();
-		try {
-			inventory.addToInventory(1, 2);
-		} catch (InvalidQuantityException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		try {
-			System.out.println(inventory.getInventoryItem("orange").getQIS());
-		} catch (InventoryItemNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+		System.out.println(inventory.toString());;
 	}
 	
 }
