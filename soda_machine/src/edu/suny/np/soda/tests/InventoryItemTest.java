@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import edu.suny.np.exceptions.EmptyStockException;
 import edu.suny.np.exceptions.FullStockException;
+import edu.suny.np.exceptions.InvalidQuantityException;
 import edu.suny.np.oop.soda.InventoryItem;
 
 public class InventoryItemTest {
@@ -13,7 +14,7 @@ public class InventoryItemTest {
 	
 
 	@Test
-	public void testAddToInventoryInt() {
+	public void testAddToInventoryInt() throws InvalidQuantityException {
 		InventoryItem item1 = new InventoryItem(1, "orange", 0);
 		assertEquals(0, item1.getQIS());
 		try {
