@@ -85,9 +85,10 @@ public class Inventory {
 		}
 	}
 	
-//	public String getItemName(int i) {
-//	}
-//	
+	public String getItemName(int i) {
+		return contents.get(i).getName();
+	}
+	
 //	private InventoryItem getItem(int i) {
 //	}
 //	

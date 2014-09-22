@@ -65,8 +65,14 @@ public class InventoryTest {
 	
 	@Test
 	public void testInsufficientFunds() {
-		assertEquals(false, inventory.insufficientFunds(0, 75));
-		assertEquals(true, inventory.insufficientFunds(0, 74));
+		assertFalse(inventory.insufficientFunds(0, 75));
+		assertTrue(inventory.insufficientFunds(0, 74));
+	}
+	
+	@Test
+	public void testGetItemName(){
+		assertEquals("cola", inventory.getItemName(0));
+		assertNotEquals("cola", inventory.getItemName(1));
 	}
 
 }
