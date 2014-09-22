@@ -76,9 +76,14 @@ public class Inventory {
 		}
 	}
 	
-//	public boolean insufficientFunds(int item, int amountEntered) {
-//		
-//	}
+	public boolean insufficientFunds(int item, int amountEntered) {
+		InventoryItem inventoryItem = contents.get(item);
+		if(amountEntered < inventoryItem.getPrice()){
+			return true;
+		}else{
+			return false;
+		}
+	}
 	
 //	public String getItemName(int i) {
 //	}
