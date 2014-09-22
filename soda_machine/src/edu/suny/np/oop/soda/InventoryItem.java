@@ -1,4 +1,5 @@
 package edu.suny.np.oop.soda;
+import edu.suny.np.exceptions.FullStockException;
 
 public class InventoryItem {
 
@@ -9,9 +10,18 @@ public class InventoryItem {
 	private final int PRICE = 75;
 	
 	public InventoryItem(int id, String n, int initialQIS) {
+		ID = id;
+		name= n;
+		QIS = initialQIS;
 	}
 	
-	public void addToInventory(int q) {
+	public void addToInventory(int q) throws FullStockException {
+		if(QIS < MAX_QUANTITY){
+			QIS++;
+		}else{
+			throw new FullStockException("Item could not be added. Stock is full.");
+		}
+		
 	}
 	
 	public void addToInventory() {
@@ -21,9 +31,11 @@ public class InventoryItem {
 	}
 	
 	public int getPrice() {
+		return PRICE;
 	}
 	
 	public String getName() {
+		return name;
 	}
 	
 	public String toString() {
@@ -32,8 +44,37 @@ public class InventoryItem {
 	}
 	
 	public boolean equals(InventoryItem io) {
+		if(this == io){
+			return true;
+		}
+		
+		if (io == null) {
+			return false;
+		}
+		
+		if (this.getClass() != io.getClass()) {
+			return false;
+		}
+		
+		InventoryItem otherInventory = (InventoryItem) io;
+		
+		if (this.name != otherInventory.name) {
+			return false;
+		}
+		
+		if (this.name == null) {
+			if(otherInventory.name != null){
+				return false;
+			}else{
+				if (!this.name.equals(otherInventory.name)) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 	
 	public int getQIS () {
+		return QIS;
 	}
 }
