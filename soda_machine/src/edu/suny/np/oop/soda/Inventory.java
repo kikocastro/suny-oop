@@ -2,6 +2,8 @@ package edu.suny.np.oop.soda;
 
 import java.util.*;
 
+import edu.suny.np.exceptions.FullStockException;
+
 public class Inventory {
 
 	public static String COLA= "cola";
@@ -15,13 +17,36 @@ public class Inventory {
 	private ArrayList<InventoryItem> contents = null;
 	
 	public Inventory() {
+		InventoryItem cola = new InventoryItem(0, COLA, 0);
+		InventoryItem orange = new InventoryItem(1, ORANGE, 0);
+		InventoryItem sprite = new InventoryItem(2, SPRITE, 0);
+		InventoryItem gignerAle = new InventoryItem(3, GINGER_ALE, 0);
+		InventoryItem dietCola = new InventoryItem(4, DIET_COLA, 0);
+		
+		contents.add(cola);
+		contents.add(orange);
+		contents.add(sprite);
+		contents.add(gignerAle);
+		contents.add(dietCola);
 	}
 	
 	public void addToInventory(int id, int q ) {
-		
+		try {
+			contents.get(id).addToInventory(q);
+		} catch (FullStockException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void addToInventory(String  n, int q ) {
+		try {
+			int index = contents.indexOf(n);
+			contents.get(index).addToInventory(q);
+		} catch (FullStockException e) {
+			e.printStackTrace();
+		} catch (Exception e){
+			System.out.println("Add to inventory error.");
+		}
 	}
 	
 	public String toString() {
