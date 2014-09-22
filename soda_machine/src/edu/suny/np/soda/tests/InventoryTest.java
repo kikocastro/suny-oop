@@ -25,22 +25,14 @@ public class InventoryTest {
 		} catch (InvalidQuantityException e) {
 			e.printStackTrace();
 		}
-		try {
-			assertEquals(0, inventory.getInventoryItem("cola").getQIS());
-			assertEquals(2, inventory.getInventoryItem("orange").getQIS());
-		} catch (InventoryItemNotFoundException e) {
-			e.printStackTrace();
-		}
+		assertEquals(0, inventory.getInventoryItem("cola").getQIS());
+		assertEquals(2, inventory.getInventoryItem("orange").getQIS());
 	}
 
 	@Test
 	public void testAddToInventoryStringInt() {
 		inventory.addToInventory("cola", 2);
-		try {
-			assertEquals(2, inventory.getInventoryItem("cola").getQIS());
-		} catch (InventoryItemNotFoundException e) {
-			e.printStackTrace();
-		}
+		assertEquals(2, inventory.getInventoryItem("cola").getQIS());
 	}
 
 	@Test
@@ -56,11 +48,7 @@ public class InventoryTest {
 	
 	@Test
 	public void getInventoryItem() {
-		try {
-			assertEquals("cola", inventory.getInventoryItem("cola").getName());
-		} catch (InventoryItemNotFoundException e) {
-			e.printStackTrace();
-		}
+		assertEquals("cola", inventory.getInventoryItem("cola").getName());
 	}
 	
 	@Test
@@ -74,5 +62,6 @@ public class InventoryTest {
 		assertEquals("cola", inventory.getItemName(0));
 		assertNotEquals("cola", inventory.getItemName(1));
 	}
+
 
 }

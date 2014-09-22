@@ -62,17 +62,12 @@ public class Inventory {
 		return output;
 	}
 	
-	public InventoryItem getInventoryItem(String s) throws InventoryItemNotFoundException {
-		InventoryItem searchResults = null;
-		for(InventoryItem item : contents){
-			if (item.getName().equals(s)) {
-				searchResults = item;
-			}
-		}
-		if (searchResults != null) {
-			return searchResults;
-		} else {
-			throw new InventoryItemNotFoundException("Item not available in the contents list.");
+	public InventoryItem getInventoryItem(String s) {
+		try {
+			return this.getItem(s);
+		} catch (InventoryItemNotFoundException e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 	
@@ -89,13 +84,19 @@ public class Inventory {
 		return contents.get(i).getName();
 	}
 	
-//	private InventoryItem getItem(int i) {
-//	}
-//	
-//	private InventoryItem getItem(String i) {
-//				
-//	}
-//	
+	private InventoryItem getItem(int i) {
+		return contents.get(i);
+	}
+	
+	private InventoryItem getItem(String i) throws InventoryItemNotFoundException {
+		for(InventoryItem item : contents){
+			if (item.getName().equals(i)) {
+				return item;
+			}
+		}
+		throw new InventoryItemNotFoundException("Item not available in the contents list.");
+	}
+	
 //	public boolean outOfStock(int itemID) {
 //	}
 //	
