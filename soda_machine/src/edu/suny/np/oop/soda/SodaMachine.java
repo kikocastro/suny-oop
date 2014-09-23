@@ -9,7 +9,7 @@ import edu.suny.np.exceptions.InvalidTransactionIdException;
 public class SodaMachine {
 
 	public static Transaction transaction;
-	private static ArrayList<Transaction> transactions;
+	private static ArrayList<Transaction> transactions = new ArrayList<Transaction>();
 	private Scanner scan;
 	private Inventory inventory = null;
 	private ChangeMechanism changeMechanism;
@@ -32,10 +32,14 @@ public class SodaMachine {
 		}else {
 			throw new InvalidTransactionIdException("Could not get transaction. Invalid transaction ID.");
 		}
-		
 	}
 	
 	public void advanceTransaction(int tid) {
+		try {
+			this.getTransaction(tid);
+		} catch (InvalidTransactionIdException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void saveSelection(String s) {
@@ -43,14 +47,13 @@ public class SodaMachine {
 	}
 	
 	public void addTransactions(SodaMachine sm) {
-		InitTransaction initialTransaction = new InitTransaction(sm);
-		System.out.println(sm);
+		Transaction initialTransaction = new InitTransaction(sm);
 		transactions.add(initialTransaction);
-		InputTransaction inputTransaction = new InputTransaction(sm);
+		Transaction inputTransaction = new InputTransaction(sm);
 		transactions.add(inputTransaction);
-		SelectTransaction selectTransaction = new SelectTransaction(sm);
+		Transaction selectTransaction = new SelectTransaction(sm);
 		transactions.add(selectTransaction);
-		AdminTransaction adminTransaction = new AdminTransaction(sm);
+		Transaction adminTransaction = new AdminTransaction(sm);
 		transactions.add(adminTransaction);
 	}
 	/**
@@ -94,7 +97,6 @@ public class SodaMachine {
 	public static void main(String[] args) {
 		SodaMachine sm = new SodaMachine();
 		sm.addTransactions(sm);
-		System.out.println(transactions.get(Transaction.INIT_TID).getClass());
 //		transaction = transactions.get(Transaction.INIT_TID);
 //		while(true) {
 //			SodaMachine.transaction.run();

@@ -12,7 +12,7 @@ public class Transaction {
 	static public final int INPUT_TID = 3;
 
 	
-	protected ArrayList<String> legalInputs = null;
+	protected ArrayList<String> legalInputs = new ArrayList<String>();
 	
 	protected SodaMachine mSodaMachine;
 	
