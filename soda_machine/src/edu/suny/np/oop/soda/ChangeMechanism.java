@@ -123,8 +123,12 @@ public class ChangeMechanism {
 			coins.put("nickles", coins.get("nickles") + 1);
 			cust_q -= 5;
 		}
-
-		return this.buildChangeString(amountToReturn);
+		
+		int change = coins.get("quarters") * 25 + 
+					 coins.get("dimes") * 10 +
+					 coins.get("nickles") * 5;
+		
+		return this.buildChangeString(change);
 	}
 	
 	public int getAvailableChange(){
