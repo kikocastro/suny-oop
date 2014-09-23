@@ -1,5 +1,7 @@
 package edu.suny.np.oop.soda;
 
+import java.util.HashMap;
+
 import edu.suny.np.exceptions.InvalidCoinException;
 
 public class ChangeMechanism {
@@ -21,10 +23,12 @@ public class ChangeMechanism {
 	public void init(){
 		
 	}
-	
-//	public String emptyCashBox() {
-//		return "";
-//	}
+//	???
+	public String emptyCashBox() {
+		int totalAmount = cashBox;
+		cashBox = 0;
+		return "Empty cashBox. Total amount: " + totalAmount;
+	}
 	
 	public String toString() {
 		String output = "Quarters: " + cust_q + ", Dimes: " + cust_d + ", Nickels: " + cust_n;
@@ -64,8 +68,6 @@ public class ChangeMechanism {
 		default:
 			throw new InvalidCoinException("Invalid coin inserted");
 		}
-		
-		
 	}
 	
 	public void addChange(String s) throws InvalidCoinException {
@@ -81,9 +83,10 @@ public class ChangeMechanism {
 			throw new InvalidCoinException("Invalid coin inserted");
 		}
 	}
-//	
-//	private String buildChangeString(int amountReturned) { 
-//	}
+	
+	private String buildChangeString(int amountReturned) { 
+		return Integer.toString(amountReturned);
+	}
 	
 	/**
 	 * method called to calculate the  amount of change coming back to the 
@@ -92,8 +95,40 @@ public class ChangeMechanism {
 	 * @return
 	 */
 	public String getChange(int cost) {
-		String change = Integer.toString(amountEntered - cost);
-		return change;
+		int amountToReturn = amountEntered - cost;
+		int availableChange = this.getAvailableChange();
+		if(availableChange < amountToReturn){
+			this.resetAmountEntered();
+			return "No change available. Purchase cancelled.";
+		}
+		
+		HashMap<String, Integer>  coins = new HashMap();
+		coins.put("quarters", 0);
+		coins.put("dimes", 0);
+		coins.put("nickels", 0);
+		
+		
+		while((cust_q > 0) && (amountToReturn >= 25)){
+			amountToReturn -= 25;
+			coins.put("quarters", coins.get("quarters") + 1);
+			cust_q -= 25;
+		}
+		while((cust_d > 0) && (amountToReturn >= 10)){
+			amountToReturn -= 10;
+			coins.put("dimes", coins.get("dimes") + 1);
+			cust_q -= 10;
+		}
+		while((cust_q > 0) && (amountToReturn >= 5)){
+			amountToReturn -= 5;
+			coins.put("nickles", coins.get("nickles") + 1);
+			cust_q -= 5;
+		}
+
+		return this.buildChangeString(amountToReturn);
+	}
+	
+	public int getAvailableChange(){
+		return (cust_q * 25 + cust_d * 10 + cust_n * 5);
 	}
 	
 	public int getAmountEntered () {
