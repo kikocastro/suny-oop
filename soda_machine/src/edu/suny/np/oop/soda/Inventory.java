@@ -105,20 +105,16 @@ public class Inventory {
 		}
 	}
 	
-//	public int getSelectionCost(int selection) {
+	public int getSelectionCost(int selection) {
+		return this.getItem(selection).getPrice();
+	}
+	
+//	public String getSelection(int selection) {
+//		return selection;
 //	}
 //	
-//	public String getSelection(int selection) {
+//	public void updateInventory(String s) {
+//		
 //	}
-	
-	public void updateInventory(String s) {
-		
-	}
-	
-	public static void main(String[] args) {
-		Inventory inventory = new Inventory();
-
-		System.out.println(inventory.toString());;
-	}
 	
 }
