@@ -14,7 +14,6 @@ public class InitTransaction extends Transaction{
 	
 	public void run() {
 		entry();
-		
-		
+		mSodaMachine.advanceTransaction(Transaction.INPUT_TID);
 	}
 }
