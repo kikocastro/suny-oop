@@ -109,10 +109,12 @@ public class Inventory {
 		return this.getItem(selection).getPrice();
 	}
 	
-//	public String getSelection(int selection) {
-//		return selection;
-//	}
-//	
+	//????
+	public String getSelection(int selection) {
+		return  this.getItemName(selection) ;
+	}
+	
+//	?? ?????
 //	public void updateInventory(String s) {
 //		
 //	}
