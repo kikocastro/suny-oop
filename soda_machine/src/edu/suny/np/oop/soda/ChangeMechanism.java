@@ -9,7 +9,6 @@ public class ChangeMechanism {
 	private final int MAX_Q = 3;
 	private final int MAX_D = 3;
 	private final int MAX_N = 3;
-	private int changeBox = 0;
 	private int amountEntered = 0;
 	private int cashBox = 0;
 	
@@ -23,7 +22,7 @@ public class ChangeMechanism {
 	public void init(){
 		
 	}
-//	???
+
 	public String emptyCashBox() {
 		int totalAmount = cashBox;
 		cashBox = 0;
@@ -31,7 +30,8 @@ public class ChangeMechanism {
 	}
 	
 	public String toString() {
-		String output = "Quarters: " + cust_q + ", Dimes: " + cust_d + ", Nickels: " + cust_n;
+		int totalAmountInsereted = cust_q + cust_d + cust_n;
+		String output = "Quarters: " + cust_q + ", Dimes: " + cust_d + ", Nickels: " + cust_n + ", Total: " + totalAmountInsereted;
 		return output;
 	}
 	/**
@@ -99,7 +99,7 @@ public class ChangeMechanism {
 		int availableChange = this.getAvailableChange();
 		if(availableChange < amountToReturn){
 			this.resetAmountEntered();
-			return "No change available. Purchase cancelled.";
+			return Integer.toString(amountToReturn);
 		}
 		
 		HashMap<String, Integer>  coins = new HashMap();

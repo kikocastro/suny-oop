@@ -17,6 +17,7 @@ public class Transaction {
 	protected SodaMachine mSodaMachine;
 	
 	public Transaction(SodaMachine sm) {
+		mSodaMachine = sm;
 	}
 	
 	/**

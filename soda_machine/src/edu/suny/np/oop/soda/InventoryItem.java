@@ -88,6 +88,10 @@ public class InventoryItem {
 		return true;
 	}
 	
+	public int getMaxQuantity(){
+		return MAX_QUANTITY;
+	}
+	
 	public int getQIS () {
 		return QIS;
 	}

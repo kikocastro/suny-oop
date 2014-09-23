@@ -109,14 +109,15 @@ public class Inventory {
 		return this.getItem(selection).getPrice();
 	}
 	
-	//????
 	public String getSelection(int selection) {
 		return  this.getItemName(selection) ;
 	}
 	
-//	?? ?????
-//	public void updateInventory(String s) {
-//		
-//	}
+	public void updateInventory(String s) {
+		InventoryItem item = this.getInventoryItem(s);
+		for (int i = 0; i < item.getMaxQuantity(); i++) {
+			addToInventory(s, 1);
+		}
+	}
 	
 }

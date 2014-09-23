@@ -18,10 +18,13 @@ public class InputTransaction extends Transaction {
 		legalInputs.add("s5");
 	}
 	
-
+// must display basic menu
+	// with line with values inserted after entry
+	// last thing assign new value to soda mach transaction
 	public void entry() {
 	}
 	public void run() {
-
+		entry();
+		
 	}
 }
