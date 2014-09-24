@@ -18,7 +18,6 @@ public class InventoryItemTest {
 		try {
 			item1.addToInventory(2);
 		} catch (FullStockException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		assertEquals(2, item1.getQIS());
@@ -32,7 +31,6 @@ public class InventoryItemTest {
 		try {
 			item1.addToInventory();
 		} catch (FullStockException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		assertEquals(1, item1.getQIS());

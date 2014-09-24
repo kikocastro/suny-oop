@@ -23,7 +23,6 @@ public class InputTransaction extends Transaction {
 	}
 	
 	public void entry() {
-		mSodaMachine.displayMachineInfo();
 		System.out.println("\nEnter coins and select the soda option");
 		System.out.println("-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-\n");
 		System.out.println("s0 - Select Soda 0");
