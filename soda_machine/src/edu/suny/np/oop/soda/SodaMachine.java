@@ -27,20 +27,16 @@ public class SodaMachine {
 		transaction = transactions.get(Transaction.INIT_TID);
 	}
 	
-	public Transaction getTransaction(int t) throws InvalidTransactionIdException {
+	public Transaction getTransaction(int t){
 		if (t >= 0 && t <=4) {
 			return transaction = transactions.get(t);
 		}else {
-			throw new InvalidTransactionIdException("Could not get transaction. Invalid transaction ID.");
+			return null;
 		}
 	}
 	
 	public void advanceTransaction(int tid) {
-		try {
-			this.getTransaction(tid);
-		} catch (InvalidTransactionIdException e) {
-			e.printStackTrace();
-		}
+		this.getTransaction(tid);
 	}
 	
 	public void saveSelection(String s) {
@@ -83,8 +79,9 @@ public class SodaMachine {
 		}
 	}
 	
-//	public void displayMachineInfo() {
-//	}
+	public void displayMachineInfo() {
+		System.out.println("Amount inserted (cents): " + changeMechanism.getAmountEntered());
+	}
 	
 	public void initMachine() {
 		latestSelection = null;
@@ -106,8 +103,6 @@ public class SodaMachine {
 		while(true) {
 			SodaMachine.transaction.run();
 		}
-		
-
 	}
 
 }
