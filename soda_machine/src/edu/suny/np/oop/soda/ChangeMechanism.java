@@ -20,7 +20,7 @@ public class ChangeMechanism {
 	}
 	
 	public void init(){
-		
+		this.resetAmountEntered();
 	}
 
 	public String emptyCashBox() {
@@ -30,8 +30,7 @@ public class ChangeMechanism {
 	}
 	
 	public String toString() {
-		int totalAmountInsereted = cust_q + cust_d + cust_n;
-		String output = "Quarters: " + cust_q + ", Dimes: " + cust_d + ", Nickels: " + cust_n + ", Total: " + totalAmountInsereted;
+		String output = "Quarters: " + cust_q + ", Dimes: " + cust_d + ", Nickels: " + cust_n;
 		return output;
 	}
 	/**
