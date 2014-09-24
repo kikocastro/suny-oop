@@ -3,6 +3,7 @@ package edu.suny.np.oop.soda;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import edu.suny.np.exceptions.IllegalInputException;
 import edu.suny.np.exceptions.InvalidCoinException;
 import edu.suny.np.exceptions.InvalidTransactionIdException;
 
@@ -28,7 +29,6 @@ public class SodaMachine {
 	
 	public Transaction getTransaction(int t) throws InvalidTransactionIdException {
 		if (t >= 0 && t <=4) {
-			System.out.println(transactions.get(t).name);
 			return transaction = transactions.get(t);
 		}else {
 			throw new InvalidTransactionIdException("Could not get transaction. Invalid transaction ID.");
@@ -41,7 +41,6 @@ public class SodaMachine {
 		} catch (InvalidTransactionIdException e) {
 			e.printStackTrace();
 		}
-		System.out.println(transaction.ID);
 	}
 	
 	public void saveSelection(String s) {
@@ -63,13 +62,17 @@ public class SodaMachine {
 	 * this method gets input, checks it against legal
 	 * inputs and returns input if legal; otherwise
 	 * it returns the null string.
+	 * @throws IllegalInputException 
 	 * 
 	 */
-	public String consumeInput(ArrayList<String> args) {
-		System.out.println("enter an integer");
+	public String consumeInput(ArrayList<String> args) throws IllegalInputException {
 		scan = new Scanner(System.in);
-		args.add(scan.next());
-		return "?";
+		String input = scan.next(); 
+		if (args.contains(input)) {
+			return input;
+		} else {
+			throw new IllegalInputException("Illegal input.");
+		}
 	}
 	
 	public void accumulateChange(String s) {
