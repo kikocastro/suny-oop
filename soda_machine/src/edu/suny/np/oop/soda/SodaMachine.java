@@ -75,7 +75,7 @@ public class SodaMachine {
 	
 	public void accumulateChange(String s) {
 		try {
-			changeMechanism.addChange(s);
+			changeMechanism.addChange(Integer.parseInt(s));
 		} catch (InvalidCoinException e) {
 			e.printStackTrace();
 		}

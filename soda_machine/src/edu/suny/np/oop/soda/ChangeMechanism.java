@@ -101,7 +101,7 @@ public class ChangeMechanism {
 			return Integer.toString(amountToReturn);
 		}
 		
-		HashMap<String, Integer>  coins = new HashMap();
+		HashMap<String, Integer>  coins = new HashMap<String, Integer>();
 		coins.put("quarters", 0);
 		coins.put("dimes", 0);
 		coins.put("nickels", 0);

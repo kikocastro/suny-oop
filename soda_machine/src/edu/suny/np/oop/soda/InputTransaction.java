@@ -3,7 +3,6 @@ package edu.suny.np.oop.soda;
 import java.util.ArrayList;
 
 import edu.suny.np.exceptions.IllegalInputException;
-import edu.suny.np.exceptions.InvalidTransactionIdException;
 
 
 public class InputTransaction extends Transaction {
@@ -46,14 +45,13 @@ public class InputTransaction extends Transaction {
 			mSodaMachine.getTransaction(Transaction.INIT_TID);
 		}
 
-		if (input == "a") {
+		if (input.equals("a")) {
 			mSodaMachine.getTransaction(Transaction.ADMIN_TID);
-		} else if (input == "5" || input == "10" || input == "25") {
+		} else if (input.equals("5") || input.equals("10") || input.equals("25")) {
 			mSodaMachine.accumulateChange(input);
 			mSodaMachine.getTransaction(Transaction.INPUT_TID);
 		} else {
-			
+			mSodaMachine.getTransaction(SELECT_TID);
 		}
-//		mSodaMachine.advanceTransaction(tid);
 	}
 }
