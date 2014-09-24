@@ -49,7 +49,7 @@ public class ChangeMechanism {
 		case 25:
 			amountEntered += 25;
 			if( cust_q < MAX_Q){
-				cust_q += 25;
+				cust_q ++;
 			}else{
 				cashBox += 25;
 			}
@@ -57,7 +57,7 @@ public class ChangeMechanism {
 		case 10:
 			amountEntered += 10;
 			if (cust_d < MAX_D) {
-				cust_d += 10;
+				cust_d ++;
 			} else {
 				cashBox += 10;
 			}
@@ -65,7 +65,7 @@ public class ChangeMechanism {
 		case 5:
 			amountEntered += 5;
 			if (cust_n < MAX_N) {
-				cust_n += 5;
+				cust_n ++;
 			} else {
 				cashBox += 5;
 			}
