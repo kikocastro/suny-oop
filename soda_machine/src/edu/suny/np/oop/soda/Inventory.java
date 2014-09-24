@@ -128,10 +128,13 @@ public class Inventory {
 	public void updateInventory(String s) {
 		InventoryItem item = this.getInventoryItem(s);
 		for (int i = 0; i < item.getMaxQuantity(); i++) {
-			try {
-				addToInventory(i, 1);
-			} catch (InvalidQuantityException e) {
-				e.printStackTrace();
+			
+			if (item.getQIS() < item.getMaxQuantity()) {
+				try {
+					addToInventory(i, 1);
+				} catch (InvalidQuantityException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
