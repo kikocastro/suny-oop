@@ -41,27 +41,30 @@ public class ChangeMechanism {
 	 * 
 	 * @param c must be 5, 10 or 25
 	 * 
-	 * Accepts change into the change mechanism. If 
+	 * Accepts change into the change mechanism. 
 	 * @throws InvalidCoinException 
 	 */
 	public void addChange(int c) throws InvalidCoinException {
 		switch (c) {
 		case 25:
-			if( c <= MAX_Q){
+			amountEntered += 25;
+			if( cust_q < MAX_Q){
 				cust_q += 25;
 			}else{
 				cashBox += 25;
 			}
 			break;
 		case 10:
-			if (c <= MAX_D) {
+			amountEntered += 10;
+			if (cust_d < MAX_D) {
 				cust_d += 10;
 			} else {
 				cashBox += 10;
 			}
 			break;
 		case 5:
-			if (c <= MAX_N) {
+			amountEntered += 5;
+			if (cust_n < MAX_N) {
 				cust_n += 5;
 			} else {
 				cashBox += 5;

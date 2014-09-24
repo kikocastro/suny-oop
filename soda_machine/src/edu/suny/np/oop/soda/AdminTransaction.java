@@ -30,6 +30,7 @@ public class AdminTransaction extends Transaction {
 		System.out.println("r2 - Refill soda 2");
 		System.out.println("r3 - Refill soda 3");
 		System.out.println("r4 - Refill soda 4\n");
+		System.out.println("Enter option:");
 	}
 	public void run() {
 		entry();
