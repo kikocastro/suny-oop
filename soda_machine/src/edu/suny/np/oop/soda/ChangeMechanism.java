@@ -37,6 +37,7 @@ public class ChangeMechanism {
 		String output = "Quarters: " + cust_q + ", Dimes: " + cust_d + ", Nickels: " + cust_n;
 		return output;
 	}
+	
 	/**
 	 * 
 	 * @param c must be 5, 10 or 25
