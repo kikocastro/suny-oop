@@ -24,8 +24,8 @@ public class AdminTransaction extends Transaction {
 		System.out.println("\n     .   .   .   .   .   .   .   .   Admin mode   .   .   .   .   .   .   .   .\n");
 		mSodaMachine.displayMachineInfo();
 		System.out.println("===============================================\n");
-		System.out.println("q - Quit admin mode");
-		System.out.println("R - Remove coins");
+		System.out.println("q  - Quit admin mode");
+		System.out.println("R  - Remove coins");
 		System.out.println("r0 - Refill soda 0");
 		System.out.println("r1 - Refill soda 1");
 		System.out.println("r2 - Refill soda 2");
