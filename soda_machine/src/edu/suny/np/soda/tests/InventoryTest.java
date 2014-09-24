@@ -53,8 +53,8 @@ public class InventoryTest {
 	
 	@Test
 	public void testInsufficientFunds() {
-		assertFalse(inventory.insufficientFunds(0, 75));
-		assertTrue(inventory.insufficientFunds(0, 74));
+		assertFalse(inventory.insufficientFunds("cola", 75));
+		assertTrue(inventory.insufficientFunds("cola", 74));
 	}
 	
 	@Test

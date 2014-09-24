@@ -3,6 +3,7 @@ package edu.suny.np.oop.soda;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import edu.suny.np.exceptions.EmptyStockException;
 import edu.suny.np.exceptions.IllegalInputException;
 import edu.suny.np.exceptions.InvalidCoinException;
 import edu.suny.np.exceptions.InvalidTransactionIdException;
@@ -22,10 +23,38 @@ public class SodaMachine {
 		inventory = new Inventory();
 	}
 	
-	public void  processSelection() {
+	public void processSelection() {
+		InventoryItem item = inventory.getItemFromContents(latestSelection);
+		int selectionCost = inventory.getSelectionCost(item.getId());
+		if (inventory.outOfStock(item.getId())) {
+			System.out.println("Out of stock.");
+			resetTransaction();
+		}else {
+			if (inventory.insufficientFunds(latestSelection, changeMechanism.getAmountEntered())) {
+				System.out.println("Insufficient funds.");
+				resetTransaction();
+			} else {
+				if (selectionCost > changeMechanism.getAvailableChange()) {
+					System.out.println("Machine out of change.");
+					resetTransaction();
+				} else {
+					try {
+						item.decrementInventory();
+					} catch (EmptyStockException e) {
+						e.printStackTrace();
+					}
+					String change = changeMechanism.getChange(selectionCost);
+					System.out.println("Pick your soda.");
+					System.out.println("Change: " + change);
+				}
+			}
+		}
+		
 	}
 	
 	public void resetTransaction() {
+		System.out.println("Purchase cancelled. Returned amount: " + changeMechanism.getAmountEntered());
+		changeMechanism.resetAmountEntered();
 		transaction = transactions.get(Transaction.INIT_TID);
 	}
 	
@@ -42,7 +71,17 @@ public class SodaMachine {
 	}
 	
 	public void saveSelection(String s) {
-		latestSelection = s;
+		if (s.equals("s0")) {
+			latestSelection = inventory.getItemName(0);
+		} else if (s.equals("s1")) {
+			latestSelection = inventory.getItemName(1);
+		} else if (s.equals("s2")) {
+			latestSelection = inventory.getItemName(2);
+		} else if (s.equals("s3")) {
+			latestSelection = inventory.getItemName(3);
+		} else if (s.equals("s4")) {
+			latestSelection = inventory.getItemName(4);
+		} 
 	}
 	
 	public void addTransactions(SodaMachine sm) {
@@ -97,7 +136,11 @@ public class SodaMachine {
 	public void initMachine() {
 		latestSelection = null;
 		changeMechanism.init();
-		
+		//fill up inventory 
+		for (int i = 0; i < 5; i++) {
+			String itemName = inventory.getItemName(i);
+			inventory.updateInventory(itemName);
+		}
 	}
 	
 	public void removeMachineReceipts() {

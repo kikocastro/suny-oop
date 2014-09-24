@@ -92,6 +92,10 @@ public class InventoryItem {
 		return MAX_QUANTITY;
 	}
 	
+	public int getId(){
+		return ID;
+	}
+	
 	public int getQIS () {
 		return QIS;
 	}

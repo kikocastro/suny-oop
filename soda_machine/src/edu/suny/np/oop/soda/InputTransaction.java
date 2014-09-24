@@ -50,6 +50,7 @@ public class InputTransaction extends Transaction {
 			mSodaMachine.accumulateChange(input);
 			mSodaMachine.getTransaction(Transaction.INPUT_TID);
 		} else {
+			mSodaMachine.saveSelection(input);
 			mSodaMachine.getTransaction(SELECT_TID);
 		}
 	}

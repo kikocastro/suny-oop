@@ -118,17 +118,17 @@ public class ChangeMechanism {
 		while((cust_q > 0) && (amountToReturn >= 25)){
 			amountToReturn -= 25;
 			coins.put("quarters", coins.get("quarters") + 1);
-			cust_q -= 25;
+			cust_q --;
 		}
 		while((cust_d > 0) && (amountToReturn >= 10)){
 			amountToReturn -= 10;
 			coins.put("dimes", coins.get("dimes") + 1);
-			cust_q -= 10;
+			cust_q --;
 		}
 		while((cust_q > 0) && (amountToReturn >= 5)){
 			amountToReturn -= 5;
 			coins.put("nickles", coins.get("nickles") + 1);
-			cust_q -= 5;
+			cust_q --;
 		}
 		
 		int change = coins.get("quarters") * 25 + 

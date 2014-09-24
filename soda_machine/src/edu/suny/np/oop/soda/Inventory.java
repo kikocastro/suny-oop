@@ -63,16 +63,21 @@ public class Inventory {
 	}
 	
 	public InventoryItem getInventoryItem(String s) {
-		try {
-			return this.getItem(s);
-		} catch (InventoryItemNotFoundException e) {
-			e.printStackTrace();
-			return null;
-		}
+		return this.getItemFromContents(s);
 	}
 	
-	public boolean insufficientFunds(int item, int amountEntered) {
-		InventoryItem inventoryItem = contents.get(item);
+	public InventoryItem getItemFromContents(String s){
+		for (int i = 0; i < contents.size(); i++) {
+			InventoryItem item = contents.get(i);
+			if (item.getName().equals(s)) {
+				return item;
+			}
+		}
+		return null;
+	}
+	
+	public boolean insufficientFunds(String item, int amountEntered) {
+		InventoryItem inventoryItem = this.getItemFromContents(item);
 		if(amountEntered < inventoryItem.getPrice()){
 			return true;
 		}else{
@@ -123,7 +128,11 @@ public class Inventory {
 	public void updateInventory(String s) {
 		InventoryItem item = this.getInventoryItem(s);
 		for (int i = 0; i < item.getMaxQuantity(); i++) {
-			addToInventory(s, 1);
+			try {
+				addToInventory(i, 1);
+			} catch (InvalidQuantityException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
