@@ -31,7 +31,7 @@ public class InventoryTest {
 
 	@Test
 	public void testAddToInventoryStringInt() {
-		inventory.addToInventory("cola", 2);
+		inventory.addToInventory("r0", 2);
 		assertEquals(2, inventory.getInventoryItem("cola").getQIS());
 	}
 

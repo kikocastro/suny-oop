@@ -82,6 +82,9 @@ public class SodaMachine {
 	}
 	
 	public void displayMachineInfo() {
+		System.out.println("--------------------------------------------------------------------");
+		System.out.println(inventory.toString());
+		System.out.println("--------------------------------------------------------------------");
 		System.out.println("Cashbox: " + changeMechanism.getCashbox());
 		System.out.println("Available change: " + changeMechanism.getAvailableChange());
 		System.out.println("Coins stack: " + changeMechanism.toString());

@@ -23,7 +23,7 @@ public class InputTransaction extends Transaction {
 	}
 	
 	public void entry() {
-		System.out.println("\nEnter coins and select the soda option");
+		System.out.println("\nEnter coins (5, 10 or 25) and select the soda option");
 		System.out.println("-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-\n");
 		System.out.println("s0 - Select Soda 0");
 		System.out.println("s1 - Select Soda 1");
@@ -40,7 +40,7 @@ public class InputTransaction extends Transaction {
 		try {
 			input = mSodaMachine.consumeInput(legalInputs);
 		} catch (IllegalInputException e) {
-			System.out.println("Invalid input! Purchase cancelled. \n");
+
 			mSodaMachine.resetTransaction();
 		}
 

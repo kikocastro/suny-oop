@@ -43,12 +43,12 @@ public class Inventory {
 	
 	public void addToInventory(String  n, int q) {
 		try {
-			InventoryItem inventoryItem = this.getInventoryItem(n); 
+			InventoryItem inventoryItem = this.getItem(n); 
 			inventoryItem.addToInventory(q);
 		} catch (FullStockException e) {
 			e.printStackTrace();
 		} catch (Exception e){
-			System.out.println("Add by strign to inventory error.");
+			System.out.println("Add to inventory error.");
 		}
 	}
 	
@@ -89,12 +89,19 @@ public class Inventory {
 	}
 	
 	private InventoryItem getItem(String i) throws InventoryItemNotFoundException {
-		for(InventoryItem item : contents){
-			if (item.getName().equals(i)) {
-				return item;
-			}
+		if (i == "r0") {
+			return contents.get(0);
+		} else if (i.equals("r1")) {
+			return contents.get(1);
+		} else if (i.equals("r2")) {
+			return contents.get(2);
+		} else if (i.equals("r3")) {
+			return contents.get(3);
+		} else if (i.equals("r4")) {
+			return contents.get(4);
+		} else {
+			throw new InventoryItemNotFoundException("Item not available in the contents list.");
 		}
-		throw new InventoryItemNotFoundException("Item not available in the contents list.");
 	}
 	
 	public boolean outOfStock(int itemID) {

@@ -19,7 +19,7 @@ public class InventoryItem {
 		if (q < 1) {
 			throw new InvalidQuantityException("Please insert an integer value greater than 0");
 		}
-		if(QIS <= MAX_QUANTITY){
+		if(QIS < MAX_QUANTITY){
 			QIS += q;
 		}else{
 			throw new FullStockException("Item could not be added. Stock is full.");
@@ -27,7 +27,7 @@ public class InventoryItem {
 	}
 	
 	public void addToInventory() throws FullStockException {
-		if(QIS <= MAX_QUANTITY){
+		if(QIS < MAX_QUANTITY){
 			QIS ++;
 		}else{
 			throw new FullStockException("Item could not be added. Stock is full.");

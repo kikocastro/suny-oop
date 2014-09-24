@@ -1,4 +1,5 @@
 package edu.suny.np.oop.soda;
+
 import java.util.*;
 
 
@@ -10,7 +11,6 @@ public class Transaction {
 	static public final int ADMIN_TID = 1;
 	static public final int SELECT_TID = 2;
 	static public final int INPUT_TID = 3;
-
 	
 	protected ArrayList<String> legalInputs = new ArrayList<String>();
 	
