@@ -41,6 +41,13 @@ public class AdminTransaction extends Transaction {
 			mSodaMachine.getTransaction(Transaction.ADMIN_TID);
 		}
 		
+		if (input.equals("q")) {
+			mSodaMachine.resetTransaction();
+		} else if (input.equals("R")) {
+			mSodaMachine.removeMachineReceipts();
+		} else {
+			mSodaMachine.addToInventory(input);
+		}
 
 	}
 }

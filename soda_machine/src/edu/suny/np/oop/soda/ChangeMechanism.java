@@ -29,6 +29,10 @@ public class ChangeMechanism {
 		return "Empty cashBox. Total amount: " + totalAmount;
 	}
 	
+	public int getCashbox(){
+		return cashBox;
+	}
+	
 	public String toString() {
 		String output = "Quarters: " + cust_q + ", Dimes: " + cust_d + ", Nickels: " + cust_n;
 		return output;

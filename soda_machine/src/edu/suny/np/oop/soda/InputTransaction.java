@@ -30,7 +30,7 @@ public class InputTransaction extends Transaction {
 		System.out.println("s2 - Select Soda 2");
 		System.out.println("s3 - Select Soda 3");
 		System.out.println("s4 - Select Soda 4\n");
-		mSodaMachine.displayMachineInfo();
+		mSodaMachine.displayAmountEntered();
 		System.out.println("\nInput: ");
 		
 	}
@@ -42,7 +42,6 @@ public class InputTransaction extends Transaction {
 		} catch (IllegalInputException e) {
 			System.out.println("Invalid input! Purchase cancelled. \n");
 			mSodaMachine.resetTransaction();
-			mSodaMachine.getTransaction(Transaction.INIT_TID);
 		}
 
 		if (input.equals("a")) {
