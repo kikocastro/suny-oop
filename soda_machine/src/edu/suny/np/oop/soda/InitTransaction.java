@@ -10,11 +10,11 @@ public class InitTransaction extends Transaction{
 	}
 	
 	public void entry() {
-		System.out.println("Initialized.");
 	}
 	
 	public void run() {
 		entry();
+		mSodaMachine.initMachine();
 		mSodaMachine.advanceTransaction(Transaction.INPUT_TID);
 	}
 }
