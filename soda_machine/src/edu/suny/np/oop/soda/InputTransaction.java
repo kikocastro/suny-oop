@@ -23,26 +23,37 @@ public class InputTransaction extends Transaction {
 		legalInputs.add("s5");
 	}
 	
-// must display basic menu
-	// with line with values inserted after entry
-	// last thing assign new value to soda mach transaction
 	public void entry() {
-		System.out.println("menu");
+		System.out.println("\nEnter coins and select the soda option");
+		System.out.println("-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-\n");
+		System.out.println("s0 - Select Soda 0");
+		System.out.println("s1 - Select Soda 1");
+		System.out.println("s2 - Select Soda 2");
+		System.out.println("s3 - Select Soda 3");
+		System.out.println("s4 - Select Soda 4\n");
+		mSodaMachine.displayMachineInfo();
+		System.out.println("\nInput: ");
+		
 	}
 	public void run() {
 		entry();
+		String input = null;
 		try {
-			String input = mSodaMachine.consumeInput(legalInputs);
+			input = mSodaMachine.consumeInput(legalInputs);
 		} catch (IllegalInputException e) {
-			e.printStackTrace();
-			try {
-				mSodaMachine.getTransaction(Transaction.INIT_TID);
-			} catch (InvalidTransactionIdException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			System.out.println("Invalid input! Purchase cancelled. \n");
+			mSodaMachine.resetTransaction();
+			mSodaMachine.getTransaction(Transaction.INIT_TID);
 		}
-//		System.out.println(input);
+
+		if (input == "a") {
+			mSodaMachine.getTransaction(Transaction.ADMIN_TID);
+		} else if (input == "5" || input == "10" || input == "25") {
+			mSodaMachine.accumulateChange(input);
+			mSodaMachine.getTransaction(Transaction.INPUT_TID);
+		} else {
+			
+		}
 //		mSodaMachine.advanceTransaction(tid);
 	}
 }

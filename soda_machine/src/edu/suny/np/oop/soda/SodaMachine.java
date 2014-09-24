@@ -18,6 +18,8 @@ public class SodaMachine {
 	
 	
 	public SodaMachine() {
+		changeMechanism = new ChangeMechanism();
+		inventory = new Inventory();
 	}
 	
 	public void  processSelection() {
@@ -80,11 +82,12 @@ public class SodaMachine {
 	}
 	
 	public void displayMachineInfo() {
-		System.out.println("Amount inserted (cents): " + changeMechanism.getAmountEntered());
+		System.out.println("Amount entered (cents): " + changeMechanism.getAmountEntered());
 	}
 	
 	public void initMachine() {
 		latestSelection = null;
+		changeMechanism.init();
 		
 	}
 	
