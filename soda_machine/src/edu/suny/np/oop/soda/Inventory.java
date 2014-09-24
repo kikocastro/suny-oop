@@ -55,7 +55,7 @@ public class Inventory {
 	public String toString() {
 		String output = new String();
 
-		for (int i = 0; i < contents.size() - 1; i++) {
+		for (int i = 0; i < contents.size(); i++) {
 			output += "(" + i + ")" + ": " + contents.get(i).getName() + " - " + contents.get(i).getQIS() + ", "; 
 		}
 		output = output.substring(0,output.length()-2);
@@ -89,7 +89,7 @@ public class Inventory {
 	}
 	
 	private InventoryItem getItem(String i) throws InventoryItemNotFoundException {
-		if (i == "r0") {
+		if (i.equals("r0")) {
 			return contents.get(0);
 		} else if (i.equals("r1")) {
 			return contents.get(1);
