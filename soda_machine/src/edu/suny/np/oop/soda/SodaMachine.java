@@ -98,7 +98,7 @@ public class SodaMachine {
 	}
 	
 	public void removeMachineReceipts() {
-		changeMechanism.emptyCashBox();
+		System.out.println(changeMechanism.emptyCashBox());
 	}
 	
 	public void addToInventory(String s) {
