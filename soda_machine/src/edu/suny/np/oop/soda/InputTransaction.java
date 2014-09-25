@@ -23,7 +23,7 @@ public class InputTransaction extends Transaction {
 	}
 	
 	public void entry() {
-		System.out.println("=====================================================");
+		System.out.println("\n=====================================================");
 		System.out.println("Insert coins (5, 10 or 25) and select the soda option");
 		System.out.println("=====================================================\n");
 		System.out.println("s0 - Select Soda 0");
