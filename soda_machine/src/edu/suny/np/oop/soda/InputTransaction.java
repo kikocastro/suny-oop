@@ -23,9 +23,9 @@ public class InputTransaction extends Transaction {
 	}
 	
 	public void entry() {
-		System.out.println("====================================================");
+		System.out.println("=====================================================");
 		System.out.println("Insert coins (5, 10 or 25) and select the soda option");
-		System.out.println("====================================================\n");
+		System.out.println("=====================================================\n");
 		System.out.println("s0 - Select Soda 0");
 		System.out.println("s1 - Select Soda 1");
 		System.out.println("s2 - Select Soda 2");
@@ -37,7 +37,7 @@ public class InputTransaction extends Transaction {
 	}
 	public void run() {
 		entry();
-		String input = null;
+		String input = "";
 		try {
 			input = mSodaMachine.consumeInput(legalInputs);
 		} catch (IllegalInputException e) {

@@ -16,6 +16,7 @@ public class ChangeMechanism {
 	}
 	
 	public void resetAmountEntered() {
+		this.getChange(0);
 		amountEntered = 0;
 	}
 	

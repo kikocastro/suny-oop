@@ -35,7 +35,7 @@ public class AdminTransaction extends Transaction {
 	}
 	public void run() {
 		entry();
-		String input = null;
+		String input = "";
 		try {
 			input = mSodaMachine.consumeInput(legalInputs);
 		} catch (IllegalInputException e) {
