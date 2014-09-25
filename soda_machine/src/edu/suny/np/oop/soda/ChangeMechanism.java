@@ -92,7 +92,7 @@ public class ChangeMechanism {
 	}
 	
 	private String buildChangeString(int amountReturned) { 
-		return Integer.toString(amountReturned);
+		return "Change: " + Integer.toString(amountReturned) + " cents.";
 	}
 	
 	/**
@@ -103,37 +103,31 @@ public class ChangeMechanism {
 	 */
 	public String getChange(int cost) {
 		int amountToReturn = amountEntered - cost;
-		int availableChange = this.getAvailableChange();
-		if(availableChange < amountToReturn){
-			this.resetAmountEntered();
-			return Integer.toString(amountToReturn);
-		}
 		
-		HashMap<String, Integer>  coins = new HashMap<String, Integer>();
-		coins.put("quarters", 0);
-		coins.put("dimes", 0);
-		coins.put("nickels", 0);
-		
+		HashMap<String, Integer>  changeCoins = new HashMap<String, Integer>();
+		changeCoins.put("quarters", 0);
+		changeCoins.put("dimes", 0);
+		changeCoins.put("nickels", 0);
 		
 		while((cust_q > 0) && (amountToReturn >= 25)){
 			amountToReturn -= 25;
-			coins.put("quarters", coins.get("quarters") + 1);
+			changeCoins.put("quarters", changeCoins.get("quarters") + 1);
 			cust_q --;
 		}
 		while((cust_d > 0) && (amountToReturn >= 10)){
 			amountToReturn -= 10;
-			coins.put("dimes", coins.get("dimes") + 1);
+			changeCoins.put("dimes", changeCoins.get("dimes") + 1);
 			cust_q --;
 		}
 		while((cust_q > 0) && (amountToReturn >= 5)){
 			amountToReturn -= 5;
-			coins.put("nickles", coins.get("nickles") + 1);
+			changeCoins.put("nickles", changeCoins.get("nickles") + 1);
 			cust_q --;
 		}
 		
-		int change = coins.get("quarters") * 25 + 
-					 coins.get("dimes") * 10 +
-					 coins.get("nickles") * 5;
+		int change = changeCoins.get("quarters") * 25 + 
+					 changeCoins.get("dimes") * 10 +
+					 changeCoins.get("nickels") * 5;
 		
 		return this.buildChangeString(change);
 	}

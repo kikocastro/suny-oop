@@ -45,11 +45,17 @@ public class SodaMachine {
 					}
 					String change = changeMechanism.getChange(selectionCost);
 					System.out.println("Pick your soda.");
-					System.out.println("Change: " + change);
+					System.out.println(change);
+					resetMachine();
 				}
 			}
 		}
 		
+	}
+	
+	public void resetMachine(){
+		latestSelection = null;
+		changeMechanism.init();
 	}
 	
 	public void resetTransaction() {
