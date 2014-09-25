@@ -119,15 +119,13 @@ public class ChangeMechanism {
 			changeCoins.put("dimes", changeCoins.get("dimes") + 1);
 			cust_q --;
 		}
-		while((cust_q > 0) && (amountToReturn >= 5)){
+		while((cust_n > 0) && (amountToReturn >= 5)){
 			amountToReturn -= 5;
 			changeCoins.put("nickles", changeCoins.get("nickles") + 1);
-			cust_q --;
+			cust_n --;
 		}
 		
-		int change = changeCoins.get("quarters") * 25 + 
-					 changeCoins.get("dimes") * 10 +
-					 changeCoins.get("nickels") * 5;
+		int change = changeCoins.get("quarters") * 25 + changeCoins.get("dimes") * 10 + changeCoins.get("nickels") * 5;
 		
 		return this.buildChangeString(change);
 	}
