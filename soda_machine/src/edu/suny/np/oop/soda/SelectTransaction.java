@@ -13,6 +13,7 @@ public class SelectTransaction extends Transaction {
 	
 	public void run() {
 		mSodaMachine.processSelection();
+		
 		mSodaMachine.getTransaction(INPUT_TID);
 	}
 }

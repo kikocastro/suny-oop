@@ -24,7 +24,7 @@ public class InputTransaction extends Transaction {
 	
 	public void entry() {
 		System.out.println("====================================================");
-		System.out.println("\nInsert coins (5, 10 or 25) and select the soda option");
+		System.out.println("Insert coins (5, 10 or 25) and select the soda option");
 		System.out.println("====================================================\n");
 		System.out.println("s0 - Select Soda 0");
 		System.out.println("s1 - Select Soda 1");
@@ -50,9 +50,11 @@ public class InputTransaction extends Transaction {
 		} else if (input.equals("5") || input.equals("10") || input.equals("25")) {
 			mSodaMachine.accumulateChange(input);
 			mSodaMachine.getTransaction(Transaction.INPUT_TID);
-		} else {
+		} else if (legalInputs.contains(input)){
 			mSodaMachine.saveSelection(input);
 			mSodaMachine.getTransaction(SELECT_TID);
+		} else {
+			mSodaMachine.resetMachine();
 		}
 	}
 }
