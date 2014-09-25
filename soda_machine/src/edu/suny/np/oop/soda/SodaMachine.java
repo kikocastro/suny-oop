@@ -59,9 +59,9 @@ public class SodaMachine {
 	}
 	
 	public void resetTransaction() {
-		System.out.println("Purchase cancelled. Returned amount: " + changeMechanism.getAmountEntered());
+		System.out.println("Purchase cancelled. Returned amount: " + changeMechanism.getAmountEntered() + " cents");
 		changeMechanism.resetAmountEntered();
-		transaction = transactions.get(Transaction.INIT_TID);
+		transaction = transactions.get(Transaction.INPUT_TID);
 	}
 	
 	public Transaction getTransaction(int t){
@@ -127,9 +127,9 @@ public class SodaMachine {
 	}
 	
 	public void displayMachineInfo() {
-		System.out.println("------------------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------------------");
 		System.out.println(inventory.toString());
-		System.out.println("------------------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------------------");
 		System.out.println("\nCashbox: " + changeMechanism.getCashbox());
 		System.out.println("Available change: " + changeMechanism.getAvailableChange());
 		System.out.println("Coins stack: " + changeMechanism.toString());

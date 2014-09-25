@@ -10,7 +10,7 @@ public class Inventory {
 	public static String ORANGE = "orange";
 	public static String SPRITE = "sprite";
 	public static String GINGER_ALE = "ginger ale";
-	public static String DIET_COLA = "cola";
+	public static String DIET_COLA = "diet cola";
 	private int selection = 0;
 	
 	private ArrayList<InventoryItem> contents = new ArrayList<InventoryItem>();
@@ -131,7 +131,7 @@ public class Inventory {
 			
 			if (item.getQIS() < item.getMaxQuantity()) {
 				try {
-					addToInventory(i, 1);
+					addToInventory(item.getId(), 1);
 				} catch (InvalidQuantityException e) {
 					e.printStackTrace();
 				}
