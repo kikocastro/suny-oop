@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import edu.suny.np.exceptions.EmptyStockException;
+import edu.suny.np.exceptions.FullStockException;
 import edu.suny.np.exceptions.IllegalInputException;
 import edu.suny.np.exceptions.InvalidCoinException;
+import edu.suny.np.exceptions.InvalidQuantityException;
 import edu.suny.np.exceptions.InvalidTransactionIdException;
+import edu.suny.np.exceptions.InventoryItemNotFoundException;
 
 public class SodaMachine {
 
@@ -145,7 +148,12 @@ public class SodaMachine {
 		//fill up inventory 
 		for (int i = 0; i < 5; i++) {
 			String itemName = inventory.getItemName(i);
-			inventory.updateInventory(itemName);
+			try {
+				inventory.updateInventory(itemName);
+			} catch (FullStockException e) {
+				e.printStackTrace();
+				this.resetTransaction();
+			}
 		}
 	}
 	
@@ -154,7 +162,18 @@ public class SodaMachine {
 	}
 	
 	public void addToInventory(String s) {
-		inventory.addToInventory(s, 1);
+		try {
+			inventory.addToInventory(s, 1);
+		} catch (InventoryItemNotFoundException e) {
+			e.printStackTrace();
+			this.resetTransaction();
+		} catch (FullStockException e) {
+			e.printStackTrace();
+			this.resetTransaction();
+		} catch (InvalidQuantityException e) {
+			e.printStackTrace();
+			this.resetTransaction();
+		}
 	}
 	
 	public static void main(String[] args) {

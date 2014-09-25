@@ -29,27 +29,13 @@ public class Inventory {
 		contents.add(dietCola);
 	}
 	
-	public void addToInventory(int id, int q ) throws InvalidQuantityException {
-		try {
-			contents.get(id).addToInventory(q);
-		} catch (FullStockException e) {
-			e.printStackTrace();
-		} catch (InvalidQuantityException e) {
-			e.printStackTrace();
-		} catch (Exception e){
-			System.out.println("Add by int to inventory error.");
-		}
+	public void addToInventory(int id, int q ) throws InvalidQuantityException, FullStockException {
+		contents.get(id).addToInventory(q);
 	}
 	
-	public void addToInventory(String  n, int q) {
-		try {
-			InventoryItem inventoryItem = this.getItem(n); 
-			inventoryItem.addToInventory(q);
-		} catch (FullStockException e) {
-			e.printStackTrace();
-		} catch (Exception e){
-			System.out.println("Add to inventory error.");
-		}
+	public void addToInventory(String  n, int q) throws InventoryItemNotFoundException, FullStockException, InvalidQuantityException {
+		InventoryItem inventoryItem = this.getItem(n); 
+		inventoryItem.addToInventory(q);
 	}
 	
 	public String toString() {
@@ -125,7 +111,7 @@ public class Inventory {
 		return  this.getItemName(selection) ;
 	}
 	
-	public void updateInventory(String s) {
+	public void updateInventory(String s) throws FullStockException {
 		InventoryItem item = this.getInventoryItem(s);
 		for (int i = 0; i < item.getMaxQuantity(); i++) {
 			

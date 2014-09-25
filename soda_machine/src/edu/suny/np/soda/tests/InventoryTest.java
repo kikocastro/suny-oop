@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import edu.suny.np.exceptions.FullStockException;
 import edu.suny.np.exceptions.InvalidQuantityException;
 import edu.suny.np.exceptions.InventoryItemNotFoundException;
 import edu.suny.np.oop.soda.Inventory;
@@ -24,6 +25,9 @@ public class InventoryTest {
 			inventory.addToInventory(1, 2);
 		} catch (InvalidQuantityException e) {
 			e.printStackTrace();
+		} catch (FullStockException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		assertEquals(0, inventory.getInventoryItem("cola").getQIS());
 		assertEquals(2, inventory.getInventoryItem("orange").getQIS());
@@ -31,7 +35,18 @@ public class InventoryTest {
 
 	@Test
 	public void testAddToInventoryStringInt() {
-		inventory.addToInventory("r0", 2);
+		try {
+			inventory.addToInventory("r0", 2);
+		} catch (InventoryItemNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FullStockException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvalidQuantityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		assertEquals(2, inventory.getInventoryItem("cola").getQIS());
 	}
 
@@ -66,7 +81,12 @@ public class InventoryTest {
 	@Test
 	public void testOutOfStock(){
 		try {
-			inventory.addToInventory(2, 1);
+			try {
+				inventory.addToInventory(2, 1);
+			} catch (FullStockException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} catch (InvalidQuantityException e) {
 			e.printStackTrace();
 		}
