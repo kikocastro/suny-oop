@@ -58,12 +58,12 @@ public class SodaMachine {
 	
 	public void resetMachine(){
 		latestSelection = null;
-		changeMechanism.init();
+		changeMechanism.resetAmountEntered();
 	}
 	
 	public void resetTransaction() {
 		System.out.println("Purchase cancelled. Returned amount: " + changeMechanism.getAmountEntered() + " cents");
-		changeMechanism.resetAmountEntered();
+		changeMechanism.cancellPurchase();
 		transaction = transactions.get(Transaction.INPUT_TID);
 	}
 	
@@ -144,7 +144,6 @@ public class SodaMachine {
 	
 	public void initMachine() {
 		latestSelection = null;
-		changeMechanism.init();
 		//fill up inventory 
 		for (int i = 0; i < 5; i++) {
 			String itemName = inventory.getItemName(i);

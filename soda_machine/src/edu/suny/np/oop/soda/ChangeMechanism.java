@@ -16,12 +16,15 @@ public class ChangeMechanism {
 	}
 	
 	public void resetAmountEntered() {
-		this.getChange(0);
 		amountEntered = 0;
 	}
 	
-	public void init(){
+	public void cancellPurchase(){
+		this.getChange(0);
 		this.resetAmountEntered();
+	}
+	
+	public void init(){
 	}
 
 	public String emptyCashBox() {
@@ -105,29 +108,25 @@ public class ChangeMechanism {
 	public String getChange(int cost) {
 		int amountToReturn = amountEntered - cost;
 		
-		HashMap<String, Integer>  changeCoins = new HashMap<String, Integer>();
-		changeCoins.put("quarters", 0);
-		changeCoins.put("dimes", 0);
-		changeCoins.put("nickels", 0);
+		int[] coins = {0,0,0};
 		
 		while((cust_q > 0) && (amountToReturn >= 25)){
 			amountToReturn -= 25;
-			changeCoins.put("quarters", changeCoins.get("quarters") + 1);
+			coins[0]++;
 			cust_q --;
 		}
 		while((cust_d > 0) && (amountToReturn >= 10)){
 			amountToReturn -= 10;
-			changeCoins.put("dimes", changeCoins.get("dimes") + 1);
+			coins[1]++;
 			cust_q --;
 		}
 		while((cust_n > 0) && (amountToReturn >= 5)){
 			amountToReturn -= 5;
-			changeCoins.put("nickles", changeCoins.get("nickles") + 1);
+			coins[2]++;
 			cust_n --;
 		}
 		
-		int change = changeCoins.get("quarters") * 25 + changeCoins.get("dimes") * 10 + changeCoins.get("nickels") * 5;
-		
+		int change = coins[0] * 25 + coins[1] * 10 + coins[2] * 5;
 		return this.buildChangeString(change);
 	}
 	
