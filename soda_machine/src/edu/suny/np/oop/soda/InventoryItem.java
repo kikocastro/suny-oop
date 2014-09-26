@@ -8,13 +8,23 @@ public class InventoryItem {
 	private String name = null;
 	private int QIS = 0;
 	private final int PRICE = 75;
-	
+	/**
+	 * 
+	 * @param id of item
+	 * @param n name
+	 * @param initialQIS quantity in stock
+	 */
 	public InventoryItem(int id, String n, int initialQIS) {
 		ID = id;
 		name= n;
 		QIS = initialQIS;
 	}
-	
+	/**
+	 * Adds to inventory until it reaches its maximum capacity
+	 * @param q quantity
+	 * @throws FullStockException
+	 * @throws InvalidQuantityException
+	 */
 	public void addToInventory(int q) throws FullStockException, InvalidQuantityException {
 		if (q < 1) {
 			throw new InvalidQuantityException("Please insert an integer value greater than 0");
@@ -25,7 +35,10 @@ public class InventoryItem {
 			throw new FullStockException("Item could not be added. Stock is full.");
 		}
 	}
-	
+	/**
+	 * Increments one item to the inventory
+	 * @throws FullStockException
+	 */
 	public void addToInventory() throws FullStockException {
 		if(QIS < MAX_QUANTITY){
 			QIS ++;
@@ -33,7 +46,10 @@ public class InventoryItem {
 			throw new FullStockException("Item could not be added. Stock is full.");
 		}
 	}
-	
+	/**
+	 * Decrements one item from inventory
+	 * @throws EmptyStockException
+	 */
 	public void decrementInventory() throws EmptyStockException {
 		if(QIS > 0){
 			QIS --;
