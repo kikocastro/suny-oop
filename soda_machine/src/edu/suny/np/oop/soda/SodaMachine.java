@@ -55,7 +55,6 @@ public class SodaMachine {
 				}
 			}
 		}
-		
 	}
 	
 	public void resetMachine(){
