@@ -144,7 +144,6 @@ public class SodaMachine {
 	
 	public void initMachine() {
 		latestSelection = null;
-		//fill up inventory 
 		for (int i = 0; i < 5; i++) {
 			String itemName = inventory.getItemName(i);
 			try {
