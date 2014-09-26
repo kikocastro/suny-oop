@@ -15,6 +15,7 @@ public class InputTransaction extends Transaction {
 		legalInputs.add("5");
 		legalInputs.add("10");
 		legalInputs.add("25");
+		legalInputs.add("s0");
 		legalInputs.add("s1");
 		legalInputs.add("s2");
 		legalInputs.add("s3");
@@ -41,7 +42,6 @@ public class InputTransaction extends Transaction {
 		try {
 			input = mSodaMachine.consumeInput(legalInputs);
 		} catch (IllegalInputException e) {
-
 			mSodaMachine.resetTransaction();
 		}
 

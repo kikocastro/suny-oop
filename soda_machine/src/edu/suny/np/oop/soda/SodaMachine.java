@@ -48,7 +48,9 @@ public class SodaMachine {
 					}
 					String change = changeMechanism.getChange(selectionCost);
 					System.out.println("Pick your soda.");
-					System.out.println(change);
+					if(!change.contentEquals("Change: 0 cents.")){
+						System.out.println(change);
+					}
 					resetMachine();
 				}
 			}
