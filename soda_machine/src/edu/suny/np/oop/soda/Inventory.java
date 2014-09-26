@@ -28,16 +28,32 @@ public class Inventory {
 		contents.add(gignerAle);
 		contents.add(dietCola);
 	}
-	
+	/**
+	 * 
+	 * @param id of the soda
+	 * @param q quantity of sodas to be added to the inventory
+	 * @throws InvalidQuantityException
+	 * @throws FullStockException
+	 */
 	public void addToInventory(int id, int q ) throws InvalidQuantityException, FullStockException {
 		contents.get(id).addToInventory(q);
 	}
-	
+	/**
+	 * 
+	 * @param n name of the soda
+	 * @param q quantity to be added
+	 * @throws InventoryItemNotFoundException
+	 * @throws FullStockException
+	 * @throws InvalidQuantityException
+	 */
 	public void addToInventory(String  n, int q) throws InventoryItemNotFoundException, FullStockException, InvalidQuantityException {
 		InventoryItem inventoryItem = this.getItem(n); 
 		inventoryItem.addToInventory(q);
 	}
-	
+	/**
+	 * @return String with the available quantity of each soda:
+	 * (0): cola - 1, (1): orange - 3, (2): sprite - 3, (3): ginger ale - 3, (4): diet cola - 3
+	 */
 	public String toString() {
 		String output = new String();
 
@@ -51,7 +67,11 @@ public class Inventory {
 	public InventoryItem getInventoryItem(String s) {
 		return this.getItemFromContents(s);
 	}
-	
+	/**
+	 * Gets the inventory item that is in the contents array list
+	 * @param s
+	 * @return item
+	 */
 	public InventoryItem getItemFromContents(String s){
 		for (int i = 0; i < contents.size(); i++) {
 			InventoryItem item = contents.get(i);
@@ -61,7 +81,11 @@ public class Inventory {
 		}
 		return null;
 	}
-	
+	/**
+	 * Checks if the inserted amount is sufficient to buy the item
+	 * @param item
+	 * @param amountEntered
+	 */
 	public boolean insufficientFunds(String item, int amountEntered) {
 		InventoryItem inventoryItem = this.getItemFromContents(item);
 		if(amountEntered < inventoryItem.getPrice()){
@@ -78,7 +102,12 @@ public class Inventory {
 	private InventoryItem getItem(int i) {
 		return contents.get(i);
 	}
-	
+	/**
+	 *  
+	 * @param i - correct input from the Admin user for one item 
+	 * @return item
+	 * @throws InventoryItemNotFoundException
+	 */
 	private InventoryItem getItem(String i) throws InventoryItemNotFoundException {
 		if (i.equals("r0")) {
 			return contents.get(0);
@@ -94,7 +123,10 @@ public class Inventory {
 			throw new InventoryItemNotFoundException("Item not available in the contents list.");
 		}
 	}
-	
+	/**
+	 * Checks to see if the requested item is out of stock
+	 * @param itemID
+	 */
 	public boolean outOfStock(int itemID) {
 		if(this.getItem(itemID).getQIS() < 1){
 			return true;
@@ -110,7 +142,11 @@ public class Inventory {
 	public String getSelection(int selection) {
 		return  this.getItemName(selection) ;
 	}
-	
+	/**
+	 * Refill inventory for one item up to its maximum capacity
+	 * @param s
+	 * @throws FullStockException
+	 */
 	public void updateInventory(String s) throws FullStockException {
 		InventoryItem item = this.getInventoryItem(s);
 		for (int i = 0; i < item.getMaxQuantity(); i++) {
