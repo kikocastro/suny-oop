@@ -24,6 +24,7 @@ public class SodaMachine {
 	public SodaMachine() {
 		changeMechanism = new ChangeMechanism();
 		inventory = new Inventory();
+		scan = new Scanner(System.in);
 	}
 	
 	public void processSelection() {
@@ -113,7 +114,7 @@ public class SodaMachine {
 	 * 
 	 */
 	public String consumeInput(ArrayList<String> args) throws IllegalInputException {
-		scan = new Scanner(System.in);
+		
 		String input = scan.next(); 
 		if (args.contains(input)) {
 			return input;
@@ -145,6 +146,7 @@ public class SodaMachine {
 	
 	public void initMachine() {
 		latestSelection = null;
+		changeMechanism.init();
 		for (int i = 0; i < 5; i++) {
 			String itemName = inventory.getItemName(i);
 			try {

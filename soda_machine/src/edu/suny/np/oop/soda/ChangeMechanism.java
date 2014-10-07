@@ -33,6 +33,15 @@ public class ChangeMechanism {
 	}
 	
 	public void init(){
+		for (int i = 0; i < MAX_Q; i++) {
+			cust_q++;
+		}
+		for (int i = 0; i < MAX_D; i++) {
+			cust_d++;
+		}
+		for (int i = 0; i < MAX_N; i++) {
+			cust_n++;
+		}
 	}
 
 	/** 
