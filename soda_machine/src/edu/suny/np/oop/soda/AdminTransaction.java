@@ -40,17 +40,17 @@ public class AdminTransaction extends Transaction {
 			input = mSodaMachine.consumeInput(legalInputs);
 		} catch (IllegalInputException e) {
 			System.out.println("Invalid input!\n");
-			mSodaMachine.getTransaction(Transaction.ADMIN_TID);
+			mSodaMachine.advanceTransaction(Transaction.ADMIN_TID);
 		}
 		
 		if (input.equals("q")) {
-			mSodaMachine.getTransaction(INPUT_TID);
+			mSodaMachine.advanceTransaction(INPUT_TID);
 		} else if (input.equals("R")) {
 			mSodaMachine.removeMachineReceipts();
 		} else if(legalInputs.contains(input)){
 			mSodaMachine.addToInventory(input);
 		} else {
-			mSodaMachine.getTransaction(ADMIN_TID);
+			mSodaMachine.advanceTransaction(ADMIN_TID);
 		}
 
 	}

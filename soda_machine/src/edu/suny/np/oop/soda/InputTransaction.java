@@ -46,13 +46,13 @@ public class InputTransaction extends Transaction {
 		}
 
 		if (input.equals("a")) {
-			mSodaMachine.getTransaction(Transaction.ADMIN_TID);
+			mSodaMachine.advanceTransaction(Transaction.ADMIN_TID);
 		} else if (input.equals("5") || input.equals("10") || input.equals("25")) {
 			mSodaMachine.accumulateChange(input);
-			mSodaMachine.getTransaction(Transaction.INPUT_TID);
+			mSodaMachine.advanceTransaction(Transaction.INPUT_TID);
 		} else if (legalInputs.contains(input)){
 			mSodaMachine.saveSelection(input);
-			mSodaMachine.getTransaction(SELECT_TID);
+			mSodaMachine.advanceTransaction(SELECT_TID);
 		} else {
 			mSodaMachine.resetMachine();
 		}
