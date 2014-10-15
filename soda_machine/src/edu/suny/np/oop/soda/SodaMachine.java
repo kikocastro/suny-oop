@@ -177,13 +177,13 @@ public class SodaMachine {
 		}
 	}
 	
-	public static void main(String[] args) {
-		SodaMachine sm = new SodaMachine();
-		sm.addTransactions(sm);
-		transaction = transactions.get(Transaction.INIT_TID);
-		while(true) {
-			SodaMachine.transaction.run();
-		}
-	}
+//	public static void main(String[] args) {
+//		SodaMachine sm = new SodaMachine();
+//		sm.addTransactions(sm);
+//		transaction = transactions.get(Transaction.INIT_TID);
+//		while(true) {
+//			SodaMachine.transaction.run();
+//		}
+//	}
 
 }
