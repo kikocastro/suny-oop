@@ -1,5 +1,6 @@
 package edu.suny.np.soda.gui;
 import java.awt.Component;
+
 import javax.swing.Box;
  
 /**
@@ -8,10 +9,12 @@ import javax.swing.Box;
  */
 public class SodaMachineGui extends javax.swing.JFrame {
 
+	private static SodaMachineAdmin admin = new SodaMachineAdmin();
     /**
      * Creates new form SodaMachineGui
      */
     public SodaMachineGui() {
+    	
         initComponents();
     }
 
@@ -326,7 +329,7 @@ public class SodaMachineGui extends javax.swing.JFrame {
     }                                            
 
     private void enterAdminModeButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                     
-        // TODO add your handling code here:
+    	SodaMachineGui.admin.setVisible(true);
     }                                                    
 
     private void quarterButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
@@ -364,6 +367,11 @@ public class SodaMachineGui extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new SodaMachineGui().setVisible(true);
+                
+               
+                
+                
+                
             }
         });
     }

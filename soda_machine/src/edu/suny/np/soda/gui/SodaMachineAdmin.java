@@ -14,6 +14,7 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JTable;
  
 /**
  *
@@ -40,7 +41,7 @@ public class SodaMachineAdmin extends javax.swing.JFrame {
         title = new javax.swing.JLabel();
         coinEntry = new javax.swing.JPanel();
         cashBox = new javax.swing.JPanel();
-        sodaDelivery = new javax.swing.JPanel();
+        Inventory = new javax.swing.JPanel();
         adminModeSelection = new javax.swing.JPanel();
         quitAdminModeButton = new javax.swing.JButton();
 
@@ -53,18 +54,39 @@ public class SodaMachineAdmin extends javax.swing.JFrame {
 
         cashBox.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cash Box", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 14)));
 
-        sodaDelivery.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Soda Delivery", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 14)));
+        Inventory.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Inventory", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 14)));
+        
+        table = new JTable();
+        
 
-        javax.swing.GroupLayout sodaDeliveryLayout = new javax.swing.GroupLayout(sodaDelivery);
-        sodaDeliveryLayout.setHorizontalGroup(
-        	sodaDeliveryLayout.createParallelGroup(Alignment.LEADING)
-        		.addGap(0, 377, Short.MAX_VALUE)
+        Object rowData[][] = { 
+                {"Coke", "3", null},
+                {"Orange", "0", null},
+                {"Sprite", "2", null},
+                {"Ginger Ale", "2", null},
+                {"Diet Coke", "2", null} };
+        Object columnNames[] = { "Name", "Qis", "Restock" };
+        JTable table = new JTable(rowData, columnNames);
+        
+        table.setModel(new javax.swing.table.DefaultTableModel(rowData, columnNames));
+               
+
+        javax.swing.GroupLayout InventoryLayout = new javax.swing.GroupLayout(Inventory);
+        InventoryLayout.setHorizontalGroup(
+        	InventoryLayout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(InventoryLayout.createSequentialGroup()
+        			.addGap(65)
+        			.addComponent(table, GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+        			.addGap(76))
         );
-        sodaDeliveryLayout.setVerticalGroup(
-        	sodaDeliveryLayout.createParallelGroup(Alignment.TRAILING)
-        		.addGap(0, 52, Short.MAX_VALUE)
+        InventoryLayout.setVerticalGroup(
+        	InventoryLayout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(Alignment.LEADING, InventoryLayout.createSequentialGroup()
+        			.addGap(39)
+        			.addComponent(table, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(54, Short.MAX_VALUE))
         );
-        sodaDelivery.setLayout(sodaDeliveryLayout);
+        Inventory.setLayout(InventoryLayout);
 
         adminModeSelection.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Admin Mode", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 14))); // NOI18N
 
@@ -98,7 +120,7 @@ public class SodaMachineAdmin extends javax.swing.JFrame {
         		.addGroup(layout.createSequentialGroup()
         			.addContainerGap()
         			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addComponent(sodaDelivery, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        				.addComponent(Inventory, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         				.addComponent(cashBox, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         				.addGroup(Alignment.TRAILING, layout.createSequentialGroup()
         					.addComponent(title)
@@ -119,7 +141,7 @@ public class SodaMachineAdmin extends javax.swing.JFrame {
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addComponent(cashBox, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)
         			.addPreferredGap(ComponentPlacement.UNRELATED)
-        			.addComponent(sodaDelivery, GroupLayout.PREFERRED_SIZE, 198, GroupLayout.PREFERRED_SIZE)
+        			.addComponent(Inventory, GroupLayout.PREFERRED_SIZE, 198, GroupLayout.PREFERRED_SIZE)
         			.addGap(23)
         			.addComponent(adminModeSelection, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         );
@@ -181,43 +203,43 @@ public class SodaMachineAdmin extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SodaMachineAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SodaMachineAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SodaMachineAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SodaMachineAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SodaMachineAdmin().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(SodaMachineAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(SodaMachineAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(SodaMachineAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(SodaMachineAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new SodaMachineAdmin().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify                     
     private javax.swing.JPanel adminModeSelection;
     private javax.swing.JPanel coinEntry;
     private javax.swing.JButton quitAdminModeButton;
-    private javax.swing.JPanel sodaDelivery;
+    private javax.swing.JPanel Inventory;
     private javax.swing.JPanel cashBox;
     private javax.swing.JLabel title;
     private JLabel lblNickel;
@@ -228,4 +250,5 @@ public class SodaMachineAdmin extends javax.swing.JFrame {
     private JLabel lblQuarter;
     private JLabel lblNewLabel;
     private JTextField textField;
+    private JTable table;
 }
