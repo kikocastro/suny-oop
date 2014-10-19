@@ -25,7 +25,7 @@ public class SodaMachineGui extends javax.swing.JFrame {
     private void initComponents() {
 
         title = new javax.swing.JLabel();
-        coinEntry = new javax.swing.JPanel();
+        coinReturn = new javax.swing.JPanel();
         nickleButton = new javax.swing.JButton();
         dimeButton = new javax.swing.JButton();
         quarterButton = new javax.swing.JButton();
@@ -52,7 +52,7 @@ public class SodaMachineGui extends javax.swing.JFrame {
         title.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         title.setText("Soda Machine");
 
-        coinEntry.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Coin Entry", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 14))); // NOI18N
+        coinReturn.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Coin Return", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 14))); // NOI18N
 
         nickleButton.setText("5");
         nickleButton.addActionListener(new java.awt.event.ActionListener() {
@@ -85,11 +85,11 @@ public class SodaMachineGui extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout coinEntryLayout = new javax.swing.GroupLayout(coinEntry);
-        coinEntry.setLayout(coinEntryLayout);
-        coinEntryLayout.setHorizontalGroup(
-            coinEntryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(coinEntryLayout.createSequentialGroup()
+        javax.swing.GroupLayout coinReturnLayout = new javax.swing.GroupLayout(coinReturn);
+        coinReturn.setLayout(coinReturnLayout);
+        coinReturnLayout.setHorizontalGroup(
+            coinReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(coinReturnLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(nickleButton)
                 .addGap(8, 8, 8)
@@ -97,7 +97,7 @@ public class SodaMachineGui extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(quarterButton)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(coinEntryLayout.createSequentialGroup()
+            .addGroup(coinReturnLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(total)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -105,16 +105,16 @@ public class SodaMachineGui extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(coinReturnButton))
         );
-        coinEntryLayout.setVerticalGroup(
-            coinEntryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(coinEntryLayout.createSequentialGroup()
+        coinReturnLayout.setVerticalGroup(
+            coinReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(coinReturnLayout.createSequentialGroup()
                 .addContainerGap(12, Short.MAX_VALUE)
-                .addGroup(coinEntryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(coinReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nickleButton)
                     .addComponent(dimeButton)
                     .addComponent(quarterButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(coinEntryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGroup(coinReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(total)
                     .addComponent(totalOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(coinReturnButton))
@@ -262,7 +262,7 @@ public class SodaMachineGui extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(coinEntry, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(coinReturn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(sodaSelection, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(sodaDelivery, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(adminModeSelection, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -278,7 +278,7 @@ public class SodaMachineGui extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(title)
                 .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(coinEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(coinReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
                 .addComponent(sodaSelection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
@@ -368,7 +368,7 @@ public class SodaMachineGui extends javax.swing.JFrame {
     private javax.swing.JPanel adminModeSelection;
     private javax.swing.JLabel change;
     private javax.swing.JTextField changeOutput;
-    private javax.swing.JPanel coinEntry;
+    private javax.swing.JPanel coinReturn;
     private javax.swing.JButton coinReturnButton;
     private javax.swing.JButton dimeButton;
     private javax.swing.JButton enterAdminModeButton;
