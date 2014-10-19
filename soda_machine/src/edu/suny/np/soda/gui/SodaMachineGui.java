@@ -1,10 +1,6 @@
 package edu.suny.np.soda.gui;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import java.awt.Component;
+import javax.swing.Box;
  
 /**
  *
@@ -198,8 +194,6 @@ public class SodaMachineGui extends javax.swing.JFrame {
         selection.setText("Selection");
 
         change.setText("Change");
-
-        changeOutput.setText("25");
         changeOutput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 changeOutputActionPerformed(evt);
@@ -297,7 +291,6 @@ public class SodaMachineGui extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void nickleButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
-    	totalOutput.setText("oi");
     }                                            
 
     private void totalOutputActionPerformed(java.awt.event.ActionEvent evt) {                                            
