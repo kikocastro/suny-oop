@@ -13,6 +13,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JButton;
  
 /**
  *
@@ -38,7 +39,7 @@ public class SodaMachineAdmin extends javax.swing.JFrame {
 
         title = new javax.swing.JLabel();
         coinEntry = new javax.swing.JPanel();
-        sodaSelection = new javax.swing.JPanel();
+        cashBox = new javax.swing.JPanel();
         sodaDelivery = new javax.swing.JPanel();
         adminModeSelection = new javax.swing.JPanel();
         quitAdminModeButton = new javax.swing.JButton();
@@ -50,18 +51,7 @@ public class SodaMachineAdmin extends javax.swing.JFrame {
 
         coinEntry.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Coin Entry", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 14)));
 
-        sodaSelection.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Soda Selection", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 14)));
-
-        javax.swing.GroupLayout sodaSelectionLayout = new javax.swing.GroupLayout(sodaSelection);
-        sodaSelectionLayout.setHorizontalGroup(
-        	sodaSelectionLayout.createParallelGroup(Alignment.LEADING)
-        		.addGap(0, 377, Short.MAX_VALUE)
-        );
-        sodaSelectionLayout.setVerticalGroup(
-        	sodaSelectionLayout.createParallelGroup(Alignment.TRAILING)
-        		.addGap(0, 194, Short.MAX_VALUE)
-        );
-        sodaSelection.setLayout(sodaSelectionLayout);
+        cashBox.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cash Box", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 14)));
 
         sodaDelivery.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Soda Delivery", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 14)));
 
@@ -108,14 +98,14 @@ public class SodaMachineAdmin extends javax.swing.JFrame {
         		.addGroup(layout.createSequentialGroup()
         			.addContainerGap()
         			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(layout.createSequentialGroup()
+        				.addComponent(sodaDelivery, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        				.addComponent(cashBox, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        				.addGroup(Alignment.TRAILING, layout.createSequentialGroup()
         					.addComponent(title)
         					.addGap(152))
         				.addGroup(Alignment.TRAILING, layout.createSequentialGroup()
         					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
         						.addComponent(coinEntry, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
-        						.addComponent(sodaSelection, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        						.addComponent(sodaDelivery, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         						.addComponent(adminModeSelection, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE))
         					.addContainerGap())))
         );
@@ -127,42 +117,57 @@ public class SodaMachineAdmin extends javax.swing.JFrame {
         			.addPreferredGap(ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
         			.addComponent(coinEntry, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE)
         			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addComponent(sodaSelection, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        			.addGap(23)
-        			.addComponent(sodaDelivery, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addComponent(cashBox, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
+        			.addComponent(sodaDelivery, GroupLayout.PREFERRED_SIZE, 198, GroupLayout.PREFERRED_SIZE)
         			.addGap(23)
         			.addComponent(adminModeSelection, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         );
-        coinEntry.setLayout(null);
+        cashBox.setLayout(null);
         
-        lblNickel = new JLabel("Nickel");
-        lblNickel.setBounds(18, 48, 40, 16);
-        coinEntry.add(lblNickel);
+        lblNewLabel = new JLabel("Total");
+        lblNewLabel.setBounds(28, 50, 32, 16);
+        cashBox.add(lblNewLabel);
         
         textField = new JTextField();
         textField.setEditable(false);
-        textField.setBounds(76, 42, 45, 28);
-        coinEntry.add(textField);
+        textField.setBounds(69, 44, 49, 28);
+        cashBox.add(textField);
         textField.setColumns(10);
         
-        textField_1 = new JTextField();
-        textField_1.setEditable(false);
-        textField_1.setColumns(10);
-        textField_1.setBounds(197, 42, 45, 28);
-        coinEntry.add(textField_1);
+        JButton btnRemax = new JButton("Remax");
+        btnRemax.setBounds(242, 45, 117, 29);
+        cashBox.add(btnRemax);
+        coinEntry.setLayout(null);
+        
+        lblNickel = new JLabel("Nickel");
+        lblNickel.setBounds(28, 48, 40, 16);
+        coinEntry.add(lblNickel);
+        
+        nickle = new JTextField();
+        nickle.setEditable(false);
+        nickle.setBounds(83, 42, 45, 28);
+        coinEntry.add(nickle);
+        nickle.setColumns(10);
+        
+        dime = new JTextField();
+        dime.setEditable(false);
+        dime.setColumns(10);
+        dime.setBounds(191, 42, 45, 28);
+        coinEntry.add(dime);
         
         lblDime = new JLabel("Dime");
-        lblDime.setBounds(139, 48, 40, 16);
+        lblDime.setBounds(143, 48, 33, 16);
         coinEntry.add(lblDime);
         
-        textField_2 = new JTextField();
-        textField_2.setEditable(false);
-        textField_2.setColumns(10);
-        textField_2.setBounds(325, 42, 45, 28);
-        coinEntry.add(textField_2);
+        quarter = new JTextField();
+        quarter.setEditable(false);
+        quarter.setColumns(10);
+        quarter.setBounds(313, 40, 45, 28);
+        coinEntry.add(quarter);
         
         lblQuarter = new JLabel("Quarter");
-        lblQuarter.setBounds(260, 48, 47, 16);
+        lblQuarter.setBounds(251, 48, 47, 16);
         coinEntry.add(lblQuarter);
         getContentPane().setLayout(layout);
 
@@ -213,12 +218,14 @@ public class SodaMachineAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel coinEntry;
     private javax.swing.JButton quitAdminModeButton;
     private javax.swing.JPanel sodaDelivery;
-    private javax.swing.JPanel sodaSelection;
+    private javax.swing.JPanel cashBox;
     private javax.swing.JLabel title;
     private JLabel lblNickel;
-    private JTextField textField;
-    private JTextField textField_1;
+    private JTextField nickle;
+    private JTextField dime;
     private JLabel lblDime;
-    private JTextField textField_2;
+    private JTextField quarter;
     private JLabel lblQuarter;
+    private JLabel lblNewLabel;
+    private JTextField textField;
 }
