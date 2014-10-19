@@ -136,30 +136,33 @@ public class SodaMachineAdmin extends javax.swing.JFrame {
         coinEntry.setLayout(null);
         
         lblNickel = new JLabel("Nickel");
-        lblNickel.setBounds(23, 48, 40, 16);
+        lblNickel.setBounds(18, 48, 40, 16);
         coinEntry.add(lblNickel);
         
         textField = new JTextField();
-        textField.setBounds(66, 42, 45, 28);
+        textField.setEditable(false);
+        textField.setBounds(76, 42, 45, 28);
         coinEntry.add(textField);
         textField.setColumns(10);
         
         textField_1 = new JTextField();
+        textField_1.setEditable(false);
         textField_1.setColumns(10);
-        textField_1.setBounds(189, 42, 45, 28);
+        textField_1.setBounds(197, 42, 45, 28);
         coinEntry.add(textField_1);
         
         lblDime = new JLabel("Dime");
-        lblDime.setBounds(146, 48, 40, 16);
+        lblDime.setBounds(139, 48, 40, 16);
         coinEntry.add(lblDime);
         
         textField_2 = new JTextField();
+        textField_2.setEditable(false);
         textField_2.setColumns(10);
-        textField_2.setBounds(319, 42, 45, 28);
+        textField_2.setBounds(325, 42, 45, 28);
         coinEntry.add(textField_2);
         
         lblQuarter = new JLabel("Quarter");
-        lblQuarter.setBounds(269, 48, 47, 16);
+        lblQuarter.setBounds(260, 48, 47, 16);
         coinEntry.add(lblQuarter);
         getContentPane().setLayout(layout);
 
