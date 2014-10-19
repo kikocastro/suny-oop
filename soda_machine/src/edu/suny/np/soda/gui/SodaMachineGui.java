@@ -31,19 +31,23 @@ public class SodaMachineGui extends javax.swing.JFrame {
         quarterButton = new javax.swing.JButton();
         total = new javax.swing.JLabel();
         totalOutput = new javax.swing.JTextField();
+        totalOutput.setEditable(false);
         coinReturnButton = new javax.swing.JButton();
         sodaSelection = new javax.swing.JPanel();
         s0 = new javax.swing.JButton();
         s2 = new javax.swing.JButton();
         s3 = new javax.swing.JButton();
         sodaSelectionOutput = new javax.swing.JTextField();
+        sodaSelectionOutput.setEditable(false);
         s1 = new javax.swing.JButton();
         s4 = new javax.swing.JButton();
         sodaDelivery = new javax.swing.JPanel();
         selectionOutput = new javax.swing.JTextField();
+        selectionOutput.setEditable(false);
         selection = new javax.swing.JLabel();
         change = new javax.swing.JLabel();
         changeOutput = new javax.swing.JTextField();
+        changeOutput.setEditable(false);
         adminModeSelection = new javax.swing.JPanel();
         enterAdminModeButton = new javax.swing.JButton();
 
