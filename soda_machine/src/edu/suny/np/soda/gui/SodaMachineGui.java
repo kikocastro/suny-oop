@@ -2,6 +2,7 @@ package edu.suny.np.soda.gui;
 import java.awt.Component;
 
 import javax.swing.Box;
+import javax.swing.WindowConstants;
  
 /**
  *
@@ -9,7 +10,6 @@ import javax.swing.Box;
  */
 public class SodaMachineGui extends javax.swing.JFrame {
 
-	private static SodaMachineAdmin admin = new SodaMachineAdmin();
     /**
      * Creates new form SodaMachineGui
      */
@@ -329,7 +329,15 @@ public class SodaMachineGui extends javax.swing.JFrame {
     }                                            
 
     private void enterAdminModeButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                     
-    	SodaMachineGui.admin.setVisible(true);
+    	Admin dialog = new Admin(new javax.swing.JFrame(), true);
+        dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                System.exit(0);
+            }
+        });
+        dialog.setVisible(true);
+    	
     }                                                    
 
     private void quarterButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
