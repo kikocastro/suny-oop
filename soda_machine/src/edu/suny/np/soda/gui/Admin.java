@@ -7,7 +7,7 @@ package edu.suny.np.soda.gui;
 
 /**
  *
- * @author kikocastro
+ * @author Frederico Castro
  */
 public class Admin extends javax.swing.JDialog {
 
