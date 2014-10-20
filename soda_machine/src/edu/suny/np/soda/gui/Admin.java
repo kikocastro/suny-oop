@@ -184,8 +184,8 @@ public class Admin extends javax.swing.JDialog {
             InventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(InventoryLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         quit.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 14))); // NOI18N
@@ -251,7 +251,7 @@ public class Admin extends javax.swing.JDialog {
     }// </editor-fold>                        
 
     private void quitBtnActionPerformed(java.awt.event.ActionEvent evt) {                                        
-    	this.setVisible(false);
+        this.setVisible(false);
     }                                       
 
     private void nickelTxtActionPerformed(java.awt.event.ActionEvent evt) {                                          
@@ -269,7 +269,8 @@ public class Admin extends javax.swing.JDialog {
     private void totalTxtActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
     }                                        
-    
+
+
     // Variables declaration - do not modify                     
     private javax.swing.JPanel Inventory;
     private javax.swing.JPanel cashBox;

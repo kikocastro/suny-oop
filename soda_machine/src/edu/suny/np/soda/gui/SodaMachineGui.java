@@ -14,7 +14,6 @@ public class SodaMachineGui extends javax.swing.JFrame {
      * Creates new form SodaMachineGui
      */
     public SodaMachineGui() {
-    	
         initComponents();
     }
 
@@ -375,10 +374,6 @@ public class SodaMachineGui extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new SodaMachineGui().setVisible(true);
-                
-               
-                
-                
                 
             }
         });
