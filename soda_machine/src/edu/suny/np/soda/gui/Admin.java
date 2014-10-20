@@ -5,6 +5,15 @@
  */
 package edu.suny.np.soda.gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.JTable;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+
 /**
  *
  * @author Frederico Castro
@@ -159,16 +168,27 @@ public class Admin extends javax.swing.JDialog {
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Coke", "3", null},
-                {"Orange", "0", null},
-                {"Sprite", "2", null},
-                {"Ginger Ale", "2", null},
-                {"Diet Coke", "2", null}
+                {"Orange", "0", "Yes"},
+                {"Sprite", "2", "Yes"},
+                {"Ginger Ale", "3", null},
+                {"Diet Coke", "3", null}
             },
             new String [] {
                 "Name", "Qis", "Restock"
             }
         ));
         jTable1.setEnabled(false);
+        Action delete = new AbstractAction()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                JTable jTable1 = (JTable)e.getSource();
+                int modelRow = Integer.valueOf( e.getActionCommand() );
+            }
+        };
+         
+        ButtonColumn buttonColumn = new ButtonColumn(jTable1, delete, 2);
+        buttonColumn.setMnemonic(KeyEvent.VK_D);
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout InventoryLayout = new javax.swing.GroupLayout(Inventory);
@@ -198,21 +218,21 @@ public class Admin extends javax.swing.JDialog {
         });
 
         javax.swing.GroupLayout quitLayout = new javax.swing.GroupLayout(quit);
-        quit.setLayout(quitLayout);
         quitLayout.setHorizontalGroup(
-            quitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quitLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(quitBtn)
-                .addGap(109, 109, 109))
+        	quitLayout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(quitLayout.createSequentialGroup()
+        			.addGap(114)
+        			.addComponent(quitBtn, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        			.addGap(109))
         );
         quitLayout.setVerticalGroup(
-            quitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quitLayout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
-                .addComponent(quitBtn)
-                .addContainerGap())
+        	quitLayout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(quitLayout.createSequentialGroup()
+        			.addContainerGap(9, Short.MAX_VALUE)
+        			.addComponent(quitBtn)
+        			.addContainerGap())
         );
+        quit.setLayout(quitLayout);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

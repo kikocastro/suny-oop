@@ -3,6 +3,8 @@ import java.awt.Component;
 
 import javax.swing.Box;
 import javax.swing.WindowConstants;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
  
 /**
  *
@@ -245,53 +247,58 @@ public class SodaMachineGui extends javax.swing.JFrame {
         });
 
         javax.swing.GroupLayout adminModeSelectionLayout = new javax.swing.GroupLayout(adminModeSelection);
-        adminModeSelection.setLayout(adminModeSelectionLayout);
         adminModeSelectionLayout.setHorizontalGroup(
-            adminModeSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(adminModeSelectionLayout.createSequentialGroup()
-                .addGap(164, 164, 164)
-                .addComponent(enterAdminModeButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        	adminModeSelectionLayout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(adminModeSelectionLayout.createSequentialGroup()
+        			.addGap(139)
+        			.addComponent(enterAdminModeButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        			.addGap(159))
         );
         adminModeSelectionLayout.setVerticalGroup(
-            adminModeSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adminModeSelectionLayout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addComponent(enterAdminModeButton)
-                .addGap(15, 15, 15))
+        	adminModeSelectionLayout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(Alignment.LEADING, adminModeSelectionLayout.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(enterAdminModeButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        			.addGap(22))
         );
+        adminModeSelection.setLayout(adminModeSelectionLayout);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(coinReturn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(sodaSelection, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(sodaDelivery, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(adminModeSelection, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(title)
-                .addGap(152, 152, 152))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(layout.createSequentialGroup()
+        					.addComponent(adminModeSelection, GroupLayout.PREFERRED_SIZE, 386, GroupLayout.PREFERRED_SIZE)
+        					.addContainerGap())
+        				.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        					.addGroup(layout.createSequentialGroup()
+        						.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        							.addComponent(coinReturn, GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
+        							.addComponent(sodaSelection, GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
+        							.addComponent(sodaDelivery, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        						.addContainerGap())
+        					.addGroup(layout.createSequentialGroup()
+        						.addComponent(title)
+        						.addGap(152)))))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(title)
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(coinReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addComponent(sodaSelection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addComponent(sodaDelivery, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addComponent(adminModeSelection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        	layout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(title)
+        			.addGap(18, 18, Short.MAX_VALUE)
+        			.addComponent(coinReturn, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addGap(23)
+        			.addComponent(sodaSelection, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addGap(23)
+        			.addComponent(sodaDelivery, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addGap(23)
+        			.addComponent(adminModeSelection, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
+        			.addGap(11))
         );
+        getContentPane().setLayout(layout);
 
         pack();
     }// </editor-fold>                        
