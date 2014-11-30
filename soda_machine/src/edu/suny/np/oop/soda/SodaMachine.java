@@ -3,6 +3,8 @@ package edu.suny.np.oop.soda;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.text.StyleContext.SmallAttributeSet;
+
 import edu.suny.np.exceptions.EmptyStockException;
 import edu.suny.np.exceptions.FullStockException;
 import edu.suny.np.exceptions.IllegalInputException;
@@ -32,15 +34,15 @@ public class SodaMachine {
 		int selectionCost = inventory.getSelectionCost(item.getId());
 		if (inventory.outOfStock(item.getId())) {
 			System.out.println("Out of stock.");
-			resetTransaction();
+			cancelPurchase();
 		}else {
 			if (inventory.insufficientFunds(latestSelection, changeMechanism.getAmountEntered())) {
 				System.out.println("Insufficient funds.");
-				resetTransaction();
+				cancelPurchase();
 			} else {
 				if (selectionCost > changeMechanism.getAvailableChange()) {
 					System.out.println("Machine out of change.");
-					resetTransaction();
+					cancelPurchase();
 				} else {
 					try {
 						item.decrementInventory();
@@ -58,15 +60,26 @@ public class SodaMachine {
 		}
 	}
 	
+	public Boolean hasPurchaseStarted(){
+		int amountEntered = changeMechanism.getAmountEntered();
+		System.out.println(amountEntered);
+		if ( amountEntered > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	public void resetMachine(){
 		latestSelection = null;
 		changeMechanism.resetAmountEntered();
 	}
 	
-	public void resetTransaction() {
-		System.out.println("Purchase cancelled. Returned amount: " + changeMechanism.getAmountEntered() + " cents");
+	public int cancelPurchase() {
+		System.out.println("Purchase canceled. Returned amount: " + changeMechanism.getAmountEntered() + " cents");
+		int amountEntered = changeMechanism.getAmountEntered();
 		changeMechanism.cancellPurchase();
-		transaction = transactions.get(Transaction.INPUT_TID);
+		return amountEntered;
 	}
 	
 	public Transaction getTransaction(int t){
@@ -140,8 +153,9 @@ public class SodaMachine {
 		System.out.println("Coins stack: " + changeMechanism.toString());
 	}
 	
-	public void displayAmountEntered() {
-		System.out.println("Amount entered (cents): " + changeMechanism.getAmountEntered());
+	public String getAmountEntered() {
+		String amount = Integer.toString(changeMechanism.getAmountEntered());
+		return amount;
 	}
 	
 	public void initMachine() {
@@ -153,7 +167,7 @@ public class SodaMachine {
 				inventory.updateInventory(itemName);
 			} catch (FullStockException e) {
 				e.printStackTrace();
-				this.resetTransaction();
+				this.cancelPurchase();
 			}
 		}
 	}
@@ -167,13 +181,13 @@ public class SodaMachine {
 			inventory.addToInventory(s, 1);
 		} catch (InventoryItemNotFoundException e) {
 			e.printStackTrace();
-			this.resetTransaction();
+			this.cancelPurchase();
 		} catch (FullStockException e) {
 			e.printStackTrace();
-			this.resetTransaction();
+			this.cancelPurchase();
 		} catch (InvalidQuantityException e) {
 			e.printStackTrace();
-			this.resetTransaction();
+			this.cancelPurchase();
 		}
 	}
 	

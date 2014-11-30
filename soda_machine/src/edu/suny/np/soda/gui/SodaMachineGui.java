@@ -1,6 +1,8 @@
 package edu.suny.np.soda.gui;
 import java.awt.Component;
 
+import edu.suny.np.oop.soda.*;
+
 import javax.swing.Box;
 import javax.swing.WindowConstants;
 import javax.swing.GroupLayout.Alignment;
@@ -11,12 +13,15 @@ import javax.swing.GroupLayout;
  * @author Frederico Castro
  */
 public class SodaMachineGui extends javax.swing.JFrame {
-
+	
+	protected SodaMachine mSodaMachine;
+	
     /**
      * Creates new form SodaMachineGui
      */
     public SodaMachineGui() {
         initComponents();
+        mSodaMachine = new SodaMachine();
     }
 
     /**
@@ -70,9 +75,15 @@ public class SodaMachineGui extends javax.swing.JFrame {
         });
 
         dimeButton.setText("10");
-
+        dimeButton.addActionListener(new java.awt.event.ActionListener() {
+        	
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dimeButtonActionPerformed(evt);
+            }
+        });
         quarterButton.setText("25");
         quarterButton.addActionListener(new java.awt.event.ActionListener() {
+        	
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quarterButtonActionPerformed(evt);
             }
@@ -303,15 +314,27 @@ public class SodaMachineGui extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
-    private void nickleButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void nickleButtonActionPerformed(java.awt.event.ActionEvent evt) { 
+    	processCoinEntry("5");
     }                                            
 
-    private void totalOutputActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        
+    private void dimeButtonActionPerformed(java.awt.event.ActionEvent evt) { 
+    	processCoinEntry("10");
+    } 
+    
+    private void quarterButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    	processCoinEntry("25");
+    }  
+    
+    private void totalOutputActionPerformed(java.awt.event.ActionEvent evt) { 
+
     }                                           
 
     private void coinReturnButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-        // TODO add your handling code here:
+        int amountEntered = mSodaMachine.cancelPurchase();
+        resetTotalDisplay();
+        selectionOutput.setText("Purchase cancelled");
+        changeOutput.setText(Integer.toString(amountEntered));
     }                                                
 
     private void s0ActionPerformed(java.awt.event.ActionEvent evt) {                                   
@@ -337,11 +360,28 @@ public class SodaMachineGui extends javax.swing.JFrame {
     private void enterAdminModeButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                     
     	Admin dialog = new Admin(new javax.swing.JFrame(), true);
         dialog.setVisible(true);
-    }                                                    
-
-    private void quarterButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
-        // TODO add your handling code here:
-    }                                             
+    }  
+    
+    private void processCoinEntry(String coin){
+    	if (!mSodaMachine.hasPurchaseStarted()) {
+    		resetSodaDeliveryDisplay();
+    		resetTotalDisplay();
+		} 
+    	mSodaMachine.accumulateChange(coin);
+    	String amount = mSodaMachine.getAmountEntered();
+    	totalOutput.setText(amount);
+		
+    }
+    
+    private void resetTotalDisplay(){
+    	totalOutput.setText("");
+    }
+    
+    private void resetSodaDeliveryDisplay(){
+    	selectionOutput.setText("");
+    	changeOutput.setText("");
+    }
+                                           
 
     /**
      * @param args the command line arguments
