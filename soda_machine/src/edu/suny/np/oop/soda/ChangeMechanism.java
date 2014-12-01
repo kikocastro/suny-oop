@@ -12,9 +12,15 @@ public class ChangeMechanism {
 	private final int MAX_N = 3;
 	private int amountEntered = 0;
 	private int cashBox = 0;
+	private String change = null;
 	
+
 	public ChangeMechanism() {
-		init();
+		remax();
+	}
+	
+	public String getChange() {
+		return change;
 	}
 	
 	/** 
@@ -29,12 +35,13 @@ public class ChangeMechanism {
 	* Cancels the purchase by returning all the money inserted 
 	* and reseting the amount entered value to 0
 	*/
-	public void cancellPurchase(){
-		this.getChange(0);
-		this.resetAmountEntered();
+	public String cancelPurchase(){
+		calculateChange(0);
+		resetAmountEntered();
+		return change;
 	}
 	
-	public void init(){
+	public void remax(){
 		for (int i = 0; i < MAX_Q; i++) {
 			cust_q++;
 		}
@@ -45,10 +52,7 @@ public class ChangeMechanism {
 			cust_n++;
 		}
 	}
-	
-	public void remax(){
-		init();
-	}
+
 
 	/** 
 	* Empties cashBox
@@ -143,7 +147,7 @@ public class ChangeMechanism {
 	 * @param cost cost of current selection (Use 0 for lack of inventory)
 	 * @return String with change
 	 */
-	public String getChange(int cost) {
+	public void calculateChange(int cost) {
 		int amountToReturn = amountEntered - cost;
 		
 		int[] coins = {0,0,0};
@@ -164,8 +168,13 @@ public class ChangeMechanism {
 			cust_n --;
 		}
 		
-		int change = coins[0] * 25 + coins[1] * 10 + coins[2] * 5;
-		return this.buildChangeString(change);
+		int newChange = coins[0] * 25 + coins[1] * 10 + coins[2] * 5;
+		
+		if (newChange == amountToReturn) {
+			change = Integer.toString(newChange);
+		} else {
+			change = "";
+		}
 	}
 	/**
 	 * 

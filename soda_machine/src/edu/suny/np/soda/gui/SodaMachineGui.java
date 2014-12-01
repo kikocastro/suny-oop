@@ -19,7 +19,7 @@ public class SodaMachineGui extends javax.swing.JFrame {
 	protected static SodaMachine mSodaMachine;
 	
     /**
-     * Creates new form SodaMachineGui
+     * Creates new SodaMachineGui
      */
     public SodaMachineGui() {
         initComponents();
@@ -323,10 +323,7 @@ public class SodaMachineGui extends javax.swing.JFrame {
     }                                         
 
     private void coinReturnButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-        int amountEntered = mSodaMachine.cancelPurchase();
-        resetTotalDisplay();
-        selectionOutput.setText("Purchase cancelled");
-        changeOutput.setText(Integer.toString(amountEntered));
+        mSodaMachine.cancelPurchase();
     }                                                
 
     private void s0ActionPerformed(java.awt.event.ActionEvent evt) {                                   
@@ -355,14 +352,14 @@ public class SodaMachineGui extends javax.swing.JFrame {
     }  
     
     
-    private void resetTotalDisplay(){
-    	totalOutput.setText("");
-    }
-    
-    private void resetSodaDeliveryDisplay(){
-    	selectionOutput.setText("");
-    	changeOutput.setText("");
-    }
+//    private void resetTotalDisplay(){
+//    	totalOutput.setText("");
+//    }
+//    
+//    private void resetSodaDeliveryDisplay(){
+//    	selectionOutput.setText("");
+//    	changeOutput.setText("");
+//    }
     
     private void processSelection(){
     	
@@ -406,7 +403,7 @@ public class SodaMachineGui extends javax.swing.JFrame {
                 new SodaMachineGui().setVisible(true);
                 
                 // When the coins are inserted, update the text area totalOutput
-                ChangeListener listener = new
+                ChangeListener listenerCoinInsertion = new
                    ChangeListener()
                    {
                       public void stateChanged(ChangeEvent event)
@@ -414,7 +411,19 @@ public class SodaMachineGui extends javax.swing.JFrame {
                      	totalOutput.setText(mSodaMachine.getAmountEntered());
                       }
                    };
-                   mSodaMachine.addChangeListener(listener);
+                   mSodaMachine.addChangeListener(listenerCoinInsertion);
+                   
+                // When the purchase is cancelled, update the display
+                   ChangeListener listenerCancelation = new
+                      ChangeListener()
+                      {
+                         public void stateChanged(ChangeEvent event)
+                         {
+                        	selectionOutput.setText("Purchase canceled");
+                        	changeOutput.setText(mSodaMachine.getChange());
+                         }
+                      };
+                      mSodaMachine.addChangeListener(listenerCancelation);
             }
         });
     }
@@ -422,7 +431,7 @@ public class SodaMachineGui extends javax.swing.JFrame {
     // Variables declaration - do not modify                     
     private javax.swing.JPanel adminModeSelection;
     private javax.swing.JLabel change;
-    private javax.swing.JTextField changeOutput;
+    private static javax.swing.JTextField changeOutput;
     private javax.swing.JPanel coinReturn;
     private javax.swing.JButton coinReturnButton;
     private javax.swing.JButton dimeButton;
@@ -435,10 +444,10 @@ public class SodaMachineGui extends javax.swing.JFrame {
     private javax.swing.JButton s3;
     private javax.swing.JButton s4;
     private javax.swing.JLabel selection;
-    private javax.swing.JTextField selectionOutput;
+    private static javax.swing.JTextField selectionOutput;
     private javax.swing.JPanel sodaDelivery;
     private javax.swing.JPanel sodaSelection;
-    private javax.swing.JTextField sodaSelectionOutput;
+    private static javax.swing.JTextField sodaSelectionOutput;
     private javax.swing.JLabel title;
     private javax.swing.JLabel total;
     private static javax.swing.JTextField totalOutput;

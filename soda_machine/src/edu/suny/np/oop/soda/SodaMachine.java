@@ -58,7 +58,11 @@ public class SodaMachine {
 					} catch (EmptyStockException e) {
 						e.printStackTrace();
 					}
-					String change = changeMechanism.getChange(selectionCost);
+					changeMechanism.calculateChange(selectionCost);
+					String change = changeMechanism.getChange();
+					
+					
+					
 					System.out.println("Pick your soda.");
 					if (!change.contentEquals("Change: 0 cents.")) {
 						System.out.println(change);
@@ -88,12 +92,17 @@ public class SodaMachine {
 		changeMechanism.remax();
 	}
 
-	public int cancelPurchase() {
-		System.out.println("Purchase canceled. Returned amount: "
-				+ changeMechanism.getAmountEntered() + " cents");
-		int amountEntered = changeMechanism.getAmountEntered();
-		changeMechanism.cancellPurchase();
-		return amountEntered;
+	public void cancelPurchase() {
+		changeMechanism.cancelPurchase();
+		
+		// Notify all observers 
+		ChangeEvent event = new ChangeEvent(this);
+		for (ChangeListener listener : listeners)
+			listener.stateChanged(event);
+	}
+	
+	public String getChange(){
+		return changeMechanism.getChange();
 	}
 
 	public Transaction getTransaction(int t) {
@@ -155,7 +164,7 @@ public class SodaMachine {
 	public void accumulateChange(String s) {
 		try {
 			changeMechanism.addChange(Integer.parseInt(s));
-			// Notify all observers of the change to the invoice
+			// Notify all observers
 			ChangeEvent event = new ChangeEvent(this);
 			for (ChangeListener listener : listeners)
 				listener.stateChanged(event);
@@ -183,7 +192,7 @@ public class SodaMachine {
 
 	public void initMachine() {
 		latestSelection = null;
-		changeMechanism.init();
+		changeMechanism.remax();
 		for (int i = 0; i < 5; i++) {
 			String itemName = inventory.getItemName(i);
 			try {
