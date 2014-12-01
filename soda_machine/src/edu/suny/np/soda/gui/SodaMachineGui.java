@@ -112,6 +112,8 @@ public class SodaMachineGui extends javax.swing.JFrame {
 				coinReturnButtonActionPerformed(evt);
 			}
 		});
+		
+
 
 		javax.swing.GroupLayout coinReturnLayout = new javax.swing.GroupLayout(
 			coinReturn);
@@ -514,6 +516,42 @@ pack();
 		Admin dialog = new Admin(new javax.swing.JFrame(), true, mSodaMachine);
 		dialog.setVisible(true);
 	}
+	
+	private static void fillSodasSelectionOutputs(){
+		int[] inventoryQIS = new int[5];
+		
+		inventoryQIS=mSodaMachine.getInventoryQIS();
+		
+		if(inventoryQIS[0] == 0){
+			sodaSelectionOutput0.setText("Out of Stock");
+		}else{
+			sodaSelectionOutput0.setText(Integer.toString(inventoryQIS[0]) + " items available");
+		}
+		if(inventoryQIS[1] == 0){
+			sodaSelectionOutput1.setText("Out of Stock");
+		}else{
+			sodaSelectionOutput1.setText(Integer.toString(inventoryQIS[1]) + " items available");
+		}
+		if(inventoryQIS[2] == 0){
+			sodaSelectionOutput2.setText("Out of Stock");
+		}else{
+			sodaSelectionOutput2.setText(Integer.toString(inventoryQIS[2]) + " items available");
+		}
+		if(inventoryQIS[3] == 0){
+			sodaSelectionOutput3.setText("Out of Stock");
+		}else{
+			sodaSelectionOutput3.setText(Integer.toString(inventoryQIS[3]) + " items available");
+		}
+		if(inventoryQIS[4] == 0){
+			sodaSelectionOutput4.setText("Out of Stock");
+		}else{
+			sodaSelectionOutput4.setText(Integer.toString(inventoryQIS[4]) + " items available");
+		}
+		
+
+		
+		
+	}
 
 	/**
 	 * @param args
@@ -561,10 +599,12 @@ pack();
 				ChangeListener listener = new ChangeListener() {
 					public void stateChanged(ChangeEvent event) {
 						totalOutput.setText(mSodaMachine.getAmountEntered());
+						fillSodasSelectionOutputs();
 					}
 				};
 				mSodaMachine.addChangeListener(listener);
-
+				
+				
 			}
 		});
 	}

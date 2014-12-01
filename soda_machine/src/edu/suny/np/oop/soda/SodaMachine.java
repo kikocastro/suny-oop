@@ -27,7 +27,7 @@ public class SodaMachine {
 		changeMechanism = new ChangeMechanism();
 		inventory = new Inventory();
 		scan = new Scanner(System.in);
-		
+		initMachine();
 	}
 
 
@@ -73,6 +73,10 @@ public class SodaMachine {
 		} else {
 			return true;
 		}
+	}
+	
+	public int[] getInventoryQIS(){
+		return inventory.getQIS();
 	}
 
 	public void resetMachine() {

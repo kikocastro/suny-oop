@@ -27,6 +27,7 @@ public class Inventory {
 		contents.add(sprite);
 		contents.add(gignerAle);
 		contents.add(dietCola);
+		
 	}
 	/**
 	 * 
@@ -62,6 +63,15 @@ public class Inventory {
 		}
 		output = output.substring(0,output.length()-2);
 		return output;
+	}
+	
+	public int[] getQIS(){
+		
+		int[] inventoryQIS = new int[5];
+		for (int i = 0; i < contents.size(); i++) {
+			inventoryQIS[i] = contents.get(i).getQIS();
+		}
+		return inventoryQIS;
 	}
 	
 	public InventoryItem getInventoryItem(String s) {
