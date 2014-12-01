@@ -51,8 +51,16 @@ public class SodaMachineGui extends javax.swing.JFrame {
 		s2 = new javax.swing.JButton();
 		s3 = new javax.swing.JButton();
 		s4 = new javax.swing.JButton();
-		sodaSelectionOutput = new javax.swing.JTextField();
-		sodaSelectionOutput.setEditable(false);
+		sodaSelectionOutput0 = new javax.swing.JTextField();
+        sodaSelectionOutput1 = new javax.swing.JTextField();
+        sodaSelectionOutput2 = new javax.swing.JTextField();
+        sodaSelectionOutput3 = new javax.swing.JTextField();
+        sodaSelectionOutput4 = new javax.swing.JTextField();
+        sodaSelectionOutput0.setEditable(false);
+        sodaSelectionOutput1.setEditable(false);
+        sodaSelectionOutput2.setEditable(false);
+        sodaSelectionOutput3.setEditable(false);
+        sodaSelectionOutput4.setEditable(false);
 		sodaDelivery = new javax.swing.JPanel();
 		selectionOutput = new javax.swing.JTextField();
 		selectionOutput.setEditable(false);
@@ -215,90 +223,52 @@ public class SodaMachineGui extends javax.swing.JFrame {
 			}
 		});
 		
-		javax.swing.GroupLayout sodaSelectionLayout = new javax.swing.GroupLayout(
-			sodaSelection);
-		sodaSelection.setLayout(sodaSelectionLayout);
-		sodaSelectionLayout
-		.setHorizontalGroup(sodaSelectionLayout
-			.createParallelGroup(
-				javax.swing.GroupLayout.Alignment.LEADING)
-			.addGroup(
-				sodaSelectionLayout
-				.createSequentialGroup()
-				.addGap(12, 12, 12)
-				.addGroup(
-					sodaSelectionLayout
-					.createParallelGroup(
-						javax.swing.GroupLayout.Alignment.LEADING,
-						false)
-					.addComponent(
-						s0,
-						javax.swing.GroupLayout.DEFAULT_SIZE,
-						javax.swing.GroupLayout.DEFAULT_SIZE,
-						Short.MAX_VALUE)
-					.addComponent(
-						s1,
-						javax.swing.GroupLayout.Alignment.TRAILING,
-						javax.swing.GroupLayout.DEFAULT_SIZE,
-						javax.swing.GroupLayout.DEFAULT_SIZE,
-						Short.MAX_VALUE)
-					.addComponent(
-						s2,
-						javax.swing.GroupLayout.DEFAULT_SIZE,
-						javax.swing.GroupLayout.DEFAULT_SIZE,
-						Short.MAX_VALUE)
-					.addComponent(
-						s3,
-						javax.swing.GroupLayout.DEFAULT_SIZE,
-						javax.swing.GroupLayout.DEFAULT_SIZE,
-						Short.MAX_VALUE)
-					.addComponent(
-						s4,
-						javax.swing.GroupLayout.DEFAULT_SIZE,
-						javax.swing.GroupLayout.DEFAULT_SIZE,
-						Short.MAX_VALUE))
-				.addPreferredGap(
-					javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-					javax.swing.GroupLayout.DEFAULT_SIZE,
-					Short.MAX_VALUE)
-				.addComponent(
-					sodaSelectionOutput,
-					javax.swing.GroupLayout.PREFERRED_SIZE,
-					222,
-					javax.swing.GroupLayout.PREFERRED_SIZE)
-				.addContainerGap()));
-sodaSelectionLayout
-.setVerticalGroup(sodaSelectionLayout
-	.createParallelGroup(
-		javax.swing.GroupLayout.Alignment.LEADING)
-	.addGroup(
-		javax.swing.GroupLayout.Alignment.TRAILING,
-		sodaSelectionLayout
-		.createSequentialGroup()
-		.addContainerGap(12, Short.MAX_VALUE)
-		.addComponent(s0)
-		.addPreferredGap(
-			javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-		.addComponent(s1)
-		.addPreferredGap(
-			javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-		.addComponent(s2)
-		.addPreferredGap(
-			javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-		.addComponent(s3)
-		.addPreferredGap(
-			javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-		.addGroup(
-			sodaSelectionLayout
-			.createParallelGroup(
-				javax.swing.GroupLayout.Alignment.BASELINE)
-			.addComponent(s4)
-			.addComponent(
-				sodaSelectionOutput,
-				javax.swing.GroupLayout.PREFERRED_SIZE,
-				javax.swing.GroupLayout.DEFAULT_SIZE,
-				javax.swing.GroupLayout.PREFERRED_SIZE))
-		.addGap(12, 12, 12)));
+		 javax.swing.GroupLayout sodaSelectionLayout = new javax.swing.GroupLayout(sodaSelection);
+	        sodaSelection.setLayout(sodaSelectionLayout);
+	        sodaSelectionLayout.setHorizontalGroup(
+	            sodaSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	            .addGroup(sodaSelectionLayout.createSequentialGroup()
+	                .addGap(12, 12, 12)
+	                .addGroup(sodaSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+	                    .addComponent(s0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	                    .addComponent(s1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	                    .addComponent(s2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	                    .addComponent(s3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	                    .addComponent(s4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+	                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	                .addGroup(sodaSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	                    .addComponent(sodaSelectionOutput4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                    .addComponent(sodaSelectionOutput3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                    .addComponent(sodaSelectionOutput2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                    .addComponent(sodaSelectionOutput1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                    .addComponent(sodaSelectionOutput0, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+	                .addContainerGap())
+	        );
+		sodaSelectionLayout.setVerticalGroup(
+	            sodaSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sodaSelectionLayout.createSequentialGroup()
+	                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	                .addGroup(sodaSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+	                    .addComponent(s0)
+	                    .addComponent(sodaSelectionOutput0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+	                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+	                .addGroup(sodaSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+	                    .addComponent(s1)
+	                    .addComponent(sodaSelectionOutput1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+	                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+	                .addGroup(sodaSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+	                    .addComponent(s2)
+	                    .addComponent(sodaSelectionOutput2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+	                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+	                .addGroup(sodaSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+	                    .addComponent(s3)
+	                    .addComponent(sodaSelectionOutput3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+	                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+	                .addGroup(sodaSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+	                    .addComponent(s4)
+	                    .addComponent(sodaSelectionOutput4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+	                .addGap(12,12,12))
+	        );
 
 sodaDelivery.setBorder(javax.swing.BorderFactory.createTitledBorder(
 	null, "Soda Delivery",
@@ -590,7 +560,6 @@ pack();
 				// When the mechanism changes, update the display
 				ChangeListener listener = new ChangeListener() {
 					public void stateChanged(ChangeEvent event) {
-						
 						totalOutput.setText(mSodaMachine.getAmountEntered());
 					}
 				};
@@ -619,7 +588,12 @@ pack();
 	private static javax.swing.JTextField selectionOutput;
 	private javax.swing.JPanel sodaDelivery;
 	private javax.swing.JPanel sodaSelection;
-	private static javax.swing.JTextField sodaSelectionOutput;
+	private static javax.swing.JTextField sodaSelectionOutput0;
+	private static javax.swing.JTextField sodaSelectionOutput1;
+	private static javax.swing.JTextField sodaSelectionOutput2;
+	private static javax.swing.JTextField sodaSelectionOutput3;
+	private static javax.swing.JTextField sodaSelectionOutput4;
+
 	private javax.swing.JLabel title;
 	private javax.swing.JLabel total;
 	private static javax.swing.JTextField totalOutput;
