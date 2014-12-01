@@ -311,15 +311,15 @@ public class SodaMachineGui extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void nickleButtonActionPerformed(java.awt.event.ActionEvent evt) { 
-    	processCoinEntry("5");
+    	mSodaMachine.accumulateChange("5");
     }                                            
 
     private void dimeButtonActionPerformed(java.awt.event.ActionEvent evt) { 
-    	processCoinEntry("10");
+    	mSodaMachine.accumulateChange("10");
     } 
     
     private void quarterButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
-    	processCoinEntry("25");
+    	mSodaMachine.accumulateChange("25");
     }                                         
 
     private void coinReturnButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                 
@@ -354,9 +354,6 @@ public class SodaMachineGui extends javax.swing.JFrame {
         dialog.setVisible(true);
     }  
     
-    private void processCoinEntry(String coin){ 
-    	mSodaMachine.accumulateChange(coin);    	
-    }
     
     private void resetTotalDisplay(){
     	totalOutput.setText("");
