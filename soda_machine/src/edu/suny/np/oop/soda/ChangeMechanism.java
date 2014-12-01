@@ -23,7 +23,6 @@ public class ChangeMechanism extends Observable {
 
 	public ChangeMechanism() {
 		listeners = new ArrayList<ChangeListener>();
-		remax();
 	}
 
 	public void addChangeListener(ChangeListener listener) {

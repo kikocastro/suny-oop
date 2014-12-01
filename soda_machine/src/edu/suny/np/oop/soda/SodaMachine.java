@@ -21,8 +21,6 @@ public class SodaMachine {
 	private ChangeMechanism changeMechanism;
 	private String latestSelection = null;
 
-	
-
 	public SodaMachine() {
 		changeMechanism = new ChangeMechanism();
 		inventory = new Inventory();

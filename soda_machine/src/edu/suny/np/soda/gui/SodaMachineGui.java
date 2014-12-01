@@ -594,7 +594,7 @@ pack();
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				new SodaMachineGui().setVisible(true);
-
+				fillSodasSelectionOutputs();
 				// When the mechanism changes, update the display
 				ChangeListener listener = new ChangeListener() {
 					public void stateChanged(ChangeEvent event) {

@@ -2,6 +2,8 @@ package edu.suny.np.oop.soda;
 
 import java.util.*;
 
+import javax.swing.event.ChangeListener;
+
 import edu.suny.np.exceptions.*;
 
 public class Inventory {
@@ -12,6 +14,7 @@ public class Inventory {
 	public static String GINGER_ALE = "ginger ale";
 	public static String DIET_COLA = "diet cola";
 	private int selection = 0;
+	private ArrayList<ChangeListener> listeners;
 	
 	private ArrayList<InventoryItem> contents = new ArrayList<InventoryItem>();
 	
@@ -28,7 +31,13 @@ public class Inventory {
 		contents.add(gignerAle);
 		contents.add(dietCola);
 		
+		listeners = new ArrayList<ChangeListener>();
 	}
+	
+	public void addChangeListener(ChangeListener listener) {
+		listeners.add(listener);
+	}
+	
 	/**
 	 * 
 	 * @param id of the soda
