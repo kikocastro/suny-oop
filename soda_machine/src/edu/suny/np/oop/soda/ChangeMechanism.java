@@ -16,6 +16,7 @@ public class ChangeMechanism extends Observable {
 	private final int MAX_D = 3;
 	private final int MAX_N = 3;
 	private int amountEntered = 0;
+	private int[] tempCoinsEntered = { 0, 0, 0 };
 	private int cashBox = 0;
 	private String change = "";
 	private ArrayList<ChangeListener> listeners;
@@ -41,15 +42,11 @@ public class ChangeMechanism extends Observable {
 		amountEntered = 0;
 	}
 
-	/**
-	 * Cancels the purchase by returning all the money inserted and reseting the
-	 * amount entered value to 0
-	 */
-//	public String cancelPurchase() {
-//		calculateChange(0);
-//		resetAmountEntered();
-//		return change;
-//	}
+	private void resetTempCoins() {
+		tempCoinsEntered[0] = 0;
+		tempCoinsEntered[1] = 0;
+		tempCoinsEntered[2] = 0;
+	}
 
 	public void remax() {
 		for (int i = 0; i < MAX_Q; i++) {
@@ -87,6 +84,44 @@ public class ChangeMechanism extends Observable {
 		return output;
 	}
 
+	// * if not canceled or timeout, process tempchange
+	private void processEnteredCoins() {
+		for (int i = 0; i < tempCoinsEntered[0]; i++) {
+			if (cust_q < MAX_Q) {
+				cust_q++;
+			} else {
+				cashBox += 25;
+			}
+		}
+		for (int i = 0; i < tempCoinsEntered[0]; i++) {
+			if (cust_d < MAX_D) {
+				cust_d++;
+			} else {
+				cashBox += 10;
+			}
+		}
+		for (int i = 0; i < tempCoinsEntered[0]; i++) {
+			if (cust_n < MAX_N) {
+				cust_n++;
+			} else {
+				cashBox += 5;
+			}
+		}
+	}
+
+	/**
+	 * Cancels the purchase by returning all the money inserted and reseting the
+	 * amount entered value to 0
+	 */
+
+	public String cancelPurchase() {
+		String newChange = Integer.toString(amountEntered);
+		resetTempCoins();
+		change = "";
+		resetAmountEntered();
+		return newChange;
+	}
+
 	/**
 	 * 
 	 * @param c
@@ -95,35 +130,22 @@ public class ChangeMechanism extends Observable {
 	 *            Accepts change into the change mechanism.
 	 * @throws InvalidCoinException
 	 */
-	public void addChange(int c) throws InvalidCoinException {
+	public void addChange(int c) {
 		switch (c) {
 		case 25:
 			amountEntered += 25;
-			if (cust_q < MAX_Q) {
-				cust_q++;
-			} else {
-				cashBox += 25;
-			}
+			tempCoinsEntered[2] += 1;
 			break;
 		case 10:
 			amountEntered += 10;
-			if (cust_d < MAX_D) {
-				cust_d++;
-			} else {
-				cashBox += 10;
-			}
+			tempCoinsEntered[1] += 1;
 			break;
 		case 5:
 			amountEntered += 5;
-			if (cust_n < MAX_N) {
-				cust_n++;
-			} else {
-				cashBox += 5;
-			}
+			tempCoinsEntered[0] += 1;
 			break;
 
 		default:
-			throw new InvalidCoinException("Invalid coin inserted");
 		}
 
 		// Notify all observers
@@ -169,7 +191,8 @@ public class ChangeMechanism extends Observable {
 	 *            cost of current selection (Use 0 for lack of inventory)
 	 * @return String with change
 	 */
-	public void calculateChange(int cost) {
+	public void processChange(int cost) {
+		processEnteredCoins();
 		int amountToReturn = amountEntered - cost;
 
 		int[] coins = { 0, 0, 0 };
@@ -191,18 +214,14 @@ public class ChangeMechanism extends Observable {
 		}
 
 		int newChange = coins[0] * 25 + coins[1] * 10 + coins[2] * 5;
-
+		resetAmountEntered();
+		resetTempCoins();
 		if (newChange == amountToReturn) {
 			change = Integer.toString(newChange);
 		} else {
-			change = "";
+			change = "invalid change";
 		}
-		
 
-//		// Notify all observers 
-		ChangeEvent event = new ChangeEvent(this);
-		for (ChangeListener listener : listeners)
-			listener.stateChanged(event);
 	}
 
 	/**

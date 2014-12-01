@@ -496,19 +496,30 @@ pack();
 	}// </editor-fold>
 
 	private void nickleButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		if (!mSodaMachine.hasPurchaseStarted()) {
+			changeOutput.setText("");
+		}
 		mSodaMachine.accumulateChange("nickel");
 	}
 
 	private void dimeButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		if (!mSodaMachine.hasPurchaseStarted()) {
+			changeOutput.setText("");
+		}
 		mSodaMachine.accumulateChange("dime");
 	}
 
 	private void quarterButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		if (!mSodaMachine.hasPurchaseStarted()) {
+			changeOutput.setText("");
+		}
 		mSodaMachine.accumulateChange("quarter");
 	}
 
 	private void coinReturnButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		mSodaMachine.cancelPurchase();
+		String change = mSodaMachine.cancelPurchase();
+		totalOutput.setText("");
+		changeOutput.setText(change);
 	}
 
 	private void s0ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -596,8 +607,8 @@ pack();
 				// When the mechanism changes, update the display
 				ChangeListener listener = new ChangeListener() {
 					public void stateChanged(ChangeEvent event) {
+						
 						totalOutput.setText(mSodaMachine.getAmountEntered());
-						changeOutput.setText(mSodaMachine.getChange());
 					}
 				};
 				mSodaMachine.addChangeListener(listener);

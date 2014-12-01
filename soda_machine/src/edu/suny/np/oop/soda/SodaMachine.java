@@ -53,11 +53,9 @@ public class SodaMachine {
 					} catch (EmptyStockException e) {
 						e.printStackTrace();
 					}
-					changeMechanism.calculateChange(selectionCost);
+					changeMechanism.processChange(selectionCost);
 					String change = changeMechanism.getChange();
-					
-					
-					
+	
 					System.out.println("Pick your soda.");
 					if (!change.contentEquals("Change: 0 cents.")) {
 						System.out.println(change);
@@ -70,11 +68,10 @@ public class SodaMachine {
 
 	public Boolean hasPurchaseStarted() {
 		int amountEntered = changeMechanism.getAmountEntered();
-		System.out.println(amountEntered);
-		if (amountEntered > 0) {
-			return true;
-		} else {
+		if (amountEntered == 0) {
 			return false;
+		} else {
+			return true;
 		}
 	}
 
@@ -87,9 +84,8 @@ public class SodaMachine {
 		changeMechanism.remax();
 	}
 
-	public void cancelPurchase() {
-		changeMechanism.calculateChange(0);
-		changeMechanism.resetAmountEntered();
+	public String cancelPurchase() {
+		return changeMechanism.cancelPurchase();
 	}
 	
 	public String getChange(){
