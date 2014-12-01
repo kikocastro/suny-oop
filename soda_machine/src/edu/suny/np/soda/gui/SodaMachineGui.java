@@ -47,12 +47,12 @@ public class SodaMachineGui extends javax.swing.JFrame {
 		coinReturnButton = new javax.swing.JButton();
 		sodaSelection = new javax.swing.JPanel();
 		s0 = new javax.swing.JButton();
+		s1 = new javax.swing.JButton();
 		s2 = new javax.swing.JButton();
 		s3 = new javax.swing.JButton();
+		s4 = new javax.swing.JButton();
 		sodaSelectionOutput = new javax.swing.JTextField();
 		sodaSelectionOutput.setEditable(false);
-		s1 = new javax.swing.JButton();
-		s4 = new javax.swing.JButton();
 		sodaDelivery = new javax.swing.JPanel();
 		selectionOutput = new javax.swing.JTextField();
 		selectionOutput.setEditable(false);
@@ -186,18 +186,7 @@ public class SodaMachineGui extends javax.swing.JFrame {
 				s0ActionPerformed(evt);
 			}
 		});
-
-		s2.setText("Sprite");
-
-		s3.setText("Ginger Ale");
-
-		sodaSelectionOutput
-		.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				sodaSelectionOutputActionPerformed(evt);
-			}
-		});
-
+		
 		s1.setText("Orange");
 		s1.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,8 +194,27 @@ public class SodaMachineGui extends javax.swing.JFrame {
 			}
 		});
 
-		s4.setText("Diet Cola");
+		s2.setText("Sprite");
+		s2.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				s2ActionPerformed(evt);
+			}
+		});
 
+		s3.setText("Ginger Ale");
+		s3.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				s3ActionPerformed(evt);
+			}
+		});
+		
+		s4.setText("Diet Cola");
+		s4.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				s4ActionPerformed(evt);
+			}
+		});
+		
 		javax.swing.GroupLayout sodaSelectionLayout = new javax.swing.GroupLayout(
 			sodaSelection);
 		sodaSelection.setLayout(sodaSelectionLayout);
@@ -298,20 +306,9 @@ sodaDelivery.setBorder(javax.swing.BorderFactory.createTitledBorder(
 	javax.swing.border.TitledBorder.DEFAULT_POSITION,
 				new java.awt.Font("Lucida Grande", 1, 14))); // NOI18N
 
-selectionOutput.addActionListener(new java.awt.event.ActionListener() {
-	public void actionPerformed(java.awt.event.ActionEvent evt) {
-		selectionOutputActionPerformed(evt);
-	}
-});
-
 selection.setText("Selection");
 
 change.setText("Change");
-changeOutput.addActionListener(new java.awt.event.ActionListener() {
-	public void actionPerformed(java.awt.event.ActionEvent evt) {
-		changeOutputActionPerformed(evt);
-	}
-});
 
 javax.swing.GroupLayout sodaDeliveryLayout = new javax.swing.GroupLayout(
 	sodaDelivery);
@@ -523,23 +520,22 @@ pack();
 	}
 
 	private void s0ActionPerformed(java.awt.event.ActionEvent evt) {
-		processSelection();
+		
 	}
-
-	private void sodaSelectionOutputActionPerformed(
-		java.awt.event.ActionEvent evt) {
-		// TODO add your handling code here:
-	}
-
+	
 	private void s1ActionPerformed(java.awt.event.ActionEvent evt) {
 		// TODO add your handling code here:
 	}
-
-	private void selectionOutputActionPerformed(java.awt.event.ActionEvent evt) {
+	
+	private void s2ActionPerformed(java.awt.event.ActionEvent evt) {
 		// TODO add your handling code here:
 	}
-
-	private void changeOutputActionPerformed(java.awt.event.ActionEvent evt) {
+	
+	private void s3ActionPerformed(java.awt.event.ActionEvent evt) {
+		// TODO add your handling code here:
+	}
+	
+	private void s4ActionPerformed(java.awt.event.ActionEvent evt) {
 		// TODO add your handling code here:
 	}
 
@@ -547,19 +543,6 @@ pack();
 		java.awt.event.ActionEvent evt) {
 		Admin dialog = new Admin(new javax.swing.JFrame(), true, mSodaMachine);
 		dialog.setVisible(true);
-	}
-
-	// private void resetTotalDisplay(){
-	// totalOutput.setText("");
-	// }
-	//
-	// private void resetSodaDeliveryDisplay(){
-	// selectionOutput.setText("");
-	// changeOutput.setText("");
-	// }
-
-	private void processSelection() {
-
 	}
 
 	/**
