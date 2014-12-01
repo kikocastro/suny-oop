@@ -3,6 +3,8 @@ package edu.suny.np.oop.soda;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.text.StyleContext.SmallAttributeSet;
 
 import edu.suny.np.exceptions.EmptyStockException;
@@ -21,22 +23,29 @@ public class SodaMachine {
 	private Inventory inventory = null;
 	private ChangeMechanism changeMechanism;
 	private String latestSelection = null;
-	
-	
+
+	private ArrayList<ChangeListener> listeners;
+
 	public SodaMachine() {
 		changeMechanism = new ChangeMechanism();
 		inventory = new Inventory();
 		scan = new Scanner(System.in);
+		listeners = new ArrayList<ChangeListener>();
 	}
-	
+
+	public void addChangeListener(ChangeListener listener) {
+		listeners.add(listener);
+	}
+
 	public void processSelection() {
 		InventoryItem item = inventory.getItemFromContents(latestSelection);
 		int selectionCost = inventory.getSelectionCost(item.getId());
 		if (inventory.outOfStock(item.getId())) {
 			System.out.println("Out of stock.");
 			cancelPurchase();
-		}else {
-			if (inventory.insufficientFunds(latestSelection, changeMechanism.getAmountEntered())) {
+		} else {
+			if (inventory.insufficientFunds(latestSelection,
+					changeMechanism.getAmountEntered())) {
 				System.out.println("Insufficient funds.");
 				cancelPurchase();
 			} else {
@@ -51,7 +60,7 @@ public class SodaMachine {
 					}
 					String change = changeMechanism.getChange(selectionCost);
 					System.out.println("Pick your soda.");
-					if(!change.contentEquals("Change: 0 cents.")){
+					if (!change.contentEquals("Change: 0 cents.")) {
 						System.out.println(change);
 					}
 					resetMachine();
@@ -59,41 +68,46 @@ public class SodaMachine {
 			}
 		}
 	}
-	
-	public Boolean hasPurchaseStarted(){
+
+	public Boolean hasPurchaseStarted() {
 		int amountEntered = changeMechanism.getAmountEntered();
 		System.out.println(amountEntered);
-		if ( amountEntered > 0) {
+		if (amountEntered > 0) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
-	public void resetMachine(){
+
+	public void resetMachine() {
 		latestSelection = null;
 		changeMechanism.resetAmountEntered();
 	}
-	
+
+	public void remax() {
+		changeMechanism.remax();
+	}
+
 	public int cancelPurchase() {
-		System.out.println("Purchase canceled. Returned amount: " + changeMechanism.getAmountEntered() + " cents");
+		System.out.println("Purchase canceled. Returned amount: "
+				+ changeMechanism.getAmountEntered() + " cents");
 		int amountEntered = changeMechanism.getAmountEntered();
 		changeMechanism.cancellPurchase();
 		return amountEntered;
 	}
-	
-	public Transaction getTransaction(int t){
-		if (t >= 0 && t <=4) {
+
+	public Transaction getTransaction(int t) {
+		if (t >= 0 && t <= 4) {
 			return transaction = transactions.get(t);
-		}else {
+		} else {
 			return null;
 		}
 	}
-	
+
 	public void advanceTransaction(int tid) {
 		this.getTransaction(tid);
 	}
-	
+
 	public void saveSelection(String s) {
 		if (s.equals("s0")) {
 			latestSelection = inventory.getItemName(0);
@@ -105,9 +119,9 @@ public class SodaMachine {
 			latestSelection = inventory.getItemName(3);
 		} else if (s.equals("s4")) {
 			latestSelection = inventory.getItemName(4);
-		} 
+		}
 	}
-	
+
 	public void addTransactions(SodaMachine sm) {
 		Transaction initialTransaction = new InitTransaction(sm);
 		transactions.add(Transaction.INIT_TID, initialTransaction);
@@ -118,46 +132,55 @@ public class SodaMachine {
 		Transaction inputTransaction = new InputTransaction(sm);
 		transactions.add(Transaction.INPUT_TID, inputTransaction);
 	}
+
 	/**
-	 * @param args - the legal inputs in this state
-	 * this method gets input, checks it against legal
-	 * inputs and returns input if legal; otherwise
-	 * it returns the null string.
-	 * @throws IllegalInputException 
+	 * @param args
+	 *            - the legal inputs in this state this method gets input,
+	 *            checks it against legal inputs and returns input if legal;
+	 *            otherwise it returns the null string.
+	 * @throws IllegalInputException
 	 * 
 	 */
-	public String consumeInput(ArrayList<String> args) throws IllegalInputException {
-		
-		String input = scan.next(); 
+	public String consumeInput(ArrayList<String> args)
+			throws IllegalInputException {
+
+		String input = scan.next();
 		if (args.contains(input)) {
 			return input;
 		} else {
 			throw new IllegalInputException("Illegal input.");
 		}
 	}
-	
+
 	public void accumulateChange(String s) {
 		try {
 			changeMechanism.addChange(Integer.parseInt(s));
+			// Notify all observers of the change to the invoice
+			ChangeEvent event = new ChangeEvent(this);
+			for (ChangeListener listener : listeners)
+				listener.stateChanged(event);
 		} catch (InvalidCoinException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void displayMachineInfo() {
-		System.out.println("----------------------------------------------------------------------------------------");
+		System.out
+				.println("----------------------------------------------------------------------------------------");
 		System.out.println(inventory.toString());
-		System.out.println("----------------------------------------------------------------------------------------");
+		System.out
+				.println("----------------------------------------------------------------------------------------");
 		System.out.println("\nCashbox: " + changeMechanism.getCashbox());
-		System.out.println("Available change: " + changeMechanism.getAvailableChange());
+		System.out.println("Available change: "
+				+ changeMechanism.getAvailableChange());
 		System.out.println("Coins stack: " + changeMechanism.toString());
 	}
-	
+
 	public String getAmountEntered() {
 		String amount = Integer.toString(changeMechanism.getAmountEntered());
 		return amount;
 	}
-	
+
 	public void initMachine() {
 		latestSelection = null;
 		changeMechanism.init();
@@ -171,11 +194,11 @@ public class SodaMachine {
 			}
 		}
 	}
-	
+
 	public void removeMachineReceipts() {
 		System.out.println(changeMechanism.emptyCashBox());
 	}
-	
+
 	public void addToInventory(String s) {
 		try {
 			inventory.addToInventory(s, 1);
@@ -190,14 +213,8 @@ public class SodaMachine {
 			this.cancelPurchase();
 		}
 	}
-	
-//	public static void main(String[] args) {
-//		SodaMachine sm = new SodaMachine();
-//		sm.addTransactions(sm);
-//		transaction = transactions.get(Transaction.INIT_TID);
-//		while(true) {
-//			SodaMachine.transaction.run();
-//		}
-//	}
 
+	public int[] getCoinReturn() {
+		return changeMechanism.getCoinReturn();
+	}
 }

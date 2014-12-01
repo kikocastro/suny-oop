@@ -1,5 +1,6 @@
 package edu.suny.np.oop.soda;
 
+import java.lang.reflect.Array;
 import java.util.HashMap;
 
 import edu.suny.np.exceptions.InvalidCoinException;
@@ -13,6 +14,7 @@ public class ChangeMechanism {
 	private int cashBox = 0;
 	
 	public ChangeMechanism() {
+		init();
 	}
 	
 	/** 
@@ -42,6 +44,10 @@ public class ChangeMechanism {
 		for (int i = 0; i < MAX_N; i++) {
 			cust_n++;
 		}
+	}
+	
+	public void remax(){
+		init();
 	}
 
 	/** 
@@ -173,6 +179,12 @@ public class ChangeMechanism {
 		return amountEntered;
 	}
 	
-	
+	public int[] getCoinReturn(){
+		int[] coins = new int[3];
+		coins[0] = cust_n;
+		coins[1] = cust_d;
+		coins[2] = cust_q;
+		return coins;
+	}
 	
 }

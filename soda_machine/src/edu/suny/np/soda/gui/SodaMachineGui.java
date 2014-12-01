@@ -7,6 +7,8 @@ import javax.swing.Box;
 import javax.swing.WindowConstants;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
  
 /**
  *
@@ -14,7 +16,7 @@ import javax.swing.GroupLayout;
  */
 public class SodaMachineGui extends javax.swing.JFrame {
 	
-	protected SodaMachine mSodaMachine;
+	protected static SodaMachine mSodaMachine;
 	
     /**
      * Creates new form SodaMachineGui
@@ -348,19 +350,12 @@ public class SodaMachineGui extends javax.swing.JFrame {
     }                                            
 
     private void enterAdminModeButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                     
-    	Admin dialog = new Admin(new javax.swing.JFrame(), true);
+    	Admin dialog = new Admin(new javax.swing.JFrame(), true, mSodaMachine);
         dialog.setVisible(true);
     }  
     
-    private void processCoinEntry(String coin){
-    	if (!mSodaMachine.hasPurchaseStarted()) {
-    		resetSodaDeliveryDisplay();
-    		resetTotalDisplay();
-		} 
-    	mSodaMachine.accumulateChange(coin);
-    	String amount = mSodaMachine.getAmountEntered();
-    	totalOutput.setText(amount);
-		
+    private void processCoinEntry(String coin){ 
+    	mSodaMachine.accumulateChange(coin);    	
     }
     
     private void resetTotalDisplay(){
@@ -375,7 +370,11 @@ public class SodaMachineGui extends javax.swing.JFrame {
     private void processSelection(){
     	
     }
-                                           
+    
+
+
+           
+                                
 
     /**
      * @param args the command line arguments
@@ -409,6 +408,16 @@ public class SodaMachineGui extends javax.swing.JFrame {
             public void run() {
                 new SodaMachineGui().setVisible(true);
                 
+                // When the coins are inserted, update the text area totalOutput
+                ChangeListener listener = new
+                   ChangeListener()
+                   {
+                      public void stateChanged(ChangeEvent event)
+                      {
+                     	totalOutput.setText(mSodaMachine.getAmountEntered());
+                      }
+                   };
+                   mSodaMachine.addChangeListener(listener);
             }
         });
     }
@@ -435,6 +444,6 @@ public class SodaMachineGui extends javax.swing.JFrame {
     private javax.swing.JTextField sodaSelectionOutput;
     private javax.swing.JLabel title;
     private javax.swing.JLabel total;
-    private javax.swing.JTextField totalOutput;
+    private static javax.swing.JTextField totalOutput;
     // End of variables declaration                   
 }
