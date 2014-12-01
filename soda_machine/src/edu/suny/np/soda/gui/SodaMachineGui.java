@@ -91,12 +91,6 @@ public class SodaMachineGui extends javax.swing.JFrame {
 
         total.setText("Total");
 
-        totalOutput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                totalOutputActionPerformed(evt);
-            }
-        });
-
         coinReturnButton.setText("Coin Return");
         coinReturnButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -324,11 +318,7 @@ public class SodaMachineGui extends javax.swing.JFrame {
     
     private void quarterButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
     	processCoinEntry("25");
-    }  
-    
-    private void totalOutputActionPerformed(java.awt.event.ActionEvent evt) { 
-
-    }                                           
+    }                                         
 
     private void coinReturnButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         int amountEntered = mSodaMachine.cancelPurchase();
@@ -338,7 +328,7 @@ public class SodaMachineGui extends javax.swing.JFrame {
     }                                                
 
     private void s0ActionPerformed(java.awt.event.ActionEvent evt) {                                   
-        // TODO add your handling code here:
+        processSelection();
     }                                  
 
     private void sodaSelectionOutputActionPerformed(java.awt.event.ActionEvent evt) {                                                    
@@ -380,6 +370,10 @@ public class SodaMachineGui extends javax.swing.JFrame {
     private void resetSodaDeliveryDisplay(){
     	selectionOutput.setText("");
     	changeOutput.setText("");
+    }
+    
+    private void processSelection(){
+    	
     }
                                            
 
