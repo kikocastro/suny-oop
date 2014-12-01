@@ -5,14 +5,11 @@ import java.util.Scanner;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.text.StyleContext.SmallAttributeSet;
-
 import edu.suny.np.exceptions.EmptyStockException;
 import edu.suny.np.exceptions.FullStockException;
 import edu.suny.np.exceptions.IllegalInputException;
 import edu.suny.np.exceptions.InvalidCoinException;
 import edu.suny.np.exceptions.InvalidQuantityException;
-import edu.suny.np.exceptions.InvalidTransactionIdException;
 import edu.suny.np.exceptions.InventoryItemNotFoundException;
 
 public class SodaMachine {
@@ -24,18 +21,16 @@ public class SodaMachine {
 	private ChangeMechanism changeMechanism;
 	private String latestSelection = null;
 
-	private ArrayList<ChangeListener> listeners;
+	
 
 	public SodaMachine() {
 		changeMechanism = new ChangeMechanism();
 		inventory = new Inventory();
 		scan = new Scanner(System.in);
-		listeners = new ArrayList<ChangeListener>();
+		
 	}
 
-	public void addChangeListener(ChangeListener listener) {
-		listeners.add(listener);
-	}
+
 
 	public void processSelection() {
 		InventoryItem item = inventory.getItemFromContents(latestSelection);
@@ -93,12 +88,8 @@ public class SodaMachine {
 	}
 
 	public void cancelPurchase() {
-		changeMechanism.cancelPurchase();
-		
-		// Notify all observers 
-		ChangeEvent event = new ChangeEvent(this);
-		for (ChangeListener listener : listeners)
-			listener.stateChanged(event);
+		changeMechanism.calculateChange(0);
+		changeMechanism.resetAmountEntered();
 	}
 	
 	public String getChange(){
@@ -163,11 +154,8 @@ public class SodaMachine {
 
 	public void accumulateChange(String s) {
 		try {
-			changeMechanism.addChange(Integer.parseInt(s));
-			// Notify all observers
-			ChangeEvent event = new ChangeEvent(this);
-			for (ChangeListener listener : listeners)
-				listener.stateChanged(event);
+			changeMechanism.addChange(s);
+			
 		} catch (InvalidCoinException e) {
 			e.printStackTrace();
 		}
@@ -225,5 +213,9 @@ public class SodaMachine {
 
 	public int[] getCoinReturn() {
 		return changeMechanism.getCoinReturn();
+	}
+	
+	public void addChangeListener(ChangeListener newListener){
+		changeMechanism.addChangeListener(newListener);
 	}
 }
