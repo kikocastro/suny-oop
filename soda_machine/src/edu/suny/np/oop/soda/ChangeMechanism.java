@@ -58,9 +58,9 @@ public class ChangeMechanism extends Observable {
 	}
 
 	private void resetTempCoins() {
-		tempCoinsEntered[0] = 0;
-		tempCoinsEntered[1] = 0;
-		tempCoinsEntered[2] = 0;
+		for (int i = 0; i < tempCoinsEntered.length; i++) {
+			tempCoinsEntered[i] = 0;	
+		}
 	}
 
 	public void remax() {
@@ -99,14 +99,13 @@ public class ChangeMechanism extends Observable {
 
 	// * if not canceled or timeout, process tempchange
 	private void processEnteredCoins() {
-		System.out.println(cust_n + " " + tempCoinsEntered[2]);
 		for (int i = 0; i < tempCoinsEntered[2]; i++) {
 			if (cust_q < MAX_Q) {
 				cust_q++;
 			} else {
 				addToCashBox(25);
 			}
-		} System.out.println(cashBox);
+		} 
 		for (int i = 0; i < tempCoinsEntered[1]; i++) {
 			if (cust_d < MAX_D) {
 				cust_d++;
@@ -121,6 +120,7 @@ public class ChangeMechanism extends Observable {
 				addToCashBox(5);
 			}
 		}
+		resetTempCoins();
 	}
 
 	/**
@@ -211,29 +211,27 @@ public class ChangeMechanism extends Observable {
 
 		while ((cust_q > 0) && (amountToReturn >= 25)) {
 			amountToReturn -= 25;
-			coins[0]++;
+			coins[2]++;
 			cust_q--;
 		}
 		while ((cust_d > 0) && (amountToReturn >= 10)) {
 			amountToReturn -= 10;
 			coins[1]++;
-			cust_q--;
+			cust_d--;
 		}
 		while ((cust_n > 0) && (amountToReturn >= 5)) {
 			amountToReturn -= 5;
-			coins[2]++;
+			coins[0]++;
 			cust_n--;
 		}
 
-		int newChange = coins[0] * 25 + coins[1] * 10 + coins[2] * 5;
-		resetAmountEntered();
-		resetTempCoins();
-		if (newChange == amountToReturn) {
+		int newChange = coins[2] * 25 + coins[1] * 10 + coins[0] * 5;
+		if (newChange == (amountEntered - cost)) {
 			setChange(Integer.toString(newChange));
 		} else {
 			setChange("invalid change");
 		}
-
+		resetAmountEntered();
 	}
 
 	/**

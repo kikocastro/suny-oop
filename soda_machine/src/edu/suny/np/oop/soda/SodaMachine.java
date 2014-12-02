@@ -14,9 +14,6 @@ import edu.suny.np.exceptions.InventoryItemNotFoundException;
 
 public class SodaMachine {
 
-	public static Transaction transaction;
-	private static ArrayList<Transaction> transactions = new ArrayList<Transaction>();
-	private Scanner scan;
 	private Inventory inventory = null;
 	private ChangeMechanism changeMechanism;
 	private String latestSelection = null;
@@ -24,7 +21,6 @@ public class SodaMachine {
 	public SodaMachine() {
 		changeMechanism = new ChangeMechanism();
 		inventory = new Inventory();
-		scan = new Scanner(System.in);
 		initMachine();
 	}
 
@@ -105,18 +101,6 @@ public class SodaMachine {
 		return changeMechanism.getChange();
 	}
 
-	public Transaction getTransaction(int t) {
-		if (t >= 0 && t <= 4) {
-			return transaction = transactions.get(t);
-		} else {
-			return null;
-		}
-	}
-
-	public void advanceTransaction(int tid) {
-		this.getTransaction(tid);
-	}
-
 	public void saveSelection(String s) {
 		if (s.equals("s0")) {
 			latestSelection = inventory.getItemName(0);
@@ -128,36 +112,6 @@ public class SodaMachine {
 			latestSelection = inventory.getItemName(3);
 		} else if (s.equals("s4")) {
 			latestSelection = inventory.getItemName(4);
-		}
-	}
-
-	public void addTransactions(SodaMachine sm) {
-		Transaction initialTransaction = new InitTransaction(sm);
-		transactions.add(Transaction.INIT_TID, initialTransaction);
-		Transaction adminTransaction = new AdminTransaction(sm);
-		transactions.add(Transaction.ADMIN_TID, adminTransaction);
-		Transaction selectTransaction = new SelectTransaction(sm);
-		transactions.add(Transaction.SELECT_TID, selectTransaction);
-		Transaction inputTransaction = new InputTransaction(sm);
-		transactions.add(Transaction.INPUT_TID, inputTransaction);
-	}
-
-	/**
-	 * @param args
-	 *            - the legal inputs in this state this method gets input,
-	 *            checks it against legal inputs and returns input if legal;
-	 *            otherwise it returns the null string.
-	 * @throws IllegalInputException
-	 * 
-	 */
-	public String consumeInput(ArrayList<String> args)
-			throws IllegalInputException {
-
-		String input = scan.next();
-		if (args.contains(input)) {
-			return input;
-		} else {
-			throw new IllegalInputException("Illegal input.");
 		}
 	}
 

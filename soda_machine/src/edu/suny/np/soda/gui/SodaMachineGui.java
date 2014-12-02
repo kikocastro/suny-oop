@@ -1,10 +1,13 @@
 package edu.suny.np.soda.gui;
 
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import edu.suny.np.oop.soda.*;
 
 import javax.swing.Box;
+import javax.swing.Timer;
 import javax.swing.WindowConstants;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
@@ -425,23 +428,36 @@ pack();
 	}// </editor-fold>
 
 	private void nickleButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		insertCoin("nickel");
+		insertCoin("nickel", timer);
 	}
 
 	private void dimeButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		insertCoin("dime");
+		insertCoin("dime", timer);
 	}
 
 	private void quarterButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		insertCoin("quarter");
+		insertCoin("quarter", timer);
 	}
 	
-	private void insertCoin(String coin){
+	final int DELAY = 2000;
+	Timer timer = new Timer(DELAY, new
+	         ActionListener()
+	         {
+	            public void actionPerformed(ActionEvent event)
+	            {
+					mSodaMachine.cancelPurchase();
+					selectionOutput.setText("Timeout. Purchase cancelled.");
+					totalOutput.setText("");
+	            }
+	         });
+	
+	private void insertCoin(String coin, Timer t){	
 		if (!mSodaMachine.hasPurchaseStarted()) {
 			selectionOutput.setText("");
 			changeOutput.setText("");
 		}
 		mSodaMachine.accumulateChange(coin);
+		t.restart();
 	}
 
 	private void coinReturnButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -563,12 +579,11 @@ pack();
 						totalOutput.setText(mSodaMachine.getAmountEntered());
 						fillSodaSelectionOutputs();
 						changeOutput.setText(mSodaMachine.getChange());
-						
-						
 					}
 				};
 				mSodaMachine.addChangeListenerChangeMechanism(listener);
 				mSodaMachine.addChangeListenerInventory(listener);
+
 				
 				
 			}
