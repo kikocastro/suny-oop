@@ -425,15 +425,23 @@ pack();
 	}// </editor-fold>
 
 	private void nickleButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		mSodaMachine.accumulateChange("nickel");
+		insertCoin("nickel");
 	}
 
 	private void dimeButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		mSodaMachine.accumulateChange("dime");
+		insertCoin("dime");
 	}
 
 	private void quarterButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		mSodaMachine.accumulateChange("quarter");
+		insertCoin("quarter");
+	}
+	
+	private void insertCoin(String coin){
+		if (!mSodaMachine.hasPurchaseStarted()) {
+			selectionOutput.setText("");
+			changeOutput.setText("");
+		}
+		mSodaMachine.accumulateChange(coin);
 	}
 
 	private void coinReturnButtonActionPerformed(java.awt.event.ActionEvent evt) {
