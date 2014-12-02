@@ -5,6 +5,9 @@
  */
 package edu.suny.np.soda.gui;
 
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 import edu.suny.np.oop.soda.SodaMachine;
 
 /**
@@ -20,9 +23,26 @@ public class Admin extends javax.swing.JDialog {
     	super(parent, modal);
         mSodaMachine = newSodaMachine;
         initComponents();
+        
         printCoinReturn();
-        printCashBox();
+        printCashBox();	
+        printQIS();
+        test();
     }
+    
+ public void test(){
+	 ChangeListener listener = new ChangeListener() {
+			public void stateChanged(ChangeEvent event) {
+				
+				printCoinReturn();
+		        printCashBox();	
+		        printQIS();
+			}
+		};
+		mSodaMachine.addChangeListenerChangeMechanism(listener);
+		mSodaMachine.addChangeListenerInventory(listener);
+		
+ }
     
     public void printCashBox(){
     	totalTxt.setText(mSodaMachine.getCashBox());
@@ -153,6 +173,11 @@ public class Admin extends javax.swing.JDialog {
         jLabel4.setText("Total");
 
         remax.setText("Remax");
+        remax.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                remaxActionPerformed(evt);
+            }
+        });
         
         javax.swing.GroupLayout cashBoxLayout = new javax.swing.GroupLayout(cashBox);
         cashBox.setLayout(cashBoxLayout);
@@ -232,7 +257,7 @@ public class Admin extends javax.swing.JDialog {
         });
 
         buttonS4.setText("yes");
-        buttonS3.addActionListener(new java.awt.event.ActionListener() {
+        buttonS4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonS4ActionPerformed(evt);
             }
@@ -388,8 +413,7 @@ public class Admin extends javax.swing.JDialog {
 
         pack();
         
-        this.printQIS();
-        this.printCoinReturn();
+        
     }// </editor-fold>                                                                                                  
                                      
 
@@ -417,7 +441,7 @@ public class Admin extends javax.swing.JDialog {
         this.setVisible(false);
     }                                                             
 
-    private void remaxBtnActionPerformed(java.awt.event.ActionEvent evt) {                                        
+    private void remaxActionPerformed(java.awt.event.ActionEvent evt) {                                        
         mSodaMachine.remax();
     } 
      
