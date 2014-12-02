@@ -99,14 +99,15 @@ public class ChangeMechanism extends Observable {
 
 	// * if not canceled or timeout, process tempchange
 	private void processEnteredCoins() {
-		for (int i = 0; i < tempCoinsEntered[0]; i++) {
+		System.out.println(cust_n + " " + tempCoinsEntered[2]);
+		for (int i = 0; i < tempCoinsEntered[2]; i++) {
 			if (cust_q < MAX_Q) {
 				cust_q++;
 			} else {
 				addToCashBox(25);
 			}
-		}
-		for (int i = 0; i < tempCoinsEntered[0]; i++) {
+		} System.out.println(cashBox);
+		for (int i = 0; i < tempCoinsEntered[1]; i++) {
 			if (cust_d < MAX_D) {
 				cust_d++;
 			} else {

@@ -27,10 +27,10 @@ public class Admin extends javax.swing.JDialog {
         printCoinReturn();
         printCashBox();	
         printQIS();
-        test();
+        addListeners();
     }
     
- public void test(){
+ public void addListeners(){
 	 ChangeListener listener = new ChangeListener() {
 			public void stateChanged(ChangeEvent event) {
 				

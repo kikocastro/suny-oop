@@ -54,7 +54,7 @@ public class SodaMachine {
 					
 					if(change.equals("invalid change")){
 						changeMechanism.cancelPurchase();
-						output += "problems with change";
+						output += "Problems with change.";
 					}// successful purchase
 					else{
 						inventory.decrement(item);
