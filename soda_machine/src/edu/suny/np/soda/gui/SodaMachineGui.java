@@ -444,7 +444,7 @@ pack();
 		mSodaMachine.cancelPurchase();	
 	}
 	
-	final static int DELAY = 9000;
+	final static int DELAY = 30000;
 	static Timer timer = new Timer(DELAY, new
 	         ActionListener()
 	         {
