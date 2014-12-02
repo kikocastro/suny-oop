@@ -475,33 +475,34 @@ pack();
 	
 	private static void fillSodaSelectionOutputs(){
 		int[] inventoryQIS = new int[5];
-		
+		int[] inventoryPrices = new int[5];
 		inventoryQIS=mSodaMachine.getInventoryQIS();
+		inventoryPrices=mSodaMachine.getInventoryPrices();
 		
 		if(inventoryQIS[0] == 0){
 			sodaSelectionOutput0.setText("Out of Stock");
 		}else{
-			sodaSelectionOutput0.setText(Integer.toString(inventoryQIS[0]) + " item(s) available");
+			sodaSelectionOutput0.setText("U$ 0." + Integer.toString(inventoryPrices[0]) + " / " + Integer.toString(inventoryQIS[0]) + " item(s) available");
 		}
 		if(inventoryQIS[1] == 0){
 			sodaSelectionOutput1.setText("Out of Stock");
 		}else{
-			sodaSelectionOutput1.setText(Integer.toString(inventoryQIS[1]) + " item(s) available");
+			sodaSelectionOutput1.setText("U$ 0." + Integer.toString(inventoryPrices[1]) + " / " + Integer.toString(inventoryQIS[1]) + " item(s) available");
 		}
 		if(inventoryQIS[2] == 0){
 			sodaSelectionOutput2.setText("Out of Stock");
 		}else{
-			sodaSelectionOutput2.setText(Integer.toString(inventoryQIS[2]) + " item(s) available");
+			sodaSelectionOutput2.setText("U$ 0." + Integer.toString(inventoryPrices[2]) + " / " + Integer.toString(inventoryQIS[2]) + " item(s) available");
 		}
 		if(inventoryQIS[3] == 0){
 			sodaSelectionOutput3.setText("Out of Stock");
 		}else{
-			sodaSelectionOutput3.setText(Integer.toString(inventoryQIS[3]) + " item(s) available");
+			sodaSelectionOutput3.setText("U$ 0." + Integer.toString(inventoryPrices[3]) + " / " + Integer.toString(inventoryQIS[3]) + " item(s) available");
 		}
 		if(inventoryQIS[4] == 0){
 			sodaSelectionOutput4.setText("Out of Stock");
 		}else{
-			sodaSelectionOutput4.setText(Integer.toString(inventoryQIS[4]) + " item(s) available");
+			sodaSelectionOutput4.setText("U$ 0." + Integer.toString(inventoryPrices[4]) + " / " + Integer.toString(inventoryQIS[4]) + " item(s) available");
 		}
 		
 	}

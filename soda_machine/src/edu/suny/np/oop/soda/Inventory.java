@@ -84,6 +84,16 @@ public class Inventory {
 		return inventoryQIS;
 	}
 	
+	public int[] getPrices(){
+		
+		int[] inventoryPrices = new int[5];
+		for (int i = 0; i < contents.size(); i++) {
+			inventoryPrices[i] = contents.get(i).getPrice();
+		}
+		return inventoryPrices;
+	}
+	
+	
 	public InventoryItem getInventoryItem(String s) {
 		return this.getItemFromContents(s);
 	}

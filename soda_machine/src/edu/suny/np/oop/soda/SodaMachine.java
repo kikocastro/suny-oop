@@ -79,6 +79,10 @@ public class SodaMachine {
 	public int[] getInventoryQIS(){
 		return inventory.getQIS();
 	}
+	
+	public int[] getInventoryPrices(){
+		return inventory.getPrices();
+	}
 
 	public void resetMachine() {
 		latestSelection = null;
