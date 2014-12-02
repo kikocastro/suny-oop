@@ -439,29 +439,37 @@ pack();
 		insertCoin("quarter", timer);
 	}
 	
-	final int DELAY = 2000;
-	Timer timer = new Timer(DELAY, new
+	private static void cancelPurchase(){
+		timer.stop();
+		mSodaMachine.cancelPurchase();	
+	}
+	
+	final static int DELAY = 9000;
+	static Timer timer = new Timer(DELAY, new
 	         ActionListener()
 	         {
 	            public void actionPerformed(ActionEvent event)
 	            {
-					mSodaMachine.cancelPurchase();
+					cancelPurchase();
 					selectionOutput.setText("Timeout. Purchase cancelled.");
 					totalOutput.setText("");
+					
 	            }
 	         });
 	
 	private void insertCoin(String coin, Timer t){	
 		if (!mSodaMachine.hasPurchaseStarted()) {
+			t.start();
 			selectionOutput.setText("");
-			changeOutput.setText("");
+			totalOutput.setText("");
 		}
 		mSodaMachine.accumulateChange(coin);
-		t.restart();
+		
 	}
 
 	private void coinReturnButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		mSodaMachine.cancelPurchase();
+		selectionOutput.setText("You canceled the purchase.");
 		totalOutput.setText("");
 	}
 
@@ -487,14 +495,21 @@ pack();
 
 	private void enterAdminModeButtonActionPerformed(
 		java.awt.event.ActionEvent evt) {
+		if (mSodaMachine.hasPurchaseStarted()) {
+			selectionOutput.setText("Finish purchase to enter Admin mode.");
+		} else {
 		Admin dialog = new Admin(new javax.swing.JFrame(), true, mSodaMachine);
+		timer.stop();
 		dialog.setVisible(true);
+		}
 	}
 	
 	private static void processSelection(String soda){
+		timer.stop();
 		mSodaMachine.saveSelection(soda);
 		String output = mSodaMachine.processSelection();
 		selectionOutput.setText(output);
+		totalOutput.setText("");
 	}
 	
 	private static void fillSodaSelectionOutputs(){

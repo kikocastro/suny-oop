@@ -184,6 +184,7 @@ public class ChangeMechanism extends Observable {
 		} else {
 			throw new InvalidCoinException("Invalid coin inserted");
 		}
+		setChange("");
 	}
 
 	/**
