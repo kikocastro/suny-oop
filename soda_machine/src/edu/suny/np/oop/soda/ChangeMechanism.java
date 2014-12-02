@@ -33,6 +33,14 @@ public class ChangeMechanism extends Observable {
 		return change;
 	}
 	
+	public void addToCashBox(int coin){
+		cashBox += coin;
+		// Notify all observers
+				ChangeEvent event = new ChangeEvent(this);
+				for (ChangeListener listener : listeners)
+					listener.stateChanged(event);
+	}
+	
 	private void setChange(String newChange){
 		change = newChange;
 		// Notify all observers
@@ -56,15 +64,13 @@ public class ChangeMechanism extends Observable {
 	}
 
 	public void remax() {
-		for (int i = 0; i < MAX_Q; i++) {
-			cust_q++;
-		}
-		for (int i = 0; i < MAX_D; i++) {
-			cust_d++;
-		}
-		for (int i = 0; i < MAX_N; i++) {
-			cust_n++;
-		}
+		cust_q = MAX_Q;
+		cust_d = MAX_D;
+		cust_n = MAX_N;
+		// Notify all observers
+				ChangeEvent event = new ChangeEvent(this);
+				for (ChangeListener listener : listeners)
+					listener.stateChanged(event);
 	}
 
 	/**
@@ -97,21 +103,21 @@ public class ChangeMechanism extends Observable {
 			if (cust_q < MAX_Q) {
 				cust_q++;
 			} else {
-				cashBox += 25;
+				addToCashBox(25);
 			}
 		}
 		for (int i = 0; i < tempCoinsEntered[0]; i++) {
 			if (cust_d < MAX_D) {
 				cust_d++;
 			} else {
-				cashBox += 10;
+				addToCashBox(10);
 			}
 		}
 		for (int i = 0; i < tempCoinsEntered[0]; i++) {
 			if (cust_n < MAX_N) {
 				cust_n++;
 			} else {
-				cashBox += 5;
+				addToCashBox(5);
 			}
 		}
 	}

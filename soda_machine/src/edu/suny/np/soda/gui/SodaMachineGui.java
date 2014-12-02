@@ -563,6 +563,8 @@ pack();
 						totalOutput.setText(mSodaMachine.getAmountEntered());
 						fillSodaSelectionOutputs();
 						changeOutput.setText(mSodaMachine.getChange());
+						
+						
 					}
 				};
 				mSodaMachine.addChangeListenerChangeMechanism(listener);

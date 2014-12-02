@@ -76,6 +76,10 @@ public class SodaMachine {
 		}
 	}
 	
+	public String getCashBox(){
+		return Integer.toString(changeMechanism.getCashbox());
+	}
+	
 	public int[] getInventoryQIS(){
 		return inventory.getQIS();
 	}
@@ -215,7 +219,15 @@ public class SodaMachine {
 			this.cancelPurchase();
 		}
 	}
-
+	
+	public void updateInventory(String s){
+		try {
+			inventory.updateInventory(s);
+		} catch (FullStockException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public int[] getCoinReturn() {
 		return changeMechanism.getCoinReturn();
 	}
