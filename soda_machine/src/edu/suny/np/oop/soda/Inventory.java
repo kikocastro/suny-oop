@@ -2,6 +2,7 @@ package edu.suny.np.oop.soda;
 
 import java.util.*;
 
+import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import edu.suny.np.exceptions.*;
@@ -152,6 +153,20 @@ public class Inventory {
 		}else{
 			return false;
 		}
+	}
+	
+	public void decrement(InventoryItem item) {
+		InventoryItem soldItem = getInventoryItem(item.getName());
+		try {
+			soldItem.decrementInventory();
+		} catch (EmptyStockException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// Notify all observers
+				ChangeEvent event = new ChangeEvent(this);
+				for (ChangeListener listener : listeners)
+					listener.stateChanged(event);
 	}
 	
 	public int getSelectionCost(int selection) {

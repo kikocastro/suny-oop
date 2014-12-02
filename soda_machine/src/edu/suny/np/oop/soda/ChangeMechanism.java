@@ -116,7 +116,7 @@ public class ChangeMechanism extends Observable {
 	public String cancelPurchase() {
 		String newChange = Integer.toString(amountEntered);
 		resetTempCoins();
-		change = "";
+		change = "0";
 		resetAmountEntered();
 		return newChange;
 	}

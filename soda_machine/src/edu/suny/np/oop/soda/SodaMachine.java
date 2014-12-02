@@ -49,16 +49,18 @@ public class SodaMachine {
 					output += "Machine out of change.";
 					cancelPurchase();
 				} else {
-					// successful purchase 
-					try {
-						item.decrementInventory();
-					} catch (EmptyStockException e) {
-						e.printStackTrace();
-					}
 					changeMechanism.processChange(selectionCost);
 					String change = changeMechanism.getChange();
+					
+					if(change.equals("invalid change")){
+						changeMechanism.cancelPurchase();
+					}// successful purchase
+					else{
+						inventory.decrement(item);
+						System.out.println("Pick your soda.");
+					}
 	
-					System.out.println("Pick your soda.");
+					
 					output = "Pick your " + latestSelection;
 					if (!change.contentEquals("Change: 0 cents.")) {
 						System.out.println(change);
@@ -219,7 +221,11 @@ public class SodaMachine {
 		return changeMechanism.getCoinReturn();
 	}
 	
-	public void addChangeListener(ChangeListener newListener){
+	public void addChangeListenerInventory(ChangeListener newListener){
+		inventory.addChangeListener(newListener);
+	}
+	
+	public void addChangeListenerChangeMechanism(ChangeListener newListener){
 		changeMechanism.addChangeListener(newListener);
 	}
 }

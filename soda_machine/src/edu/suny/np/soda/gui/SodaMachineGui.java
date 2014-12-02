@@ -282,74 +282,34 @@ selection.setText("Selection");
 
 change.setText("Change");
 
-javax.swing.GroupLayout sodaDeliveryLayout = new javax.swing.GroupLayout(
-	sodaDelivery);
+javax.swing.GroupLayout sodaDeliveryLayout = new javax.swing.GroupLayout(sodaDelivery);
 sodaDelivery.setLayout(sodaDeliveryLayout);
-sodaDeliveryLayout
-.setHorizontalGroup(sodaDeliveryLayout
-	.createParallelGroup(
-		javax.swing.GroupLayout.Alignment.LEADING)
-	.addGroup(
-		sodaDeliveryLayout
-		.createSequentialGroup()
-		.addGap(19, 19, 19)
-		.addComponent(selection)
-		.addPreferredGap(
-			javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-		.addComponent(
-			selectionOutput,
-			javax.swing.GroupLayout.PREFERRED_SIZE,
-			146,
-			javax.swing.GroupLayout.PREFERRED_SIZE)
-		.addPreferredGap(
-			javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-			javax.swing.GroupLayout.DEFAULT_SIZE,
-			Short.MAX_VALUE)
-		.addComponent(change)
-		.addPreferredGap(
-			javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-		.addComponent(
-			changeOutput,
-			javax.swing.GroupLayout.PREFERRED_SIZE,
-			78,
-			javax.swing.GroupLayout.PREFERRED_SIZE)
-		.addContainerGap()));
-sodaDeliveryLayout
-.setVerticalGroup(sodaDeliveryLayout
-	.createParallelGroup(
-		javax.swing.GroupLayout.Alignment.LEADING)
-	.addGroup(
-		javax.swing.GroupLayout.Alignment.TRAILING,
-		sodaDeliveryLayout
-		.createSequentialGroup()
-		.addContainerGap(12, Short.MAX_VALUE)
-		.addGroup(
-			sodaDeliveryLayout
-			.createParallelGroup(
-				javax.swing.GroupLayout.Alignment.LEADING)
-			.addGroup(
-				sodaDeliveryLayout
-				.createParallelGroup(
-					javax.swing.GroupLayout.Alignment.BASELINE)
-				.addComponent(
-					changeOutput,
-					javax.swing.GroupLayout.PREFERRED_SIZE,
-					javax.swing.GroupLayout.DEFAULT_SIZE,
-					javax.swing.GroupLayout.PREFERRED_SIZE)
-				.addComponent(
-					change))
-			.addGroup(
-				sodaDeliveryLayout
-				.createParallelGroup(
-					javax.swing.GroupLayout.Alignment.BASELINE)
-				.addComponent(
-					selectionOutput,
-					javax.swing.GroupLayout.PREFERRED_SIZE,
-					javax.swing.GroupLayout.DEFAULT_SIZE,
-					javax.swing.GroupLayout.PREFERRED_SIZE)
-				.addComponent(
-					selection)))
-		.addGap(12, 12, 12)));
+sodaDeliveryLayout.setHorizontalGroup(
+    sodaDeliveryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+    .addGroup(sodaDeliveryLayout.createSequentialGroup()
+        .addGap(23, 23, 23)
+        .addGroup(sodaDeliveryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(selection, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(change, javax.swing.GroupLayout.Alignment.TRAILING))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addGroup(sodaDeliveryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(changeOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(selectionOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+);
+sodaDeliveryLayout.setVerticalGroup(
+    sodaDeliveryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+    .addGroup(sodaDeliveryLayout.createSequentialGroup()
+        .addContainerGap()
+        .addGroup(sodaDeliveryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+            .addComponent(selectionOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(selection))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addGroup(sodaDeliveryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+            .addComponent(changeOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(change))
+        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+);
 
 adminModeSelection.setBorder(javax.swing.BorderFactory
 	.createTitledBorder(null, "Admin Mode",
@@ -606,7 +566,8 @@ pack();
 						fillSodaSelectionOutputs();
 					}
 				};
-				mSodaMachine.addChangeListener(listener);
+				mSodaMachine.addChangeListenerChangeMechanism(listener);
+				mSodaMachine.addChangeListenerInventory(listener);
 				
 				
 			}
