@@ -54,16 +54,11 @@ public class SodaMachine {
 					
 					if(change.equals("invalid change")){
 						changeMechanism.cancelPurchase();
+						output += "problems with change";
 					}// successful purchase
 					else{
 						inventory.decrement(item);
-						System.out.println("Pick your soda.");
-					}
-	
-					
-					output = "Pick your " + latestSelection;
-					if (!change.contentEquals("Change: 0 cents.")) {
-						System.out.println(change);
+						output = "Pick your " + latestSelection;
 					}
 					resetMachine();
 				}
@@ -94,8 +89,8 @@ public class SodaMachine {
 		changeMechanism.remax();
 	}
 
-	public String cancelPurchase() {
-		return changeMechanism.cancelPurchase();
+	public void cancelPurchase() {
+		changeMechanism.cancelPurchase();
 	}
 	
 	public String getChange(){

@@ -32,6 +32,14 @@ public class ChangeMechanism extends Observable {
 	public String getChange() {
 		return change;
 	}
+	
+	private void setChange(String newChange){
+		change = newChange;
+		// Notify all observers
+				ChangeEvent event = new ChangeEvent(this);
+				for (ChangeListener listener : listeners)
+					listener.stateChanged(event);
+	}
 
 	/**
 	 * Resets the amount of money entered
@@ -113,12 +121,10 @@ public class ChangeMechanism extends Observable {
 	 * amount entered value to 0
 	 */
 
-	public String cancelPurchase() {
-		String newChange = Integer.toString(amountEntered);
+	public void cancelPurchase() {
+		setChange(Integer.toString(amountEntered));
 		resetTempCoins();
-		change = "0";
 		resetAmountEntered();
-		return newChange;
 	}
 
 	/**
@@ -216,9 +222,9 @@ public class ChangeMechanism extends Observable {
 		resetAmountEntered();
 		resetTempCoins();
 		if (newChange == amountToReturn) {
-			change = Integer.toString(newChange);
+			setChange(Integer.toString(newChange));
 		} else {
-			change = "invalid change";
+			setChange("invalid change");
 		}
 
 	}

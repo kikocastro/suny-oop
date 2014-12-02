@@ -425,28 +425,20 @@ pack();
 	}// </editor-fold>
 
 	private void nickleButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		enterCoin("nickel");
+		mSodaMachine.accumulateChange("nickel");
 	}
 
 	private void dimeButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		enterCoin("dime");
+		mSodaMachine.accumulateChange("dime");
 	}
 
 	private void quarterButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		enterCoin("quarter");
+		mSodaMachine.accumulateChange("quarter");
 	}
 
 	private void coinReturnButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		String change = mSodaMachine.cancelPurchase();
+		mSodaMachine.cancelPurchase();
 		totalOutput.setText("");
-		changeOutput.setText(change);
-	}
-	
-	private void enterCoin(String coin){
-		if (!mSodaMachine.hasPurchaseStarted()) {
-			changeOutput.setText("");
-		}
-		mSodaMachine.accumulateChange(coin);
 	}
 
 	private void s0ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -489,31 +481,28 @@ pack();
 		if(inventoryQIS[0] == 0){
 			sodaSelectionOutput0.setText("Out of Stock");
 		}else{
-			sodaSelectionOutput0.setText(Integer.toString(inventoryQIS[0]) + " items available");
+			sodaSelectionOutput0.setText(Integer.toString(inventoryQIS[0]) + " item(s) available");
 		}
 		if(inventoryQIS[1] == 0){
 			sodaSelectionOutput1.setText("Out of Stock");
 		}else{
-			sodaSelectionOutput1.setText(Integer.toString(inventoryQIS[1]) + " items available");
+			sodaSelectionOutput1.setText(Integer.toString(inventoryQIS[1]) + " item(s) available");
 		}
 		if(inventoryQIS[2] == 0){
 			sodaSelectionOutput2.setText("Out of Stock");
 		}else{
-			sodaSelectionOutput2.setText(Integer.toString(inventoryQIS[2]) + " items available");
+			sodaSelectionOutput2.setText(Integer.toString(inventoryQIS[2]) + " item(s) available");
 		}
 		if(inventoryQIS[3] == 0){
 			sodaSelectionOutput3.setText("Out of Stock");
 		}else{
-			sodaSelectionOutput3.setText(Integer.toString(inventoryQIS[3]) + " items available");
+			sodaSelectionOutput3.setText(Integer.toString(inventoryQIS[3]) + " item(s) available");
 		}
 		if(inventoryQIS[4] == 0){
 			sodaSelectionOutput4.setText("Out of Stock");
 		}else{
-			sodaSelectionOutput4.setText(Integer.toString(inventoryQIS[4]) + " items available");
+			sodaSelectionOutput4.setText(Integer.toString(inventoryQIS[4]) + " item(s) available");
 		}
-		
-
-		
 		
 	}
 
@@ -564,6 +553,7 @@ pack();
 					public void stateChanged(ChangeEvent event) {
 						totalOutput.setText(mSodaMachine.getAmountEntered());
 						fillSodaSelectionOutputs();
+						changeOutput.setText(mSodaMachine.getChange());
 					}
 				};
 				mSodaMachine.addChangeListenerChangeMechanism(listener);
@@ -576,7 +566,7 @@ pack();
 
 	// Variables declaration - do not modify
 	private javax.swing.JPanel adminModeSelection;
-	private javax.swing.JLabel change;
+	private static javax.swing.JLabel change;
 	private static javax.swing.JTextField changeOutput;
 	private javax.swing.JPanel coinReturn;
 	private javax.swing.JButton coinReturnButton;
