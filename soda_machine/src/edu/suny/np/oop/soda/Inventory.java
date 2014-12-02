@@ -203,6 +203,10 @@ public class Inventory {
 				}
 			}
 		}
+		// Notify all observers
+		ChangeEvent event = new ChangeEvent(this);
+		for (ChangeListener listener : listeners)
+			listener.stateChanged(event);
 	}
 	
 }
