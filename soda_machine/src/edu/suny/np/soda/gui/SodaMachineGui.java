@@ -465,24 +465,15 @@ pack();
 	}// </editor-fold>
 
 	private void nickleButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		if (!mSodaMachine.hasPurchaseStarted()) {
-			changeOutput.setText("");
-		}
-		mSodaMachine.accumulateChange("nickel");
+		enterCoin("nickel");
 	}
 
 	private void dimeButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		if (!mSodaMachine.hasPurchaseStarted()) {
-			changeOutput.setText("");
-		}
-		mSodaMachine.accumulateChange("dime");
+		enterCoin("dime");
 	}
 
 	private void quarterButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		if (!mSodaMachine.hasPurchaseStarted()) {
-			changeOutput.setText("");
-		}
-		mSodaMachine.accumulateChange("quarter");
+		enterCoin("quarter");
 	}
 
 	private void coinReturnButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -490,25 +481,32 @@ pack();
 		totalOutput.setText("");
 		changeOutput.setText(change);
 	}
+	
+	private void enterCoin(String coin){
+		if (!mSodaMachine.hasPurchaseStarted()) {
+			changeOutput.setText("");
+		}
+		mSodaMachine.accumulateChange(coin);
+	}
 
 	private void s0ActionPerformed(java.awt.event.ActionEvent evt) {
-		
+		processSelection("s0");
 	}
 	
 	private void s1ActionPerformed(java.awt.event.ActionEvent evt) {
-		// TODO add your handling code here:
+		processSelection("s1");
 	}
 	
 	private void s2ActionPerformed(java.awt.event.ActionEvent evt) {
-		// TODO add your handling code here:
+		processSelection("s2");
 	}
 	
 	private void s3ActionPerformed(java.awt.event.ActionEvent evt) {
-		// TODO add your handling code here:
+		processSelection("s3");
 	}
 	
 	private void s4ActionPerformed(java.awt.event.ActionEvent evt) {
-		// TODO add your handling code here:
+		processSelection("s4");
 	}
 
 	private void enterAdminModeButtonActionPerformed(
@@ -517,7 +515,13 @@ pack();
 		dialog.setVisible(true);
 	}
 	
-	private static void fillSodasSelectionOutputs(){
+	private static void processSelection(String soda){
+		mSodaMachine.saveSelection(soda);
+		String output = mSodaMachine.processSelection();
+		selectionOutput.setText(output);
+	}
+	
+	private static void fillSodaSelectionOutputs(){
 		int[] inventoryQIS = new int[5];
 		
 		inventoryQIS=mSodaMachine.getInventoryQIS();
@@ -594,12 +598,12 @@ pack();
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				new SodaMachineGui().setVisible(true);
-				fillSodasSelectionOutputs();
+				fillSodaSelectionOutputs();
 				// When the mechanism changes, update the display
 				ChangeListener listener = new ChangeListener() {
 					public void stateChanged(ChangeEvent event) {
 						totalOutput.setText(mSodaMachine.getAmountEntered());
-						fillSodasSelectionOutputs();
+						fillSodaSelectionOutputs();
 					}
 				};
 				mSodaMachine.addChangeListener(listener);

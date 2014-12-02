@@ -28,24 +28,28 @@ public class SodaMachine {
 		initMachine();
 	}
 
-
-
-	public void processSelection() {
+	public String processSelection() {
+		String output = "Purchase canceled. ";
 		InventoryItem item = inventory.getItemFromContents(latestSelection);
+		
 		int selectionCost = inventory.getSelectionCost(item.getId());
 		if (inventory.outOfStock(item.getId())) {
 			System.out.println("Out of stock.");
+			output += "Out of stock.";
 			cancelPurchase();
 		} else {
 			if (inventory.insufficientFunds(latestSelection,
 					changeMechanism.getAmountEntered())) {
 				System.out.println("Insufficient funds.");
+				output += "Insufficient funds.";
 				cancelPurchase();
 			} else {
 				if (selectionCost > changeMechanism.getAvailableChange()) {
 					System.out.println("Machine out of change.");
+					output += "Machine out of change.";
 					cancelPurchase();
 				} else {
+					// successful purchase 
 					try {
 						item.decrementInventory();
 					} catch (EmptyStockException e) {
@@ -55,6 +59,7 @@ public class SodaMachine {
 					String change = changeMechanism.getChange();
 	
 					System.out.println("Pick your soda.");
+					output = "Pick your " + latestSelection;
 					if (!change.contentEquals("Change: 0 cents.")) {
 						System.out.println(change);
 					}
@@ -62,6 +67,7 @@ public class SodaMachine {
 				}
 			}
 		}
+		return output;
 	}
 
 	public Boolean hasPurchaseStarted() {
